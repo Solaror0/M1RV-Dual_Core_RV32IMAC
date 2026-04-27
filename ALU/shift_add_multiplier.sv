@@ -1,12 +1,12 @@
 
-module shift_add(
+module shift_add_multiplier(
   
     input logic start,
     input logic clk,
     input logic [31:0] a,b,
     
     output logic [63:0] accumulator,
-    output logic done;
+    output logic done
 
 );
 

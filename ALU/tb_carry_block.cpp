@@ -15,7 +15,7 @@ int main(int argc, char ** argv){
     // A goes through 0000 to 1111 (0 to 15)
     // B goes through 0000 to 1111 (0 to 15)
 
-    for(int sub=0; sub<2; sub++){
+    for(int c=0; c<2; c++){
 
         for(int a=0; a<16; a++){
 
@@ -23,16 +23,10 @@ int main(int argc, char ** argv){
 
                 dut->a = a;
                 dut->b = b;
-                dut->Subtract = sub;
+                dut->cin = c;
                 dut->eval();
 
-                int sum_expected;
-                if sub == 0{
-                    sum_expected = a+b;
-                }else{
-                    sum_expected a-b;
-                }
-                
+                int sum_expected = a+b+c;
                 int output = (dut->cout << 4) | dut->s;
 
                 std::cout << a << " " << b << " " << c << " " << sum_expected << " " << output << std::endl;
