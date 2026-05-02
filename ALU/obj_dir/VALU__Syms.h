@@ -28,8 +28,8 @@ class alignas(VL_CACHE_LINE_BYTES)VALU__Syms final : public VerilatedSyms {
     // MODULE INSTANCE STATE
     VALU___024root                 TOP;
     VALU_carry_lookahead_adder     TOP__ALU__DOT__adder;
-    VALU_carry_lookahead_adder     TOP__ALU__DOT__shift_multiplier__DOT__adder_lower;
-    VALU_carry_lookahead_adder     TOP__ALU__DOT__shift_multiplier__DOT__adder_upper;
+    VALU_carry_lookahead_adder     TOP__ALU__DOT__multiplier__DOT__fast_adder_lower;
+    VALU_carry_lookahead_adder     TOP__ALU__DOT__multiplier__DOT__fast_adder_upper;
 
     // CONSTRUCTORS
     VALU__Syms(VerilatedContext* contextp, const char* namep, VALU* modelp);

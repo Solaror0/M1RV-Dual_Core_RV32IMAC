@@ -6,8 +6,8 @@ module i_mem(
 
 logic [31:0] instructions [262144]; //we can upgrade this easily i guess
 
-always_ff (@posedge clk) begin
-    instr <= instructions[PC_IN[31:2]];
+always_comb begin
+    instr = instructions[PC_IN[31:2]];
 end
 
 

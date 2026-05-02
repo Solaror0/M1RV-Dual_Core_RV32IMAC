@@ -11,7 +11,7 @@ module reg_file(
 
 logic [31:0] regs [31:0]; //0 to 31 registers of 32 bits each
 
-always_ff (@posedge clk)begin
+always_ff @(negedge clk)begin
     if (WE & (A3 != 0)) begin //avoid writing to register 0
       regs[A3] <= WD3;
     end

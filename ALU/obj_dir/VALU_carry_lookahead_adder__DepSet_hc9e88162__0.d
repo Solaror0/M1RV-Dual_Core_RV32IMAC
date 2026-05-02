@@ -1,0 +1,3 @@
+VALU_carry_lookahead_adder__DepSet_hc9e88162__0.o: \
+ VALU_carry_lookahead_adder__DepSet_hc9e88162__0.cpp VALU__pch.h \
+ VALU_carry_lookahead_adder.h

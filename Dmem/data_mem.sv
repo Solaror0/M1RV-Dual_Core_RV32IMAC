@@ -7,7 +7,7 @@ module i_mem(
 
 logic [31:0] data_mem [262144]; //we can upgrade this easily i guess
 
-always_ff (@posedge clk) begin
+always_ff @(posedge clk) begin
     if(WE) begin
         data_mem[addr[31:2]] <= wd;
     end 

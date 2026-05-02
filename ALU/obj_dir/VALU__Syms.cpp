@@ -18,19 +18,19 @@ VALU__Syms::VALU__Syms(VerilatedContext* contextp, const char* namep, VALU* mode
     // Setup module instances
     , TOP{this, namep}
     , TOP__ALU__DOT__adder{this, Verilated::catName(namep, "ALU.adder")}
-    , TOP__ALU__DOT__shift_multiplier__DOT__adder_lower{this, Verilated::catName(namep, "ALU.shift_multiplier.adder_lower")}
-    , TOP__ALU__DOT__shift_multiplier__DOT__adder_upper{this, Verilated::catName(namep, "ALU.shift_multiplier.adder_upper")}
+    , TOP__ALU__DOT__multiplier__DOT__fast_adder_lower{this, Verilated::catName(namep, "ALU.multiplier.fast_adder_lower")}
+    , TOP__ALU__DOT__multiplier__DOT__fast_adder_upper{this, Verilated::catName(namep, "ALU.multiplier.fast_adder_upper")}
 {
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);
     // Setup each module's pointers to their submodules
     TOP.__PVT__ALU__DOT__adder = &TOP__ALU__DOT__adder;
-    TOP.__PVT__ALU__DOT__shift_multiplier__DOT__adder_lower = &TOP__ALU__DOT__shift_multiplier__DOT__adder_lower;
-    TOP.__PVT__ALU__DOT__shift_multiplier__DOT__adder_upper = &TOP__ALU__DOT__shift_multiplier__DOT__adder_upper;
+    TOP.__PVT__ALU__DOT__multiplier__DOT__fast_adder_lower = &TOP__ALU__DOT__multiplier__DOT__fast_adder_lower;
+    TOP.__PVT__ALU__DOT__multiplier__DOT__fast_adder_upper = &TOP__ALU__DOT__multiplier__DOT__fast_adder_upper;
     // Setup each module's pointer back to symbol table (for public functions)
     TOP.__Vconfigure(true);
     TOP__ALU__DOT__adder.__Vconfigure(true);
-    TOP__ALU__DOT__shift_multiplier__DOT__adder_lower.__Vconfigure(false);
-    TOP__ALU__DOT__shift_multiplier__DOT__adder_upper.__Vconfigure(false);
+    TOP__ALU__DOT__multiplier__DOT__fast_adder_lower.__Vconfigure(false);
+    TOP__ALU__DOT__multiplier__DOT__fast_adder_upper.__Vconfigure(false);
 }

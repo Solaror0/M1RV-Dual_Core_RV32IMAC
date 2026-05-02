@@ -16,14 +16,13 @@ VALU::VALU(VerilatedContext* _vcontextp__, const char* _vcname__)
     , NegativeFlag{vlSymsp->TOP.NegativeFlag}
     , OverflowFlag{vlSymsp->TOP.OverflowFlag}
     , CarryOutFlag{vlSymsp->TOP.CarryOutFlag}
-    , SLTChecker{vlSymsp->TOP.SLTChecker}
+    , multiply_done{vlSymsp->TOP.multiply_done}
     , a{vlSymsp->TOP.a}
     , b{vlSymsp->TOP.b}
     , ALUResult{vlSymsp->TOP.ALUResult}
-    , s{vlSymsp->TOP.s}
     , __PVT__ALU__DOT__adder{vlSymsp->TOP.__PVT__ALU__DOT__adder}
-    , __PVT__ALU__DOT__shift_multiplier__DOT__adder_lower{vlSymsp->TOP.__PVT__ALU__DOT__shift_multiplier__DOT__adder_lower}
-    , __PVT__ALU__DOT__shift_multiplier__DOT__adder_upper{vlSymsp->TOP.__PVT__ALU__DOT__shift_multiplier__DOT__adder_upper}
+    , __PVT__ALU__DOT__multiplier__DOT__fast_adder_lower{vlSymsp->TOP.__PVT__ALU__DOT__multiplier__DOT__fast_adder_lower}
+    , __PVT__ALU__DOT__multiplier__DOT__fast_adder_upper{vlSymsp->TOP.__PVT__ALU__DOT__multiplier__DOT__fast_adder_upper}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context

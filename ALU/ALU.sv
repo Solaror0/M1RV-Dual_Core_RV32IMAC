@@ -4,13 +4,13 @@ module ALU(
     input logic clk, cin,
     output logic ZeroFlag, NegativeFlag, OverflowFlag, CarryOutFlag,
     output logic [31:0] ALUResult,
-    output logic [31:0]s, //REMEMBER TO PUT THIS BACK
-    output logic SLTChecker
+    output logic multiply_done
 );
 
 
-logic multiply_start,multiply_done; //mght have to make multiply_done an output btw
+logic multiply_rst, multiply_running; //mght have to make multiply_done an output btw
 logic [31:0]left_shifted;
+logic [31:0]s;
 logic [31:0] right_shifted_logic;
 logic [31:0] right_shifted_arithmetic;
 logic [63:0] multiplied_product;
@@ -20,12 +20,12 @@ carry_lookahead_adder adder (.a(a[31:0]),.b(b[31:0]),.Subtract((ALUControl[0] | 
 leftshift leftshift (.a(a[31:0]), .shamt(b[4:0]),.y(left_shifted[31:0]));
 rightshiftlogic rightshiftlogic  (.a(a[31:0]), .shamt(b[4:0]),.y(right_shifted_logic[31:0]));
 rightshiftarithmetic rightshiftarithmetic (.a(a[31:0]), .shamt(b[4:0]),.y(right_shifted_arithmetic[31:0]));
-shift_add_multiplier shift_multiplier (.start(multiply_start),.a(a[31:0]),.b(b[31:0]),.clk(clk),.done(multiply_done), .accumulator(multiplied_product));
+multiplier multiplier(.a(a[31:0]),.b(b[31:0]),.clk(clk),.rst(multiply_rst),.output_product(multiplied_product),.done(multiply_done),.running(multiply_running));
 
 always_comb begin
     OverflowFlag =  (a[31] ^ b[31]) & (a[31] ^ s[31]); // ((ALUControl[0] | ALUControl[1]) ? 1'b1 : cin) ^ cout; //study more on the overflow shit cause i dont ge tit
     CarryOutFlag = cout;
-    SLTChecker =  ((a[31] ^ b[31]) & (a[31] ^ s[31])) ^ cout;
+   // SLTChecker =  ((a[31] ^ b[31]) & (a[31] ^ s[31])) ^ cout;
     case(ALUControl)
     4'b0000: ALUResult=s; //ADD
     4'b0001: ALUResult=s; //SUB
@@ -45,9 +45,9 @@ end
 
 always_ff @(posedge clk) begin
     if ((ALUControl[3] & ALUControl[1]) & (~multiply_done))
-        multiply_start <=1;
+        multiply_rst <=1; //you may have to allow the clock to cycle twice before starting each time. this is annoying but true
     else 
-        multiply_start <=0;
+        multiply_rst <=0;
 
 end
 

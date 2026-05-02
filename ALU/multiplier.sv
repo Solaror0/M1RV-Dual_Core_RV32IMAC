@@ -1,0 +1,137 @@
+module multiplier(
+    input logic [31:0]a,b, 
+    input logic rst, clk,
+    output logic [63:0] output_product,
+
+
+    output logic done, running
+    
+);
+logic [63:0] layer0[0:15];
+logic [63:0] product;
+
+boothencoder booth0 (.a(a),.triplet({b[1:0],1'b0}),.shamt(0),.partial_product(layer0[0]));
+boothencoder booth1 (.a(a),.triplet({b[3:1]}),.shamt(2),.partial_product(layer0[1]));
+boothencoder booth2 (.a(a),.triplet({b[5:3]}),.shamt(4),.partial_product(layer0[2]));
+boothencoder booth3 (.a(a),.triplet({b[7:5]}),.shamt(6),.partial_product(layer0[3]));
+boothencoder booth4 (.a(a),.triplet({b[9:7]}),.shamt(8),.partial_product(layer0[4]));
+boothencoder booth5 (.a(a),.triplet({b[11:9]}),.shamt(10),.partial_product(layer0[5]));
+boothencoder booth6 (.a(a),.triplet({b[13:11]}),.shamt(12),.partial_product(layer0[6]));
+boothencoder booth7 (.a(a),.triplet({b[15:13]}),.shamt(14),.partial_product(layer0[7]));
+boothencoder booth8 (.a(a),.triplet({b[17:15]}),.shamt(16),.partial_product(layer0[8]));
+boothencoder booth9 (.a(a),.triplet({b[19:17]}),.shamt(18),.partial_product(layer0[9]));
+boothencoder booth10 (.a(a),.triplet({b[21:19]}),.shamt(20),.partial_product(layer0[10]));
+boothencoder booth11(.a(a),.triplet({b[23:21]}),.shamt(22),.partial_product(layer0[11]));
+boothencoder booth12 (.a(a),.triplet({b[25:23]}),.shamt(24),.partial_product(layer0[12]));
+boothencoder booth13 (.a(a),.triplet({b[27:25]}),.shamt(26),.partial_product(layer0[13]));
+boothencoder booth14 (.a(a),.triplet({b[29:27]}),.shamt(28),.partial_product(layer0[14]));
+boothencoder booth15 (.a(a),.triplet({b[31:29]}),.shamt(30),.partial_product(layer0[15]));
+
+//layer 1, PP1 to PP14. Leftover: PP15
+//Creates S0, C0, S1, C1, S2, C2, S3, C3, S4, C4 -> total 11
+
+logic [63:0] c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13;
+logic [63:0] s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13;
+logic [63:0] cs0,cs1,cs2,cs3,cs4,cs5,cs6,cs7,cs8,cs9,cs10,cs11,cs12,cs13;
+
+
+logic [2:0] state;
+
+always_ff @(posedge clk) begin
+    case (state)
+        3'b000:  //start layer, reset it all
+            begin
+                output_product<=0;
+                done <=0;
+                if(rst) begin state <=3'b001; running <=1; end
+            end
+        3'b001:
+            begin
+                for (int i=0; i<64; i = i+1) begin: layer1
+                    {c0[i],s0[i]} <= layer0[0][i] + layer0[1][i] + layer0[2][i];
+                    {c1[i],s1[i]} <= layer0[3][i] + layer0[4][i] + layer0[5][i];
+                    {c2[i],s2[i]} <= layer0[6][i] + layer0[7][i] + layer0[8][i];
+                    {c3[i],s3[i]} <= layer0[9][i] + layer0[10][i] + layer0[11][i];
+                    {c4[i],s4[i]} <= layer0[12][i] + layer0[13][i] + layer0[14][i];
+                end
+                state<=3'b010;
+            end
+        3'b010:
+            begin
+                for (int j = 0; j<64; j= j+1) begin: layer2
+                    {c5[j],s5[j]} <= layer0[15][j] + s1[j] + s2[j];
+                    {c6[j],s6[j]} <= s3[j] + s4[j] + cs0[j];
+                    {c7[j],s7[j]} <= cs1[j] + cs2[j] + cs3[j];
+                end
+                state<=3'b011;
+            end
+        3'b011:
+            begin
+                for (int k = 0; k<64; k= k+1) begin: layer3
+                    {c8[k],s8[k]}  <= s5[k] + s6[k] + s7[k];
+                    {c9[k],s9[k]}  <= cs5[k] + cs6[k] + cs7[k];
+                end
+                state<=3'b100;
+            end
+        3'b100:
+
+            begin
+                for (int h = 0; h<64; h= h+1) begin: layer4
+                    {c10[h],s10[h]}  <= s8[h] + s9[h] + cs8[h];
+                    {c11[h],s11[h]}  <= cs9[h] + cs4[h] + s0[h];
+                end
+                state<=3'b101;
+
+            end
+        3'b101:
+            begin
+                for (int g = 0; g<64; g= g+1) begin: layer5
+                    {c12[g],s12[g]}  <=  s10[g] + s11[g] + cs10[g];
+                end
+                state<=3'b110;
+            end
+        3'b110:
+            begin
+                for (int f = 0; f<64; f= f+1) begin: layer6
+                    {c13[f],s13[f]}  <=  cs11[f] + cs12[f] + s12[f];
+                end
+                state<=3'b111;
+            end
+            
+        3'b111:
+            begin 
+                output_product<=product;
+        // c0<=0; c1<=0; c2<=0; c3<=0; c4<=0;
+        // c5<=0; c6<=0; c7<=0; c8<=0; c9<=0;
+        // c10<=0; c11<=0; c12<=0; c13<=0;
+        // s0<=0; s1<=0; s2<=0; s3<=0; s4<=0;
+        // s5<=0; s6<=0; s7<=0; s8<=0; s9<=0;
+        // s10<=0; s11<=0; s12<=0; s13<=0;
+                done <=1;
+                running <=0;
+                state<=3'b000;
+            end        
+        default begin state<=3'b000; end
+    endcase
+end
+
+assign cs0 = {c0[62:0],1'b0};
+assign cs1= {c1[62:0],1'b0};
+assign cs2= {c2[62:0],1'b0};
+assign cs3= {c3[62:0],1'b0};
+assign cs4= {c4[62:0],1'b0};
+assign cs5 = {c5[62:0],1'b0};
+assign cs6 = {c6[62:0],1'b0};
+assign cs7 = {c7[62:0],1'b0};
+assign cs8 = {c8[62:0],1'b0};
+assign cs9 = {c9[62:0],1'b0};
+assign cs10 = {c10[62:0],1'b0};
+assign cs11 = {c11[62:0],1'b0};
+assign cs12 = {c12[62:0],1'b0};
+assign cs13 = {c13[62:0],1'b0};
+
+logic cout, cout_upper;
+carry_lookahead_adder fast_adder_lower (.a(cs13[31:0]),.b(s13[31:0]),.cin(0),.Subtract(0),.s(product[31:0]),.cout(cout));
+carry_lookahead_adder fast_adder_upper (.a(cs13[63:32]),.b(s13[63:32]),.cin(cout),.Subtract(0),.s(product[63:32]),.cout(cout_upper));
+
+endmodule

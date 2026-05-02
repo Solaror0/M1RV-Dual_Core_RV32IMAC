@@ -13,7 +13,7 @@ int main(int argc, char ** argv){
     VALU* dut = new VALU{ctx};
 
 
-    int choice, pass, fail,expected;
+    int choice, pass, fail,expected,clk;
     int32_t a,b;
     int V, Z, N, C;
     pass = 0; fail = 0;
@@ -21,9 +21,10 @@ int main(int argc, char ** argv){
     std::uniform_int_distribution<int> dist(-2147483647, 2147483647);
     std::string operation;
     uint32_t ua;
+    int mult_count;
 
-    for (int i = 0; i<1000000; i++) {
-        choice= rand() % 9 + 0; //choose from operation 1 to 11
+    for (int i = 0; i<100000000; i++) {
+        choice= rand() % 11 + 0; //choose from operation 1 to 11
         dut->ALUControl = choice;
 
         switch (choice)
@@ -91,14 +92,17 @@ int main(int argc, char ** argv){
             operation = "SRA";
             break;
         case 10:
-            break;
+            a = dist(rng);
+            b = dist(rng);
         case 11:
-            break;    
+            a = dist(rng);
+            b = dist(rng);
         
         default:
             break;
         }
-
+        
+        int32_t real_prod;
         if((choice != 11) & (choice!=10)){
             dut->a = a;
             dut->b = b; 
@@ -112,15 +116,53 @@ int main(int argc, char ** argv){
                 pass++;
             }else{
                 fail++;
-                std::cout << (int32_t)dut->a <<  " " << (int32_t)dut->b  <<  " " << std::bitset<32>(expected) <<  " " << std::bitset<32>(dut->ALUResult) <<  " " << std::bitset<4>(dut->ALUControl) <<  " " << operation <<  " " <<  std::string(int((uint32_t)expected != dut->ALUResult), 'f')<< std::endl;
+                std::cout << std::bitset<32>(dut->a) <<  " " << (int32_t)dut->b  <<  " " << std::bitset<32>(expected) <<  " " << std::bitset<32>(dut->ALUResult) <<  " " << std::bitset<4>(dut->ALUControl) <<  " " << operation <<  " " <<  std::string(int((uint32_t)expected != dut->ALUResult), 'f')<< std::endl;
               //  std::cout << V << " " << N << " " << C << " " << Z  << " " << std::bitset<32>(dut->s) << " " << std::bitset<1>(dut->SLTChecker) << std::endl;
             }
+        } else{
+            mult_count++;
+            dut->a = a;
+            dut->b = b;
+            int64_t full_product = (int64_t)(int32_t)dut->a * (int64_t)(int32_t)dut->b;
+            int32_t half_product;
+            if (choice == 10){
+                half_product = (int32_t)full_product ;
+            }else{
+                half_product = (int32_t)(full_product>>32);
+            }
+
+            while(!dut->multiply_done){
+                clk = !clk;
+                dut->clk = clk;
+                dut->eval();
+
+             
+                real_prod = (int32_t)dut->ALUResult;
+            }
+            if(half_product!=real_prod){
+                fail++;
+                std::cout << i << " " << (int)dut->a << " " << (int)dut->b << " " << half_product << " " << real_prod << " " << (int)dut->multiply_done << "MULT F" << std::endl;
+            }else{
+                //std::cout << i << " " << (int)dut->a << " " << (int)dut->b << " " << half_product << " " << real_prod << " " << (int)dut->multiply_done << "MULT" << std::endl;
+                pass++;
+            }
+
+            clk = !clk;
+            dut->clk = clk;
+            dut->eval();
+
+            clk = !clk;
+            dut->clk = clk;
+            dut->eval();
+       
+       
+
         }
 
     
     }
 
-    std::cout << pass << " " << fail << std::endl;
+    std::cout << pass << " " << fail << " " << mult_count << std::endl;
     dut-> final();
     delete dut;
     delete ctx;

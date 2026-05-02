@@ -33,18 +33,17 @@ class alignas(VL_CACHE_LINE_BYTES) VALU VL_NOT_FINAL : public VerilatedModel {
     VL_OUT8(&NegativeFlag,0,0);
     VL_OUT8(&OverflowFlag,0,0);
     VL_OUT8(&CarryOutFlag,0,0);
-    VL_OUT8(&SLTChecker,0,0);
+    VL_OUT8(&multiply_done,0,0);
     VL_IN(&a,31,0);
     VL_IN(&b,31,0);
     VL_OUT(&ALUResult,31,0);
-    VL_OUT(&s,31,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
     VALU_carry_lookahead_adder* const __PVT__ALU__DOT__adder;
-    VALU_carry_lookahead_adder* const __PVT__ALU__DOT__shift_multiplier__DOT__adder_lower;
-    VALU_carry_lookahead_adder* const __PVT__ALU__DOT__shift_multiplier__DOT__adder_upper;
+    VALU_carry_lookahead_adder* const __PVT__ALU__DOT__multiplier__DOT__fast_adder_lower;
+    VALU_carry_lookahead_adder* const __PVT__ALU__DOT__multiplier__DOT__fast_adder_upper;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
