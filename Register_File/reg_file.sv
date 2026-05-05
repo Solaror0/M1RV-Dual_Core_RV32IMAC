@@ -18,6 +18,7 @@ always_ff @(negedge clk)begin
 end
 
 always_comb begin
+    regs[0] = 0;
     RD1 = regs[A1];
     RD2 = regs[A2];
 end
