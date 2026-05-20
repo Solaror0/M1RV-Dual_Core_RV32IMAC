@@ -27,24 +27,30 @@ always_comb begin
     CarryOutFlag = cout;
    // SLTChecker =  ((a[31] ^ b[31]) & (a[31] ^ s[31])) ^ cout;
     case(ALUControl)
-    4'b00000: ALUResult=s; //ADD
-    4'b00001: ALUResult=s; //SUB
-    4'b00010: ALUResult = a&b; //AND
-    4'b00011: ALUResult = a | b; //OR
-    4'b00100: ALUResult = a^b; //XOR
-    4'b00101: ALUResult = {{31{1'b0}},{(s[31] ^ OverflowFlag)}}; //SLT
-    4'b00110: ALUResult = {{31{1'b0}},{~cout}};                //SLTU
-    4'b00111: ALUResult = left_shifted; // SLL
-    4'b01000: ALUResult = right_shifted_logic; //SRL
-    4'b01001: ALUResult = right_shifted_arithmetic; //SRA
-    4'b01010: ALUResult = multiplied_product[31:0]; //MULT LOW
-    4'b01011: ALUResult = multiplied_product[63:32]; //MULT HIGH
-    4'b01100:  //mult
-    4'b01101: //mult
-    4'b01110: //div
-    4'b01111: //div
-    4'b10000: //div
-    4'b10001: //div
+    5'b00000: ALUResult=s; //ADD
+    5'b00001: ALUResult=s; //SUB
+    5'b00010: ALUResult = a&b; //AND
+    5'b00011: ALUResult = a | b; //OR
+    5'b00100: ALUResult = a^b; //XOR
+    5'b00101: ALUResult = {{31{1'b0}},{(s[31] ^ OverflowFlag)}}; //SLT
+    5'b00110: ALUResult = {{31{1'b0}},{~cout}};                //SLTU
+    5'b00111: ALUResult = left_shifted; // SLL
+    5'b01000: ALUResult = right_shifted_logic; //SRL
+    5'b01001: ALUResult = right_shifted_arithmetic; //SRA
+    5'b01010: 
+    5'b01011: 
+    5'b01100: ALUResult = multiplied_product[31:0]; //MULT LOW
+    5'b01101: ALUResult = multiplied_product[63:32]; //MULT HIGH
+    5'b01110: //MULTHSU
+    5'b01111: //the other mult
+    5'b10000: //DIV
+    5'b10001: //DIVU
+    5'b10010: //REM
+    5'b10011: //REMU
+    5'b10100:
+    5'b10101:
+    5'b10110:
+
     
 
     default ALUResult = 5'b0;
@@ -52,7 +58,7 @@ always_comb begin
 end
 
 always_ff @(posedge clk) begin
-    if ((ALUControl[3] & ALUControl[1]) & (~multiply_done))
+    if ((ALUControl[3] & ALUControl[2]) & (~multiply_done))
         multiply_rst <=1; //you may have to allow the clock to cycle twice before starting each time. this is annoying but true
     else 
         multiply_rst <=0;
