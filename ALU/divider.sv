@@ -64,13 +64,13 @@ if(rst & ~running)
             running <=0; 
             done<=1;
             if(rem_temp[32]) begin
-                rem <= (rem_temp+dNorm) >>(clz+4);
-                q <= (Qp);
+                rem <= (rem_temp+dNorm) >>(clz);
+                q <= (Qm);
             end 
             else 
-            begin
+            begin //weird behaviours here, gotta fix, may have to do with the final qC picked, like the sign.
                 q <= (Qp);
-                rem <= (rem_temp+dNorm) >>(clz+4);
+                rem <= (rem_temp) >>(clz);
             end
 
         end

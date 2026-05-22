@@ -737,21 +737,15 @@ VL_INLINE_OPT void Vdivider___024root___nba_sequent__TOP__0(Vdivider___024root* 
             vlSelf->done = 1U;
             if ((1U & (IData)((vlSelf->divider__DOT__rem_temp 
                                >> 0x20U)))) {
-                vlSelf->rem = (0x1ffffffffULL & VL_SHIFTR_QQI(33,33,32, 
-                                                              (0x1ffffffffULL 
-                                                               & (vlSelf->divider__DOT__rem_temp 
-                                                                  + vlSelf->divider__DOT__dNorm)), 
-                                                              ((IData)(4U) 
-                                                               + (IData)(vlSelf->divider__DOT__clz))));
-                vlSelf->q = vlSelf->divider__DOT__Qp;
+                vlSelf->rem = (0x1ffffffffULL & ((0x1ffffffffULL 
+                                                  & (vlSelf->divider__DOT__rem_temp 
+                                                     + vlSelf->divider__DOT__dNorm)) 
+                                                 >> (IData)(vlSelf->divider__DOT__clz)));
+                vlSelf->q = vlSelf->divider__DOT__Qm;
             } else {
                 vlSelf->q = vlSelf->divider__DOT__Qp;
-                vlSelf->rem = (0x1ffffffffULL & VL_SHIFTR_QQI(33,33,32, 
-                                                              (0x1ffffffffULL 
-                                                               & (vlSelf->divider__DOT__rem_temp 
-                                                                  + vlSelf->divider__DOT__dNorm)), 
-                                                              ((IData)(4U) 
-                                                               + (IData)(vlSelf->divider__DOT__clz))));
+                vlSelf->rem = (0x1ffffffffULL & (vlSelf->divider__DOT__rem_temp 
+                                                 >> (IData)(vlSelf->divider__DOT__clz)));
             }
         } else {
             __Vdly__divider__DOT__count = (0x1fU & 
