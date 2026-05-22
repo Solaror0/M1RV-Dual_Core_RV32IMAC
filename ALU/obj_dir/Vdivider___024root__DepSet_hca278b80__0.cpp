@@ -1138,7 +1138,6 @@ VL_INLINE_OPT void Vdivider___024root___nba_sequent__TOP__0(Vdivider___024root* 
     __Vdly__divider__DOT__Qp = 0;
     IData/*31:0*/ __Vdly__divider__DOT__Qm;
     __Vdly__divider__DOT__Qm = 0;
-    VlWide<3>/*95:0*/ __Vtemp_2;
     // Body
     __Vdly__divider__DOT__Qm = vlSelf->divider__DOT__Qm;
     __Vdly__divider__DOT__Qp = vlSelf->divider__DOT__Qp;
@@ -1237,10 +1236,27 @@ VL_INLINE_OPT void Vdivider___024root___nba_sequent__TOP__0(Vdivider___024root* 
     vlSelf->divider__DOT__done = vlSelf->done;
     vlSelf->divider__DOT__q = vlSelf->q;
     vlSelf->divider__DOT__rem = vlSelf->rem;
-    VL_ADD_W(3, __Vtemp_2, vlSelf->divider__DOT__pS, vlSelf->divider__DOT__pC);
-    vlSelf->divider__DOT__pTrunc[0U] = __Vtemp_2[0U];
-    vlSelf->divider__DOT__pTrunc[1U] = __Vtemp_2[1U];
-    vlSelf->divider__DOT__pTrunc[2U] = (3U & __Vtemp_2[2U]);
+    vlSelf->divider__DOT__pTrunc[1U] = ((0xfffffffU 
+                                         & vlSelf->divider__DOT__pTrunc[1U]) 
+                                        | ((((vlSelf->divider__DOT__pS[2U] 
+                                              << 4U) 
+                                             | (vlSelf->divider__DOT__pS[1U] 
+                                                >> 0x1cU)) 
+                                            + ((vlSelf->divider__DOT__pC[2U] 
+                                                << 4U) 
+                                               | (vlSelf->divider__DOT__pC[1U] 
+                                                  >> 0x1cU))) 
+                                           << 0x1cU));
+    vlSelf->divider__DOT__pTrunc[2U] = (3U & ((((vlSelf->divider__DOT__pS[2U] 
+                                                 << 4U) 
+                                                | (vlSelf->divider__DOT__pS[1U] 
+                                                   >> 0x1cU)) 
+                                               + ((
+                                                   vlSelf->divider__DOT__pC[2U] 
+                                                   << 4U) 
+                                                  | (vlSelf->divider__DOT__pC[1U] 
+                                                     >> 0x1cU))) 
+                                              >> 4U));
     vlSelf->divider__DOT__lut__DOT__p = (0x3fU & ((
                                                    (0U 
                                                     == 0x1cU)

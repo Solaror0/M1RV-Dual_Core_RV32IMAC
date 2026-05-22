@@ -55,7 +55,7 @@ when [63] -> [69], 62->68, 61 -> 67, 60 -> 66, 59 -> 65, 58->64
 
 always_comb begin
     //CHOOSING QD
-    pTrunc = pS + pC;
+    pTrunc[65:60] = pS [65:60]+ pC[65:60];
     signal = {dNorm[31:27], pNow[65:60]};
 
     dLS = {1'b0,dNormExt[63:0],1'b0};
@@ -117,43 +117,7 @@ if(rst & ~running)
             3'b010:  begin Qp<={Qp[29:0],2'b10}; Qm <= {Qp[29:0],2'b01}; end
             default: begin  Qp<={Qp[29:0],2'b00}; Qm <= {Qm[29:0],2'b11}; end
             endcase  
-            // case(qC)
-            //     // Digit = -2: Q = 4Q - 2  -> Shift both, append 2 to Qm
-            //     3'b110: begin 
-            //         Qp <= {Qp[29:0], 2'b00}; 
-            //         Qm <= {Qm[29:0], 2'b10}; 
-            //     end
-                
-            //     // Digit = -1: Q = 4Q - 1  -> Shift both, append 1 to Qm
-            //     3'b111: begin 
-            //         Qp <= {Qp[29:0], 2'b00}; 
-            //         Qm <= {Qm[29:0], 2'b01}; 
-            //     end
-                
-            //     // Digit =  0: Q = 4Q      -> Shift both, append 0 to both
-            //     3'b000: begin 
-            //         Qp <= {Qp[29:0], 2'b00}; 
-            //         Qm <= {Qm[29:0], 2'b00}; 
-            //     end 
-                
-            //     // Digit = +1: Q = 4Q + 1  -> Shift both, append 1 to Qp
-            //     3'b001: begin 
-            //         Qp <= {Qp[29:0], 2'b01}; 
-            //         Qm <= {Qm[29:0], 2'b00}; 
-            //     end
-                
-            //     // Digit = +2: Q = 4Q + 2  -> Shift both, append 2 to Qp
-            //     3'b010: begin 
-            //         Qp <= {Qp[29:0], 2'b10}; 
-            //         Qm <= {Qm[29:0], 2'b00}; 
-            //     end
-                
-            //     // Safe default: catch-all behaves like an idle (0) cycle
-            //     default: begin 
-            //         Qp <= {Qp[29:0], 2'b00}; 
-            //         Qm <= {Qm[29:0], 2'b00}; 
-            //     end
-            // endcase
+           
         end
     end
 
