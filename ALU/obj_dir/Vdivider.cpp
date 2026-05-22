@@ -13,8 +13,8 @@ Vdivider::Vdivider(VerilatedContext* _vcontextp__, const char* _vcname__)
     , rst{vlSymsp->TOP.rst}
     , done{vlSymsp->TOP.done}
     , running{vlSymsp->TOP.running}
+    , a{vlSymsp->TOP.a}
     , d{vlSymsp->TOP.d}
-    , p{vlSymsp->TOP.p}
     , q{vlSymsp->TOP.q}
     , rem{vlSymsp->TOP.rem}
     , rootp{&(vlSymsp->TOP)}

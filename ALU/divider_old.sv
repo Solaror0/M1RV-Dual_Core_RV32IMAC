@@ -1,149 +1,115 @@
-module divider (
-    input logic [31:0] P,D,
+module divider(
     input logic clk, rst,
-    output logic [31:0] q, Qm, Qp, //adx these back
-    output logic [63:0]remainder,
-    output logic running, done,
-    output logic [31:0] D_Chosen,
-    output logic [2:0] q_chosen,
-    output logic [31:0] p_trunc,
-    output logic [5:0] lz_count,
-    output logic [6:0] lz_p,
-    output logic [31:0] D_norm,
-    output logic [63:0] P_big, P_shifted, P_norm,
-    output logic csout,
-    output logic [63:0] Ps_now, Pc_now, Ps_next, Pc_next,
-    output logic [11:0] signal,
-    output logic [8:0] p_sum_trunc
+    input logic [31:0] d, p,
+    output logic [31:0] q, rem,
+    output logic done, running
 );
 
-//normalizing
+logic [63:0] pBig;
+logic [65:0] pNorm;
+logic [65:0] dNormExt;
+logic [31:0] dNorm;
 
-logic [32/2-1:0] iterations;
-logic [32+2:0]  D_star;
-logic [32+5:0] 	P_star;
-logic [32/2-1:0] recovery;
-
-pre_processing u1(
-
-.start(rst),
-
-.dividend(P),
-.divisor(D),
-	
-
-.iterations(iterations),
-.divisor_star(D_star),
-.dividend_star(P_star),
-.recovery(recovery)
-
-);
-
-// always_comb begin
-//     P_big = {32'b0, P};
-//     lz_count = 6'b100000; // Default if all bits are 0
-//     for (int i = 31; i >= 0; i--) begin
-//         if (D[i]) begin
-//             lz_count = 6'd31 - i[4:0]; //error chance
-//             break; // The break tells the tool to prioritize higher bits
-//         end
-//     end
-
-//     D_norm = D << lz_count;
-//     P_shifted = P_big << lz_count; ///IMPORTANT: ADD A DIVISION BY 0 FLAG
-
-//     lz_p = 7'b1000000; // Default if all bits are 0
-//     for (int j = 63; j >= 0; j--) begin
-//         if (P_shifted[j]) begin
-//             lz_p = 6'b111111 - j[5:0]; //error chance
-//             break; // The break tells the tool to prioritize higher bits
-//         end
-//     end
-//     P_norm = P_shifted<< (lz_p-1);
-
-// end
-
-
-
-
-
-//setup the -2, -1, 0, 1, 2
-logic [31:0] D_mls, D_m, D_ls;
-assign D_ls = {D_norm[30:0],1'b0};
-assign D_m = ~D_norm + 1;
-assign D_mls = ~D_ls + 1;
-
-
-
-
-//lookup table god knows how
-
-//carry_lookahead_adder adder (.a({Ps_now[63:58],26'b0}),.b({Pc_now[63:58],26'b0}),.Subtract(0),.cin(0),.s(p_trunc),.cout(csout));
-
-
-//assign {csout, p_trunc} = {Ps_now[63:58],58'b0} + {Pc_now[63:58],58'b0};
-//very big chance of error with the cout
-
-//pd_lut pd_lut(.p({csout,p_trunc[63:59]}),.d(D_norm[31:27]),.q(q_chosen)); //errorchance w 30:26 , try 31:27
-
-
-
-logic [63:0] D_extended;
-
+logic [5:0] clz;
 always_comb begin
-   // {csout, p_trunc} = {Ps_now[63:58],58'b0} + {Pc_now[63:58],58'b0};
+    pBig = {32'b0, p}; //maybe change this to 35?? idk
+    clz = 6'b100000; // Default if all bits are 0
+    for (int i = 31; i >= 0; i--) begin
+        if (d[i]) begin
+            clz = 6'd31 - i[4:0]; //error chance
+            break; // The break tells the tool to prioritize higher bits
+        end
+    end
 
-    //basically choose D_Chosen based off the lookup table (use P and D)
-    //assign q and remember to store it
-    case(q_chosen)
-    3'b110: D_Chosen = D_mls;
-    3'b111: D_Chosen = D_m;
-    3'b000: D_Chosen = 0;
-    3'b001: D_Chosen = D_norm;
-    3'b010: D_Chosen = D_ls;
-    default: D_Chosen = D_norm;
-    endcase
-
-    p_sum_trunc = Ps_now[63:55] + Pc_now[63:55];
-    signal = {D_norm[31:27],{p_sum_trunc[8:2]}};
-    D_extended = {D_Chosen, 32'b0};
-    Ps_next = (Ps_now ^ Pc_now ^ D_extended) << 2; //change this equation, maybe make this combinational
-    Pc_next = ((Ps_now & Pc_now) | (Pc_now & D_extended) | (Ps_now & D_extended)) << 3; //maybe just shift this by 2? but itthink its 3
-   
-
+    dNorm = d << clz;
+    pNorm = {2'b0,pBig << clz};
+    dNormExt = {2'b0, dNorm, 32'b0};
 end
 
-pd_lut pd_lut(.p({p_sum_trunc[8:2]}),.d(D_norm[31:27]),.q(q_chosen)); //errorchance w 30:26 , try 31:27
-//dividing algorithm (P_next  = 4*(P_now - D_Chosen) (aka QD))
-//logic [63:0] Ps_now, Pc_now, Ps_next, Pc_next;
+logic [2:0] qC;
+logic[65:0] pS, pC, pNS, pNC, pTrunc, pNow,pNext;
+logic [65:0] dC, dLS, dM, dMLS;
+logic [10:0] signal;
+
+/*Option 1  -> Sign Magnitude
+_ _ _ _ _ _ _
+S M D D D D D
+
+pNorm = [63:58] = Start
+move that into [69:64] 
+where PN[63] and PN[62] are at 65:64
+when [63] -> [69], 62->68, 61 -> 67, 60 -> 66, 59 -> 65, 58->64
+*/
+
+/*Option 2 -> Sign Magnitude Decimal
+_ _ _ _ _ _ _
+S M D D D D D
+
+Move [63:58] of PNorm
+pNorm = [63:58] = Start
+move that into [69:64] 
+where PN[63] and PN[62], PN[61] are at 66:64
+when [63] -> [69], 62->68, 61 -> 67, 60 -> 66, 59 -> 65, 58->64
+*/
+
+
+always_comb begin
+    //CHOOSING QD
+    pTrunc[65:60] = pS [65:60]+ pC[65:60];
+    signal = {dNorm[31:27], pNow[65:60]};
+
+    dLS = {1'b0,dNormExt[63:0],1'b0};
+    dM = ~dNormExt + 1;
+    dMLS = ~dLS + 1;
+    
+    case(qC)
+        3'b110: dC = dMLS;
+        3'b111: dC = dM;
+        3'b000: dC = 66'b0;
+        3'b001: dC = dNormExt;
+        3'b010: dC = dLS;
+        default: dC = dNormExt;
+    endcase //might wanna change this back from bein ginverted
+
+
+    //CSA
+    pNS = (pS ^ pC ^ dC) << 2;
+    pNC = ((pS & pC) | (pS & dC) | (pC & dC)) <<3;
+    pNext = (pNow + (~dC+1))<<2;
+    
+end
+pd_lut lut(.q(qC),.p(pNow[65:60]),.d(dNorm[31:27]));
+
 logic [3:0] count;
-
-
+logic [31:0] Qm, Qp;
 always_ff @(posedge clk) begin
-    if(rst & ~running) 
+if(rst & ~running) 
         begin 
             count <=0; running <=1; done<=0; 
-            q<=0; remainder <=0;
-            Ps_now <= P_norm; 
-            Pc_now <=0;
-        end
+            q<=0; rem <=0;
 
+            //pTrunc <= pBig;
+            pS <= pNorm;
+            pC <= 0;
+            pNow <= pNorm;
+        end
+        
     if(running) begin  
         if(count == 4'b1111) begin  //might need to extend this by 1 cycle
             running <=0; 
             done<=1;
-            q<= (Qp >> lz_count);
-            remainder<= (((Ps_now+Pc_now)>>lz_count)>>lz_p); //change this to CLA
+            q <= (Qp); //no clue on this one either
+          //  rem<= (((pS+pC)>>clz>>16)); //lowk idk
         end
         else begin
             count <= count + 1;
             
 
-            Ps_now <= Ps_next;
-            Pc_now <= Pc_next;
+            pS <= pNS;
+            pC <= pNC;
+            pNow<=pNext;
 
-       
-            case(q_chosen)
+            case(qC)
             3'b110: begin Qp<=({Qm[29:0],2'b10}); Qm <= ({Qm[29:0],2'b01}); end
             3'b111: begin Qp<={Qm[29:0],2'b11}; Qm <= {Qm[29:0],2'b10}; end
             3'b000:  begin  Qp<={Qp[29:0],2'b00}; Qm <= {Qm[29:0],2'b11}; end //possible error
@@ -151,6 +117,7 @@ always_ff @(posedge clk) begin
             3'b010:  begin Qp<={Qp[29:0],2'b10}; Qm <= {Qp[29:0],2'b01}; end
             default: begin  Qp<={Qp[29:0],2'b00}; Qm <= {Qm[29:0],2'b11}; end
             endcase  
+           
         end
     end
 
