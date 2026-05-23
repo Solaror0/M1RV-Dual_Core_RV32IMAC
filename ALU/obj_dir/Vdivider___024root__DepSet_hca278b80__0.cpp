@@ -730,15 +730,17 @@ VL_INLINE_OPT void Vdivider___024root___nba_sequent__TOP__0(Vdivider___024root* 
                                                      vlSelf->divider__DOT__regPA[2U])) 
                                      << 0x20U) | (QData)((IData)(
                                                                  vlSelf->divider__DOT__regPA[1U]))));
+        __Vdly__divider__DOT__Qp = 0U;
+        __Vdly__divider__DOT__Qm = 0xffffffffU;
     }
     if (vlSelf->running) {
         if ((0x10U == (IData)(vlSelf->divider__DOT__count))) {
             __Vdly__running = 0U;
             vlSelf->done = 1U;
-            if ((1U & (IData)((vlSelf->divider__DOT__rem_temp 
+            if ((1U & (IData)((vlSelf->divider__DOT__p 
                                >> 0x20U)))) {
                 vlSelf->rem = (0x1ffffffffULL & ((0x1ffffffffULL 
-                                                  & (vlSelf->divider__DOT__rem_temp 
+                                                  & (vlSelf->divider__DOT__p 
                                                      + vlSelf->divider__DOT__dNorm)) 
                                                  >> (IData)(vlSelf->divider__DOT__clz)));
                 vlSelf->q = vlSelf->divider__DOT__Qm;

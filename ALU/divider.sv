@@ -51,20 +51,23 @@ end
 logic [4:0] count;
 logic [31:0] Qm, Qp;
 logic [32:0] rem_temp;
+logic [31:0] aLow;
 always_ff @(posedge clk) begin
 if(rst & ~running) 
         begin 
             count <=0; running <=1; done<=0; 
             q<=0; rem <=0; rem_temp <=0;
             p <= regPA[64:32];
+            Qp<=0;
+            Qm <=-1;
         end
         
     if(running) begin  
         if(count == 5'b10000) begin  //might need to extend this by 1 cycle
             running <=0; 
             done<=1;
-            if(rem_temp[32]) begin
-                rem <= (rem_temp+dNorm) >>(clz);
+            if(p[32]) begin
+                rem <= (p+dNorm) >>(clz);
                 q <= (Qm);
             end 
             else 

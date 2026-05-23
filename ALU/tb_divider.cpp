@@ -24,8 +24,8 @@ int main(int argc, char ** argv){
     
     //p = rand() % 31 + 1;
     //d = rand() % 31 + 1;
-    p = 780; // also try 1024/2
-    d = 90; //note 98743283/32932; 780/90
+    p = 149; // also try 1024/2
+    d = 5; //note 98743283/32932; 780/90
     
     dut->a = p;
     dut->d = d;
