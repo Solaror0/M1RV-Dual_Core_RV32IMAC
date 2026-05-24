@@ -24,6 +24,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vdivider___024root final : public VerilatedMo
     CData/*0:0*/ divider__DOT__running;
     CData/*5:0*/ divider__DOT__clz;
     CData/*2:0*/ divider__DOT__qC;
+    CData/*5:0*/ divider__DOT__topBits;
     CData/*4:0*/ divider__DOT__count;
     CData/*5:0*/ divider__DOT__lut__DOT__p;
     CData/*3:0*/ divider__DOT__lut__DOT__d;
@@ -40,8 +41,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vdivider___024root final : public VerilatedMo
     IData/*31:0*/ divider__DOT__d;
     IData/*31:0*/ divider__DOT__q;
     VlWide<3>/*64:0*/ divider__DOT__regPA;
+    VlWide<3>/*64:0*/ divider__DOT__regPA_temp;
+    VlWide<3>/*64:0*/ divider__DOT__regPA_TS;
     IData/*31:0*/ divider__DOT__Qm;
     IData/*31:0*/ divider__DOT__Qp;
+    IData/*31:0*/ divider__DOT__aLow;
     IData/*31:0*/ divider__DOT__unnamedblk1__DOT__i;
     IData/*31:0*/ __VactIterCount;
     VL_OUT64(rem,32,0);

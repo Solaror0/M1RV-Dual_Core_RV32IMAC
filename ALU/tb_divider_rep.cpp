@@ -7,6 +7,7 @@
 #include <string>
 #include <cmath>
 #include <random>
+#include <sstream>
 
 // Helper function to convert Verilator's 3-word wide signals (VlWide<3>) into a usable std::bitset<66>
 inline std::bitset<64> to_bitset64(const auto& wide_var) {
@@ -15,36 +16,10 @@ inline std::bitset<64> to_bitset64(const auto& wide_var) {
            (std::bitset<64>(wide_var[2]) << 64);
 }
 
-// verilator --cc --Wall --exe --build --public divider.sv pd_lut.sv  tb_divider.cpp
-int main(int argc, char ** argv){
-    VerilatedContext* ctx = new VerilatedContext;
-    ctx->commandArgs(argc, argv);
-    Vdivider* dut = new Vdivider{ctx};
-    long int p, d;
-    
-    //p = rand() % 31 + 1;
-    //d = rand() % 31 + 1;
-    // p = 33166; // also try 1024/2
-    // d = 24773; //note 98743283/32932; 780/90
-    p = 4479;
-    d = 749;
-
-    dut->a = p;
-    dut->d = d;
-    dut->rst = 1;
-   
-    for (int i = 0; i < 32; i++){
-
-        if(!(dut->done)){
-            dut->clk = 0;
-            dut->eval();
-            dut->clk = 1;
-            dut->eval();
-            
-
-            // 5. Print the gorgeous dashboard
+void printDebug(int i, Vdivider* dut){
+     // 5. Print the gorgeous dashboard
             std::cout << "================================================================================\n"
-                      << " [ CLOCK CYCLE: " << i << " ]   |   Raw P: " << dut->a << "   |   Raw D: " << dut->d << " clz: " <<(int)(dut->rootp->divider__DOT__clz) <<  "\n"
+                      << " [ CLOCK CYCLE: " << i << " ]   |   Raw P: " << dut->a << "   |   Raw D: " << dut->d << "\n"
                       << "================================================================================\n"
                       << "--- REMAINDER (P) PATH ---\n"
                       << "  A:       " << std::string(32, ' ') << std::bitset<32>(dut->a) << " (Lower 32 bits)\n"
@@ -62,14 +37,58 @@ int main(int argc, char ** argv){
                       << "  R:        " << std::bitset<1>(dut->running) << "   |   Done: " << std::bitset<1>(dut->done) << "\n"
                       << "--------------------------------------------------------------------------------\n"
                       << "================================================================================\n" << std::endl;
-        }
-        else {
-            break;
+}
+
+
+// verilator --cc --Wall --exe --build --public divider.sv pd_lut.sv  tb_divider.cpp
+int main(int argc, char ** argv){
+    VerilatedContext* ctx = new VerilatedContext;
+    ctx->commandArgs(argc, argv);
+    Vdivider* dut = new Vdivider{ctx};
+    std::mt19937 rng(std::random_device{}());
+    std::uniform_int_distribution<int> dist(0, 65536);
+    int p, d;
+    int pass, fail;
+    std::string prevPass;
+    std::stringstream ss;
+    //p = rand() % 31 + 1;
+    //d = rand() % 31 + 1;
+
+    
+
+    for (int j = 0; j<1000; j++) {
+        p = dist(rng); // also try 1024/2
+        d = dist(rng); //note 98743283/32932; 780/90
+        
+        dut->a = p;
+        dut->d = d;
+        dut->rst = 1;
+        for (int i = 0; i < 64; i++){
+            dut->clk = 0;
+            dut->eval();
+            dut->clk = 1;
+            dut->eval();
+
+            if(dut->done){
+                
+                if((int)(p/d) != (int)(dut->q)){
+                    std::cout << prevPass << std::endl;
+                    std::cout << j << " " << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << " " <<  to_bitset64(dut->rootp->divider__DOT__regPA) <<"\n" <<  std::endl;
+                    fail++;
+                } else{
+                   // std::cout << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << std::endl;
+                    pass++;
+                    ss.str(""); 
+                    ss.clear();
+                    ss  << j << " " << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << " " << to_bitset64(dut->rootp->divider__DOT__regPA);
+                    prevPass = ss.str();
+                }
+                break;
+            }
         }
     }
-    
-    std::cout << std::bitset<32>(p) << " " << std::bitset<32>(d) << " " << int(p/d) << " " << std::bitset<33>(p%d) << " " << int(dut->q) << " " << std::bitset<33>(dut->rem) <<std::endl;
 
+    std::cout << pass << " " << fail << std::endl;
     dut->final();
     delete dut;
     delete ctx;
