@@ -13,14 +13,15 @@ def makeTable():
         for p_bits in range(0, 64):  # signed 6-bit range
             p_signed = p_bits if p_bits < 32 else p_bits - 64
             pnum = p_signed/32
+            pHi = pnum + 1/32
             
             #PSign, P0.P1, P2, P3, P4
             q = 0
-            if   (4*pnum <= (8/3)*d_hi)  and (4*pnum >= (4/3)*dnum):  q = 2
-            elif (4*pnum <= (5/3)*d_hi)  and (4*pnum >= (1/3)*dnum):  q = 1
-            elif (4*pnum <= (2/3)*d_hi)  and (4*pnum >= (-2/3)*dnum): q = 0
-            elif (4*pnum <= (-1/3)*d_hi) and (4*pnum >= (-5/3)*dnum): q = -1
-            elif (4*pnum <= (-4/3)*d_hi) and (4*pnum >= (-8/3)*dnum): q = -2
+            if   (4*pHi <= (8/3)*dnum)  and (4*pnum >= (4/3)*d_hi):  q = 2
+            elif (4*pHi <= (5/3)*dnum)  and (4*pnum >= (1/3)*d_hi):  q = 1
+            elif (4*pHi <= (2/3)*dnum)  and (4*pnum >= (-2/3)*d_hi): q = 0
+            elif (4*pHi <= (-1/3)*dnum) and (4*pnum >= (-5/3)*d_hi): q = -1
+            elif (4*pHi <= (-4/3)*dnum) and (4*pnum >= (-8/3)*d_hi): q = -2
             else: q = 0
 
             table[d_bits][p_bits] = q
@@ -60,71 +61,62 @@ def binary_fixed_to_float(b: str) -> float:
 
     return value
        
-       
-def verify(table):
-    errors = []
-    epsilon = 1e-9  # Accounts for floating-point precision limits
+
+def verifyTable(table):
+    errors = 0
+    total = 0
     
-    for d_bits in range(16, 32):
-        dnum = d_bits / 32
-        dnum = (d_bits + 1) / 32
+    print("\n--- Starting LUT Verification ---")
+    for d_bits in range(8, 16):
+        d_min = d_bits / 16.0
+        d_max = (d_bits + 1) / 16.0
         
-        for p_bits in range(0, 64):
+        for p_bits in range(64):
+            # Reconstruct signed value
+            p_signed = p_bits if p_bits < 32 else p_bits - 64
+            p_min = p_signed / 32.0
+            p_max = (p_signed + 1) / 32.0
+            
             q = table[d_bits][p_bits]
             
-            # 6-bit signed two's complement with 3 fractional bits
-            p_signed = p_bits if p_bits < 32 else p_bits - 64
-            p_lo = p_signed / 8
-            p_hi = (p_signed + 1) / 8
-            
-            # Generate all potential vertices where the cell box and the SRT lines intersect
-            candidates = [
-                (dnum, p_lo), (dnum, p_hi), (dnum, p_lo), (dnum, p_hi),
-                (dnum, (8/3)*dnum), (dnum, (-8/3)*dnum),
-                (dnum, (8/3)*dnum), (dnum, (-8/3)*dnum),
-                ((3/8)*p_lo, p_lo), (-(3/8)*p_lo, p_lo),
-                ((3/8)*p_hi, p_hi), (-(3/8)*p_hi, p_hi)
+            # The 4 extremes of the uncertainty box for (P, D)
+            corners = [
+                (p_min, d_min),
+                (p_min, d_max),
+                (p_max, d_min), # Truncated P could actually be up to p_max
+                (p_max, d_max)
             ]
             
-            # Filter candidates to find the true valid boundaries inside this specific cell
-            valid_test_points = []
-            for d, p in candidates:
-                # 1. Must be within the divisor column range
-                if not (dnum - epsilon <= d <= dnum + epsilon): continue
-                # 2. Must be within the partial remainder row range
-                if not (p_lo - epsilon <= p <= p_hi + epsilon): continue
-                # 3. Must be a reachable input to begin with (the SRT global invariant)
-                if not (abs(p) <= (8/3)*d + epsilon): continue
-                
-                valid_test_points.append((d, p))
+            valid = True
+            epsilon = 1e-9 # Prevent false failures from Python float rounding
             
-            # Test only the valid, reachable region vertices
-            for d, p in valid_test_points:
-                p_next = 4 * (p - q * d)
-                bound = (8 / 3) * d
+            for p_val, d_val in corners:
+                p_next = 4 * p_val - q * d_val
+                bound = (2 / 3) * d_val
                 
-                if abs(p_next) > bound + epsilon:
-                    errors.append(
-                        f"Fail at D_bits={d_bits:02d}, P_bits={p_bits:02d} | q={q}\n"
-                        f"  Context: Evaluated valid point D={d:.4f}, P={p:.4f}\n"
-                        f"  Result:  P_next={p_next:.4f} violates Bound=±{bound:.4f}\n"
-                    )
-                    break  # One true failure invalidates the cell
+                # Check condition: -2/3*D <= P_next <= 2/3*D
+                if not (-bound - epsilon <= p_next <= bound + epsilon):
+                    valid = False
+                    break # One failed corner makes the whole box invalid
                     
-    if errors:
-        print(f"❌ Verification failed! Found {len(errors)} true invalid cells.\n")
-        for err in errors[:5]:
-            print(err)
-        if len(errors) > 5:
-            print(f"... and {len(errors) - 5} more errors.")
-    else:
-        print("✅ Verification passed! The LUT is 100% mathematically sound.")
-        
-    return len(errors) == 0
+            if not valid:
+                errors += 1
+                if errors <= 10: # Limit spam
+                    print(f"[FAIL] d={d_bits}, p={p_signed:3d} (index {p_bits:02d}) | q={q}")
+            total += 1
             
-        
+    if errors == 0:
+        print(f"PASS: All {total} entries are strictly bounded by |P_next| <= 2/3*D.")
+    else:
+        print(f"FAIL: {errors}/{total} entries violate the bounds.")
+        if errors > 10:
+            print("... (showing first 10 errors only)")
+            
+    return errors == 0
+
+# Add this to your __main__ block:
 if __name__ == "__main__":
-   table =  makeTable()
-   printTable(table)
-   writeLut(table)
-   
+    table = makeTable()
+    verifyTable(table) # Run verification before writing
+    printTable(table)
+    writeLut(table)

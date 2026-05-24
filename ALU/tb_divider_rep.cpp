@@ -46,7 +46,7 @@ int main(int argc, char ** argv){
     ctx->commandArgs(argc, argv);
     Vdivider* dut = new Vdivider{ctx};
     std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<int> dist(0, 65536);
+    std::uniform_int_distribution<int> dist(1, 2147483647);
     int p, d;
     int pass, fail;
     std::string prevPass;
@@ -56,7 +56,7 @@ int main(int argc, char ** argv){
 
     
 
-    for (int j = 0; j<1000; j++) {
+    for (int j = 0; j<100000000; j++) {
         p = dist(rng); // also try 1024/2
         d = dist(rng); //note 98743283/32932; 780/90
         
@@ -72,15 +72,15 @@ int main(int argc, char ** argv){
             if(dut->done){
                 
                 if((int)(p/d) != (int)(dut->q)){
-                    std::cout << prevPass << std::endl;
-                    std::cout << j << " " << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << " " <<  to_bitset64(dut->rootp->divider__DOT__regPA) <<"\n" <<  std::endl;
+                  //  std::cout << prevPass << std::endl;
+                    std::cout << j << " P: " << p << " D: " << d << " Real: " << (int)(p/d) << " Dut Result: " << int(dut->q) << " Signal(4 bits D, then 6 bits P) " <<  std::bitset<10>(dut->rootp->divider__DOT__signal) <<"\n" <<  std::endl;
                     fail++;
                 } else{
                    // std::cout << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << std::endl;
                     pass++;
                     ss.str(""); 
                     ss.clear();
-                    ss  << j << " " << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << " " << to_bitset64(dut->rootp->divider__DOT__regPA);
+                    ss  << j << " " << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << " " << std::bitset<10>(dut->rootp->divider__DOT__signal);
                     prevPass = ss.str();
                 }
                 break;

@@ -6,11 +6,11 @@ module divider(
     output logic done, running
 );
 
-logic [64:0] regPA,regPA_temp, regPA_TS;
+logic [66:0] regPA,regPA_temp, regPA_TS;
 logic [63:0] pBig;
-logic [32:0] dNorm;
+logic [34:0] dNorm;
 logic [5:0] clz;
-logic [32:0] p, pNext;
+logic [34:0] p, pNext;
 
 always_comb begin
     pBig = {32'b0, a}; //maybe change this to 35?? idk
@@ -21,13 +21,14 @@ always_comb begin
             break; // The break tells the tool to prioritize higher bits
         end
     end
-    dNorm ={1'b0,d << clz};
-    regPA_temp = {1'b0,pBig << clz}; 
+    dNorm ={3'b0,d << clz};
+    regPA_temp = {3'b0,pBig << clz}; 
 end
 
 logic [2:0] qC;
 logic [5:0] topBits;
-logic [32:0] dC, dLS, dM, dMLS;
+logic [34:0] dC, dLS, dM, dMLS;
+logic [9:0] signal;
 
 
 pd_lut lut(.q(qC),.p(topBits),.d(dNorm[31:28]));
@@ -36,19 +37,20 @@ always_comb begin
     dLS = {dNorm<<1};
     dM = ~dNorm + 1;
     dMLS = ~dLS + 1;
-    topBits = regPA[64:59];
+    topBits = {regPA[66], regPA[63:59]};
+    signal = {dNorm[31:28],topBits};
     
     case(qC)
         3'b110: dC = dMLS;
         3'b111: dC = dM;
-        3'b000: dC = 33'b0;
+        3'b000: dC = 35'b0;
         3'b001: dC = dNorm;
         3'b010: dC = dLS;
         default: dC = dNorm;
     endcase //might wanna change this back from bein ginverted
     
     regPA_TS = regPA <<2;
-    pNext = regPA_TS[64:32]-(dC);
+    pNext = regPA_TS[66:32]-(dC);
 end
 
 logic [4:0] count;
@@ -62,7 +64,7 @@ if(rst & ~running)
             q<=0; rem <=0; rem_temp <=0;
             regPA <= regPA_temp;
             
-            p <= regPA[64:32];
+            p <= regPA[66:32];
             Qp<=0;
             Qm <=-1;
         end
@@ -71,22 +73,22 @@ if(rst & ~running)
         if(count == 5'b10000) begin  //might need to extend this by 1 cycle
             running <=0; 
             done<=1;
-            if(regPA[64]) begin
-                rem <= (regPA[64:32]+dNorm) >>(clz);
+            if(regPA[66]) begin
+               // rem <= (regPA[66:32]+dNorm) >>(clz);
                 q <= (Qm);
             end 
             else 
             begin //weird behaviours here, gotta fix, may have to do with the final qC picked, like the sign.
                 q <= (Qp);
-                rem <= (regPA[64:32]) >>(clz);
+               // rem <= (regPA[66:32]) >>(clz);
             end
 
         end
         else begin
             count <= count + 1;
             p<=pNext;
-            rem_temp<=p;
-            regPA <= {pNext[32:0],regPA_TS[31:0]};
+           // rem_temp<=p;
+            regPA <= {pNext[34:0],regPA_TS[31:0]};
 
             case(qC)
             3'b110: begin Qp<=({Qm[29:0],2'b10}); Qm <= ({Qm[29:0],2'b01}); end

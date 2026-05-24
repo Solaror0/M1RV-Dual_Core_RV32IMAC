@@ -87,10 +87,6 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
     vlSelf->divider__DOT__rem = vlSelf->rem;
     vlSelf->divider__DOT__done = vlSelf->done;
     vlSelf->divider__DOT__running = vlSelf->running;
-    vlSelf->divider__DOT__topBits = (0x3fU & ((vlSelf->divider__DOT__regPA[2U] 
-                                               << 5U) 
-                                              | (vlSelf->divider__DOT__regPA[1U] 
-                                                 >> 0x1bU)));
     vlSelf->divider__DOT__pBig = (QData)((IData)(vlSelf->a));
     vlSelf->divider__DOT__clz = 0x20U;
     vlSelf->divider__DOT__unnamedblk1__DOT__i = 0x1fU;
@@ -118,10 +114,19 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                      << (IData)(vlSelf->divider__DOT__clz)) 
                                                     >> 0x20U));
     vlSelf->divider__DOT__regPA_temp[2U] = 0U;
-    vlSelf->divider__DOT__lut__DOT__p = vlSelf->divider__DOT__topBits;
     vlSelf->divider__DOT__lut__DOT__d = (0xfU & (IData)(
                                                         (vlSelf->divider__DOT__dNorm 
                                                          >> 0x1cU)));
+    vlSelf->divider__DOT__topBits = ((0x20U & (vlSelf->divider__DOT__regPA[2U] 
+                                               << 3U)) 
+                                     | (vlSelf->divider__DOT__regPA[1U] 
+                                        >> 0x1bU));
+    vlSelf->divider__DOT__signal = ((0x3c0U & ((IData)(
+                                                       (vlSelf->divider__DOT__dNorm 
+                                                        >> 0x1cU)) 
+                                               << 6U)) 
+                                    | (IData)(vlSelf->divider__DOT__topBits));
+    vlSelf->divider__DOT__lut__DOT__p = vlSelf->divider__DOT__topBits;
     vlSelf->divider__DOT__lut__DOT__signal = ((0x3c0U 
                                                & ((IData)(
                                                           (vlSelf->divider__DOT__dNorm 
@@ -166,7 +171,15 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
                                                     ? 6U
-                                                    : 0U)
+                                                    : 
+                                                   ((2U 
+                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                      ? 6U
+                                                      : 0U)
+                                                     : 0U))
                                                    : 0U))
                                                  : 
                                                 ((0x10U 
@@ -194,7 +207,11 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                     : 
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 2U
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                      ? 2U
+                                                      : 1U)
                                                      : 1U))
                                                    : 
                                                   ((4U 
@@ -241,11 +258,7 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                    ? 
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                    ? 
-                                                   ((2U 
-                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 6U
-                                                     : 0U)
+                                                    ? 6U
                                                     : 0U)
                                                    : 0U))
                                                  : 
@@ -258,15 +271,7 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                    : 
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                    ? 
-                                                   ((2U 
-                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 0U
-                                                     : 
-                                                    ((1U 
-                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                      ? 0U
-                                                      : 2U))
+                                                    ? 0U
                                                     : 2U))
                                                   : 
                                                  ((8U 
@@ -326,12 +331,12 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                     ? 
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 
+                                                     ? 6U
+                                                     : 
                                                     ((1U 
                                                       & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
                                                       ? 6U
-                                                      : 0U)
-                                                     : 0U)
+                                                      : 0U))
                                                     : 0U)
                                                    : 0U))
                                                  : 
@@ -365,11 +370,7 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
                                                      ? 2U
-                                                     : 
-                                                    ((1U 
-                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                      ? 2U
-                                                      : 1U)))
+                                                     : 1U))
                                                    : 
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
@@ -405,7 +406,19 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                      ? 7U
                                                      : 6U)
                                                     : 6U))
-                                                  : 0U)
+                                                  : 
+                                                 ((8U 
+                                                   & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                   ? 
+                                                  ((4U 
+                                                    & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                    ? 
+                                                   ((2U 
+                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                     ? 6U
+                                                     : 0U)
+                                                    : 0U)
+                                                   : 0U))
                                                  : 
                                                 ((0x10U 
                                                   & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
@@ -425,7 +438,19 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                   : 
                                                  ((8U 
                                                    & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                   ? 2U
+                                                   ? 
+                                                  ((4U 
+                                                    & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                    ? 2U
+                                                    : 
+                                                   ((2U 
+                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                     ? 2U
+                                                     : 
+                                                    ((1U 
+                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                      ? 2U
+                                                      : 1U)))
                                                    : 
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
@@ -433,7 +458,11 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                     : 
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 1U
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                      ? 1U
+                                                      : 0U)
                                                      : 0U)))))))
                                      : ((0x80U & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
                                          ? ((0x40U 
@@ -471,32 +500,12 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                       ? 7U
                                                       : 6U)
                                                      : 6U)
-                                                    : 
-                                                   ((2U 
-                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 6U
-                                                     : 0U)))
+                                                    : 6U))
                                                   : 0U)
                                                  : 
                                                 ((0x10U 
                                                   & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                  ? 
-                                                 ((8U 
-                                                   & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                   ? 0U
-                                                   : 
-                                                  ((4U 
-                                                    & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                    ? 0U
-                                                    : 
-                                                   ((2U 
-                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 0U
-                                                     : 
-                                                    ((1U 
-                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                      ? 0U
-                                                      : 2U))))
+                                                  ? 0U
                                                   : 
                                                  ((8U 
                                                    & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
@@ -538,12 +547,12 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                     : 
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 
+                                                     ? 6U
+                                                     : 
                                                     ((1U 
                                                       & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
                                                       ? 6U
-                                                      : 0U)
-                                                     : 0U)))
+                                                      : 0U))))
                                                   : 0U)
                                                  : 
                                                 ((0x10U 
@@ -558,25 +567,13 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                     ? 
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 
-                                                    ((1U 
-                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                      ? 0U
-                                                      : 2U)
+                                                     ? 0U
                                                      : 2U)
                                                     : 2U)
                                                    : 
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                    ? 
-                                                   ((2U 
-                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 
-                                                    ((1U 
-                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                      ? 2U
-                                                      : 1U)
-                                                     : 1U)
+                                                    ? 1U
                                                     : 
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
@@ -617,7 +614,11 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
                                                     ? 6U
-                                                    : 0U))
+                                                    : 
+                                                   ((2U 
+                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                     ? 6U
+                                                     : 0U)))
                                                   : 0U)
                                                  : 
                                                 ((0x10U 
@@ -633,7 +634,11 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
                                                      ? 0U
-                                                     : 2U)
+                                                     : 
+                                                    ((1U 
+                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                      ? 0U
+                                                      : 2U))
                                                     : 2U)
                                                    : 
                                                   ((4U 
@@ -641,7 +646,11 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                     ? 
                                                    ((2U 
                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 2U
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
+                                                      ? 2U
+                                                      : 1U)
                                                      : 1U)
                                                     : 
                                                    ((2U 
@@ -672,11 +681,7 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                    : 
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                    ? 
-                                                   ((2U 
-                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 6U
-                                                     : 0U)
+                                                    ? 6U
                                                     : 0U))
                                                   : 0U)
                                                  : 
@@ -689,15 +694,7 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                    ? 
                                                   ((4U 
                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                    ? 
-                                                   ((2U 
-                                                     & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                     ? 0U
-                                                     : 
-                                                    ((1U 
-                                                      & (IData)(vlSelf->divider__DOT__lut__DOT__signal))
-                                                      ? 0U
-                                                      : 2U))
+                                                    ? 0U
                                                     : 2U)
                                                    : 
                                                   ((4U 
@@ -714,11 +711,11 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                      : 0U))))))))
                                  : 0U);
     vlSelf->divider__DOT__lut__DOT__q = vlSelf->divider__DOT__qC;
-    vlSelf->divider__DOT__dLS = (0x1ffffffffULL & VL_SHIFTL_QQI(33,33,32, vlSelf->divider__DOT__dNorm, 1U));
-    vlSelf->divider__DOT__dM = (0x1ffffffffULL & (1ULL 
+    vlSelf->divider__DOT__dLS = (0x7ffffffffULL & VL_SHIFTL_QQI(35,35,32, vlSelf->divider__DOT__dNorm, 1U));
+    vlSelf->divider__DOT__dM = (0x7ffffffffULL & (1ULL 
                                                   + 
                                                   (~ vlSelf->divider__DOT__dNorm)));
-    vlSelf->divider__DOT__dMLS = (0x1ffffffffULL & 
+    vlSelf->divider__DOT__dMLS = (0x7ffffffffULL & 
                                   (1ULL + (~ vlSelf->divider__DOT__dLS)));
     vlSelf->divider__DOT__dC = ((4U & (IData)(vlSelf->divider__DOT__qC))
                                  ? ((2U & (IData)(vlSelf->divider__DOT__qC))
@@ -733,11 +730,11 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                      : ((1U & (IData)(vlSelf->divider__DOT__qC))
                                          ? vlSelf->divider__DOT__dNorm
                                          : 0ULL)));
-    VL_SHIFTL_WWI(65,65,32, __Vtemp_3, vlSelf->divider__DOT__regPA, 2U);
+    VL_SHIFTL_WWI(67,67,32, __Vtemp_3, vlSelf->divider__DOT__regPA, 2U);
     vlSelf->divider__DOT__regPA_TS[0U] = __Vtemp_3[0U];
     vlSelf->divider__DOT__regPA_TS[1U] = __Vtemp_3[1U];
-    vlSelf->divider__DOT__regPA_TS[2U] = (1U & __Vtemp_3[2U]);
-    vlSelf->divider__DOT__pNext = (0x1ffffffffULL & 
+    vlSelf->divider__DOT__regPA_TS[2U] = (7U & __Vtemp_3[2U]);
+    vlSelf->divider__DOT__pNext = (0x7ffffffffULL & 
                                    ((((QData)((IData)(
                                                       vlSelf->divider__DOT__regPA_TS[2U])) 
                                       << 0x20U) | (QData)((IData)(
@@ -838,20 +835,21 @@ VL_ATTR_COLD void Vdivider___024root___ctor_var_reset(Vdivider___024root* vlSelf
     vlSelf->divider__DOT__rem = VL_RAND_RESET_Q(33);
     vlSelf->divider__DOT__done = VL_RAND_RESET_I(1);
     vlSelf->divider__DOT__running = VL_RAND_RESET_I(1);
-    VL_RAND_RESET_W(65, vlSelf->divider__DOT__regPA);
-    VL_RAND_RESET_W(65, vlSelf->divider__DOT__regPA_temp);
-    VL_RAND_RESET_W(65, vlSelf->divider__DOT__regPA_TS);
+    VL_RAND_RESET_W(67, vlSelf->divider__DOT__regPA);
+    VL_RAND_RESET_W(67, vlSelf->divider__DOT__regPA_temp);
+    VL_RAND_RESET_W(67, vlSelf->divider__DOT__regPA_TS);
     vlSelf->divider__DOT__pBig = VL_RAND_RESET_Q(64);
-    vlSelf->divider__DOT__dNorm = VL_RAND_RESET_Q(33);
+    vlSelf->divider__DOT__dNorm = VL_RAND_RESET_Q(35);
     vlSelf->divider__DOT__clz = VL_RAND_RESET_I(6);
-    vlSelf->divider__DOT__p = VL_RAND_RESET_Q(33);
-    vlSelf->divider__DOT__pNext = VL_RAND_RESET_Q(33);
+    vlSelf->divider__DOT__p = VL_RAND_RESET_Q(35);
+    vlSelf->divider__DOT__pNext = VL_RAND_RESET_Q(35);
     vlSelf->divider__DOT__qC = VL_RAND_RESET_I(3);
     vlSelf->divider__DOT__topBits = VL_RAND_RESET_I(6);
-    vlSelf->divider__DOT__dC = VL_RAND_RESET_Q(33);
-    vlSelf->divider__DOT__dLS = VL_RAND_RESET_Q(33);
-    vlSelf->divider__DOT__dM = VL_RAND_RESET_Q(33);
-    vlSelf->divider__DOT__dMLS = VL_RAND_RESET_Q(33);
+    vlSelf->divider__DOT__dC = VL_RAND_RESET_Q(35);
+    vlSelf->divider__DOT__dLS = VL_RAND_RESET_Q(35);
+    vlSelf->divider__DOT__dM = VL_RAND_RESET_Q(35);
+    vlSelf->divider__DOT__dMLS = VL_RAND_RESET_Q(35);
+    vlSelf->divider__DOT__signal = VL_RAND_RESET_I(10);
     vlSelf->divider__DOT__count = VL_RAND_RESET_I(5);
     vlSelf->divider__DOT__Qm = VL_RAND_RESET_I(32);
     vlSelf->divider__DOT__Qp = VL_RAND_RESET_I(32);
