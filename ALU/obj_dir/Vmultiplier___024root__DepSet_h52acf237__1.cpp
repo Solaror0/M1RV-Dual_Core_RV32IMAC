@@ -1591,7 +1591,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                   << 1U) | (1U & (IData)(vlSelf->multiplier__DOT__s13)))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block0__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block0__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__slice3__DOT__G 
         = multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice3__G;
@@ -1803,7 +1803,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                   << 1U) | (IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice0__P))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block0__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block0__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block0__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice3__P) 
@@ -1815,7 +1815,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                   << 1U) | (1U & (IData)(vlSelf->multiplier__DOT__s13)))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block1__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block0__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block0__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block0__s;
@@ -1825,15 +1825,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block1__cin;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block1__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block1__cin))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block1__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block1__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block1__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block1__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block1__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice3__P) 
@@ -1846,7 +1846,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block1__cin)))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block2__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block1__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block1__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block1__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block1__s;
@@ -1856,15 +1856,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block2__cin;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block2__cin))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block2__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice3__P) 
@@ -1877,7 +1877,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block2__cin)))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block3__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block2__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block2__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block2__s;
@@ -1887,15 +1887,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block3__cin;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block3__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block3__cin))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block3__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block3__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block3__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block3__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block3__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice3__P) 
@@ -1908,7 +1908,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block3__cin)))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block4__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block3__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block3__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block3__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block3__s;
@@ -1918,15 +1918,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block4__cin;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block4__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block4__cin))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block4__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block4__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block4__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block4__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block4__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice3__P) 
@@ -1939,7 +1939,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block4__cin)))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block5__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block4__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block4__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block4__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block4__s;
@@ -1949,15 +1949,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block5__cin;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block5__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block5__cin))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block5__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block5__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block5__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block5__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block5__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice3__P) 
@@ -1970,7 +1970,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block5__cin)))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block6__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block5__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block5__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block5__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block5__s;
@@ -1980,15 +1980,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block6__cin;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block6__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block6__cin))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block6__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block6__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block6__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block6__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block6__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice3__P) 
@@ -2001,7 +2001,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block6__cin)))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block7__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block6__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block6__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block6__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block6__s;
@@ -2022,15 +2022,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                                   | (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block1__cin)))))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block7__cin))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__c1))));
     multiplier__DOT__fast_adder_lower__DOT____Vcellout__block7__s 
         = ((((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice3__P) 
@@ -2042,7 +2042,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                   << 1U) | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice0__P) 
                                             ^ (IData)(multiplier__DOT__fast_adder_lower__DOT____Vcellinp__block7__cin)))));
     vlSelf->multiplier__DOT__cout = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice3__G) 
-                                           + ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice3__P) 
+                                           | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice3__P) 
                                               * (IData)(vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__s 
         = multiplier__DOT__fast_adder_lower__DOT____Vcellout__block7__s;
@@ -2070,7 +2070,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = vlSelf->multiplier__DOT__cout;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block0__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice0__P) 
                     * (IData)(vlSelf->multiplier__DOT__cout))));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__s 
         = multiplier__DOT____Vcellout__fast_adder_lower__s;
@@ -2078,11 +2078,11 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = vlSelf->multiplier__DOT__fast_adder_lower__DOT__cout;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block0__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block0__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block0__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block0__DOT__c1))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block0__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice3__P) 
@@ -2095,7 +2095,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(vlSelf->multiplier__DOT__cout)))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block1__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block0__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block0__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block0__DOT__s 
         = multiplier__DOT__fast_adder_upper__DOT____Vcellout__block0__s;
@@ -2105,15 +2105,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block1__cin;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block1__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block1__cin))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block1__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block1__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block1__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block1__DOT__c1))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block1__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice3__P) 
@@ -2126,7 +2126,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block1__cin)))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block2__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block1__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block1__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block1__DOT__s 
         = multiplier__DOT__fast_adder_upper__DOT____Vcellout__block1__s;
@@ -2136,15 +2136,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block2__cin;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block2__cin))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c1))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block2__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice3__P) 
@@ -2157,7 +2157,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block2__cin)))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block3__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block2__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block2__DOT__s 
         = multiplier__DOT__fast_adder_upper__DOT____Vcellout__block2__s;
@@ -2167,15 +2167,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block3__cin;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block3__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block3__cin))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block3__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block3__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block3__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block3__DOT__c1))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block3__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice3__P) 
@@ -2188,7 +2188,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block3__cin)))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block4__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block3__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block3__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block3__DOT__s 
         = multiplier__DOT__fast_adder_upper__DOT____Vcellout__block3__s;
@@ -2198,15 +2198,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block4__cin;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block4__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block4__cin))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block4__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block4__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block4__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block4__DOT__c1))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block4__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice3__P) 
@@ -2219,7 +2219,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block4__cin)))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block5__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block4__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block4__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block4__DOT__s 
         = multiplier__DOT__fast_adder_upper__DOT____Vcellout__block4__s;
@@ -2229,15 +2229,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block5__cin;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block5__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block5__cin))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block5__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block5__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block5__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block5__DOT__c1))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block5__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice3__P) 
@@ -2250,7 +2250,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block5__cin)))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block6__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block5__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block5__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block5__DOT__s 
         = multiplier__DOT__fast_adder_upper__DOT____Vcellout__block5__s;
@@ -2260,15 +2260,15 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
         = multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block6__cin;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block6__cin))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c1))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block6__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice3__P) 
@@ -2281,7 +2281,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                             ^ (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block6__cin)))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block7__cin 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice3__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice3__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block6__DOT____Vcellout__slice3__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c2))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block6__DOT__s 
         = multiplier__DOT__fast_adder_upper__DOT____Vcellout__block6__s;
@@ -2302,20 +2302,19 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
                                                   | (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block1__cin)))))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c0 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice0__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice0__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice0__P) 
                     * (IData)(multiplier__DOT__fast_adder_upper__DOT____Vcellinp__block7__cin))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c1 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice1__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice1__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice1__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c0))));
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice2__G) 
-                 + ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice2__P) 
+                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice2__P) 
                     * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c1))));
     vlSelf->multiplier__DOT__cout_upper = (1U & ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice3__G) 
-                                                 + 
-                                                 ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice3__P) 
-                                                  * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c2))));
+                                                 | ((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice3__P) 
+                                                    * (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c2))));
     multiplier__DOT__fast_adder_upper__DOT____Vcellout__block7__s 
         = ((((IData)(multiplier__DOT__fast_adder_upper__DOT__block7__DOT____Vcellout__slice3__P) 
              ^ (IData)(vlSelf->multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c2)) 

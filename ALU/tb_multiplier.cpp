@@ -38,17 +38,13 @@ int main(int argc, char ** argv){
             dut->clk = 1; dut->eval();
 
             int product = (int)dut->output_product;
-            int partial_product = (int)dut->product;
-            std::cout << i << " " << j << " A: " << a << "  B: " << b
-                      << " REAL: " << product
-                      << " EXPECTED: " << a * b
-                      << " PARTIAL: " << partial_product
-                      << " running=" << (int)dut->running
-                      << " done=" << (int)dut->done
-                      << " rst=" << (int)dut->rst
-                      << " state=" << std::bitset<3>(dut->state_viewer)
-                      << " layer4=" << (int)dut->layer_viewer
-                      << std::endl;
+            // std::cout << i << " " << j << " A: " << a << "  B: " << b
+            //           << " REAL: " << product
+            //           << " EXPECTED: " << a * b
+            //           << " running=" << (int)dut->running
+            //           << " done=" << (int)dut->done
+            //           << " rst=" << (int)dut->rst
+            //           << std::endl;
 
             dut->clk = 0; dut->eval();
             j++;
@@ -58,16 +54,12 @@ int main(int argc, char ** argv){
         // done goes high in state 111 which also latches output_product
         // so read it once more after the final falling edge
         int product = (int)dut->output_product;
-        int partial_product = (int)dut->product;
         std::cout << i << " " << j << " A: " << a << "  B: " << b
                   << " REAL: " << product
                   << " EXPECTED: " << a * b
-                  << " PARTIAL: " << partial_product
                   << " running=" << (int)dut->running
                   << " done=" << (int)dut->done
                   << " rst=" << (int)dut->rst
-                  << " state=" << std::bitset<3>(dut->state_viewer)
-                  << " layer4=" << (int)dut->layer_viewer
                   << " <-- FINAL" << std::endl;
 
         if(timeout <= 0){
