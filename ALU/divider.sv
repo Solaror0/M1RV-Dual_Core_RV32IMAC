@@ -2,7 +2,7 @@ module divider(
     input logic clk, rst,
     input logic [31:0] a, d,
     output logic [31:0] q,
-    output logic [32:0] rem,
+    output logic [34:0] rem,
     output logic done, running
 );
 
@@ -74,13 +74,13 @@ if(rst & ~running)
             running <=0; 
             done<=1;
             if(regPA[66]) begin
-               // rem <= (regPA[66:32]+dNorm) >>(clz);
+                rem <= (regPA[66:32]+dNorm) >>(clz);
                 q <= (Qm);
             end 
             else 
             begin //weird behaviours here, gotta fix, may have to do with the final qC picked, like the sign.
                 q <= (Qp);
-               // rem <= (regPA[66:32]) >>(clz);
+                rem <= (regPA[66:32]) >>(clz);
             end
 
         end

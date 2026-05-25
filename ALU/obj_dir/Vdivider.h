@@ -31,7 +31,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vdivider VL_NOT_FINAL : public VerilatedModel
     VL_IN(&a,31,0);
     VL_IN(&d,31,0);
     VL_OUT(&q,31,0);
-    VL_OUT64(&rem,32,0);
+    VL_OUT64(&rem,34,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.

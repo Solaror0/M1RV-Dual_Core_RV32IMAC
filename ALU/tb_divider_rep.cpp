@@ -56,13 +56,16 @@ int main(int argc, char ** argv){
 
     
 
-    for (int j = 0; j<100000000; j++) {
+    for (int j = 0; j<1000000000; j++) {
         p = dist(rng); // also try 1024/2
         d = dist(rng); //note 98743283/32932; 780/90
         
         dut->a = p;
         dut->d = d;
         dut->rst = 1;
+        if(j%1000000 == 0){
+            std::cout << j << std::endl;
+        }
         for (int i = 0; i < 64; i++){
             dut->clk = 0;
             dut->eval();
@@ -71,17 +74,17 @@ int main(int argc, char ** argv){
 
             if(dut->done){
                 
-                if((int)(p/d) != (int)(dut->q)){
+                if( ((int)(p/d) != (int)(dut->q)) | ((int)(p%d) != (int)(dut->rem)) ){
                   //  std::cout << prevPass << std::endl;
                     std::cout << j << " P: " << p << " D: " << d << " Real: " << (int)(p/d) << " Dut Result: " << int(dut->q) << " Signal(4 bits D, then 6 bits P) " <<  std::bitset<10>(dut->rootp->divider__DOT__signal) <<"\n" <<  std::endl;
                     fail++;
                 } else{
                    // std::cout << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << std::endl;
                     pass++;
-                    ss.str(""); 
-                    ss.clear();
-                    ss  << j << " " << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << " " << std::bitset<10>(dut->rootp->divider__DOT__signal);
-                    prevPass = ss.str();
+                    // ss.str(""); 
+                    // ss.clear();
+                    // ss  << j << " " << p << " " << d << " " << (int)(p/d) << " " << int(dut->q) << " " << std::bitset<10>(dut->rootp->divider__DOT__signal);
+                    // prevPass = ss.str();
                 }
                 break;
             }

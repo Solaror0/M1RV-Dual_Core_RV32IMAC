@@ -824,7 +824,7 @@ VL_ATTR_COLD void Vdivider___024root___ctor_var_reset(Vdivider___024root* vlSelf
     vlSelf->a = VL_RAND_RESET_I(32);
     vlSelf->d = VL_RAND_RESET_I(32);
     vlSelf->q = VL_RAND_RESET_I(32);
-    vlSelf->rem = VL_RAND_RESET_Q(33);
+    vlSelf->rem = VL_RAND_RESET_Q(35);
     vlSelf->done = VL_RAND_RESET_I(1);
     vlSelf->running = VL_RAND_RESET_I(1);
     vlSelf->divider__DOT__clk = VL_RAND_RESET_I(1);
@@ -832,7 +832,7 @@ VL_ATTR_COLD void Vdivider___024root___ctor_var_reset(Vdivider___024root* vlSelf
     vlSelf->divider__DOT__a = VL_RAND_RESET_I(32);
     vlSelf->divider__DOT__d = VL_RAND_RESET_I(32);
     vlSelf->divider__DOT__q = VL_RAND_RESET_I(32);
-    vlSelf->divider__DOT__rem = VL_RAND_RESET_Q(33);
+    vlSelf->divider__DOT__rem = VL_RAND_RESET_Q(35);
     vlSelf->divider__DOT__done = VL_RAND_RESET_I(1);
     vlSelf->divider__DOT__running = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(67, vlSelf->divider__DOT__regPA);

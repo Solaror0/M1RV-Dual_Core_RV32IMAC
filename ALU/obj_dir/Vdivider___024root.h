@@ -49,8 +49,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vdivider___024root final : public VerilatedMo
     IData/*31:0*/ divider__DOT__aLow;
     IData/*31:0*/ divider__DOT__unnamedblk1__DOT__i;
     IData/*31:0*/ __VactIterCount;
-    VL_OUT64(rem,32,0);
-    QData/*32:0*/ divider__DOT__rem;
+    VL_OUT64(rem,34,0);
+    QData/*34:0*/ divider__DOT__rem;
     QData/*63:0*/ divider__DOT__pBig;
     QData/*34:0*/ divider__DOT__dNorm;
     QData/*34:0*/ divider__DOT__p;
