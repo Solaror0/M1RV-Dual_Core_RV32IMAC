@@ -25,11 +25,12 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier VL_NOT_FINAL : public VerilatedMo
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clk,0,0);
+    VL_IN8(&unsignedA,0,0);
     VL_IN8(&rst,0,0);
     VL_OUT8(&done,0,0);
     VL_OUT8(&running,0,0);
     VL_IN(&a,31,0);
-    VL_IN(&b,31,0);
+    VL_IN64(&b,32,0);
     VL_OUT64(&output_product,63,0);
 
     // CELLS

@@ -42,650 +42,893 @@ VL_INLINE_OPT void Vmultiplier___024root___ico_sequent__TOP__0(Vmultiplier___024
     multiplier__DOT____Vcellout__booth14__partial_product = 0;
     QData/*63:0*/ multiplier__DOT____Vcellout__booth15__partial_product;
     multiplier__DOT____Vcellout__booth15__partial_product = 0;
+    QData/*63:0*/ multiplier__DOT____Vcellout__booth16__partial_product;
+    multiplier__DOT____Vcellout__booth16__partial_product = 0;
+    CData/*2:0*/ multiplier__DOT____Vcellinp__booth16__triplet;
+    multiplier__DOT____Vcellinp__booth16__triplet = 0;
     // Body
     vlSelf->multiplier__DOT__b = vlSelf->b;
     vlSelf->multiplier__DOT__rst = vlSelf->rst;
     vlSelf->multiplier__DOT__clk = vlSelf->clk;
     vlSelf->multiplier__DOT__booth0__DOT__triplet = 
-        (((3U & (vlSelf->b >> 0U)) << 1U) | 0U);
+        (((3U & (IData)((vlSelf->b >> 0U))) << 1U) 
+         | 0U);
     vlSelf->multiplier__DOT__booth1__DOT__triplet = 
-        (7U & (vlSelf->b >> 1U));
+        (7U & (IData)((vlSelf->b >> 1U)));
     vlSelf->multiplier__DOT__booth2__DOT__triplet = 
-        (7U & (vlSelf->b >> 3U));
+        (7U & (IData)((vlSelf->b >> 3U)));
     vlSelf->multiplier__DOT__booth3__DOT__triplet = 
-        (7U & (vlSelf->b >> 5U));
+        (7U & (IData)((vlSelf->b >> 5U)));
     vlSelf->multiplier__DOT__booth4__DOT__triplet = 
-        (7U & (vlSelf->b >> 7U));
+        (7U & (IData)((vlSelf->b >> 7U)));
     vlSelf->multiplier__DOT__booth5__DOT__triplet = 
-        (7U & (vlSelf->b >> 9U));
+        (7U & (IData)((vlSelf->b >> 9U)));
     vlSelf->multiplier__DOT__booth6__DOT__triplet = 
-        (7U & (vlSelf->b >> 0xbU));
+        (7U & (IData)((vlSelf->b >> 0xbU)));
     vlSelf->multiplier__DOT__booth7__DOT__triplet = 
-        (7U & (vlSelf->b >> 0xdU));
+        (7U & (IData)((vlSelf->b >> 0xdU)));
     vlSelf->multiplier__DOT__booth8__DOT__triplet = 
-        (7U & (vlSelf->b >> 0xfU));
+        (7U & (IData)((vlSelf->b >> 0xfU)));
     vlSelf->multiplier__DOT__booth9__DOT__triplet = 
-        (7U & (vlSelf->b >> 0x11U));
+        (7U & (IData)((vlSelf->b >> 0x11U)));
     vlSelf->multiplier__DOT__booth10__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x13U));
+        = (7U & (IData)((vlSelf->b >> 0x13U)));
     vlSelf->multiplier__DOT__booth11__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x15U));
+        = (7U & (IData)((vlSelf->b >> 0x15U)));
     vlSelf->multiplier__DOT__booth12__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x17U));
+        = (7U & (IData)((vlSelf->b >> 0x17U)));
     vlSelf->multiplier__DOT__booth13__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x19U));
+        = (7U & (IData)((vlSelf->b >> 0x19U)));
     vlSelf->multiplier__DOT__booth14__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x1bU));
+        = (7U & (IData)((vlSelf->b >> 0x1bU)));
     vlSelf->multiplier__DOT__booth15__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x1dU));
-    vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
+        = (7U & (IData)((vlSelf->b >> 0x1dU)));
+    if (vlSelf->unsignedA) {
+        vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+    } else {
+        vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+    }
     vlSelf->multiplier__DOT__booth0__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth0__DOT__product = 
-        ((2U & vlSelf->b) ? ((1U & vlSelf->b) ? vlSelf->multiplier__DOT__booth0__DOT__minus_a
-                              : (((QData)((IData)((0x7fffffffU 
-                                                   & (- (IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           (vlSelf->multiplier__DOT__booth0__DOT__minus_a 
-                                                                            >> 0x3fU)))))))) 
-                                  << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth0__DOT__minus_a)) 
-                                               << 1U)))
-          : ((1U & vlSelf->b) ? vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a
+        ((1U & (IData)((vlSelf->b >> 1U))) ? ((1U & (IData)(vlSelf->b))
+                                               ? vlSelf->multiplier__DOT__booth0__DOT__minus_a
+                                               : (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth0__DOT__minus_a 
+                                                                                >> 0x3fU)))))))) 
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth0__DOT__minus_a)) 
+                                                     << 1U)))
+          : ((1U & (IData)(vlSelf->b)) ? vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a
               : 0ULL));
     multiplier__DOT____Vcellout__booth0__partial_product 
         = vlSelf->multiplier__DOT__booth0__DOT__product;
-    vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth1__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth1__DOT__product = 
-        ((8U & vlSelf->b) ? ((4U & vlSelf->b) ? ((2U 
-                                                  & vlSelf->b)
-                                                  ? 0ULL
-                                                  : vlSelf->multiplier__DOT__booth1__DOT__minus_a)
-                              : ((2U & vlSelf->b) ? vlSelf->multiplier__DOT__booth1__DOT__minus_a
-                                  : (((QData)((IData)(
-                                                      (0x7fffffffU 
-                                                       & (- (IData)(
-                                                                    (1U 
-                                                                     & (IData)(
-                                                                               (vlSelf->multiplier__DOT__booth1__DOT__minus_a 
+        ((1U & (IData)((vlSelf->b >> 3U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 2U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 1U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth1__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 1U)))
+                                                   ? vlSelf->multiplier__DOT__booth1__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth1__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                      << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__minus_a)) 
-                                                   << 1U))))
-          : ((4U & vlSelf->b) ? ((2U & vlSelf->b) ? 
-                                 (((QData)((IData)(
-                                                   (0x7fffffffU 
-                                                    & (- (IData)(
-                                                                 (1U 
-                                                                  & (IData)(
-                                                                            (vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
-                                                                             >> 0x3fU)))))))) 
-                                   << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)) 
-                                                << 1U))
-                                  : vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)
-              : ((2U & vlSelf->b) ? vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 2U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 1U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
+                                                                                >> 0x3fU)))))))) 
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 1U))) ? vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth1__partial_product 
         = (vlSelf->multiplier__DOT__booth1__DOT__product 
            << 2U);
-    vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth2__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth2__DOT__product = 
-        ((0x20U & vlSelf->b) ? ((0x10U & vlSelf->b)
-                                 ? ((8U & vlSelf->b)
-                                     ? 0ULL : vlSelf->multiplier__DOT__booth2__DOT__minus_a)
-                                 : ((8U & vlSelf->b)
-                                     ? vlSelf->multiplier__DOT__booth2__DOT__minus_a
-                                     : (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+        ((1U & (IData)((vlSelf->b >> 5U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 4U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 3U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth2__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 3U)))
+                                                   ? vlSelf->multiplier__DOT__booth2__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth2__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__minus_a)) 
-                                           << 1U))))
-          : ((0x10U & vlSelf->b) ? ((8U & vlSelf->b)
-                                     ? (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 4U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 3U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)) 
-                                           << 1U)) : vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)
-              : ((8U & vlSelf->b) ? vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 3U))) ? vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth2__partial_product 
         = (vlSelf->multiplier__DOT__booth2__DOT__product 
            << 4U);
-    vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth3__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth3__DOT__product = 
-        ((0x80U & vlSelf->b) ? ((0x40U & vlSelf->b)
-                                 ? ((0x20U & vlSelf->b)
-                                     ? 0ULL : vlSelf->multiplier__DOT__booth3__DOT__minus_a)
-                                 : ((0x20U & vlSelf->b)
-                                     ? vlSelf->multiplier__DOT__booth3__DOT__minus_a
-                                     : (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+        ((1U & (IData)((vlSelf->b >> 7U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 6U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 5U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth3__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 5U)))
+                                                   ? vlSelf->multiplier__DOT__booth3__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth3__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__minus_a)) 
-                                           << 1U))))
-          : ((0x40U & vlSelf->b) ? ((0x20U & vlSelf->b)
-                                     ? (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 6U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 5U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)) 
-                                           << 1U)) : vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)
-              : ((0x20U & vlSelf->b) ? vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 5U))) ? vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth3__partial_product 
         = (vlSelf->multiplier__DOT__booth3__DOT__product 
            << 6U);
-    vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth4__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth4__DOT__product = 
-        ((0x200U & vlSelf->b) ? ((0x100U & vlSelf->b)
-                                  ? ((0x80U & vlSelf->b)
-                                      ? 0ULL : vlSelf->multiplier__DOT__booth4__DOT__minus_a)
-                                  : ((0x80U & vlSelf->b)
-                                      ? vlSelf->multiplier__DOT__booth4__DOT__minus_a
-                                      : (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+        ((1U & (IData)((vlSelf->b >> 9U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 8U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 7U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth4__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 7U)))
+                                                   ? vlSelf->multiplier__DOT__booth4__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth4__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__minus_a)) 
-                                            << 1U))))
-          : ((0x100U & vlSelf->b) ? ((0x80U & vlSelf->b)
-                                      ? (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 8U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 7U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)) 
-                                            << 1U))
-                                      : vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)
-              : ((0x80U & vlSelf->b) ? vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 7U))) ? vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth4__partial_product 
         = (vlSelf->multiplier__DOT__booth4__DOT__product 
            << 8U);
-    vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth5__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth5__DOT__product = 
-        ((0x800U & vlSelf->b) ? ((0x400U & vlSelf->b)
-                                  ? ((0x200U & vlSelf->b)
-                                      ? 0ULL : vlSelf->multiplier__DOT__booth5__DOT__minus_a)
-                                  : ((0x200U & vlSelf->b)
-                                      ? vlSelf->multiplier__DOT__booth5__DOT__minus_a
-                                      : (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0xbU))) ? ((1U 
+                                                 & (IData)(
+                                                           (vlSelf->b 
+                                                            >> 0xaU)))
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 9U)))
+                                                  ? 0ULL
+                                                  : vlSelf->multiplier__DOT__booth5__DOT__minus_a)
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 9U)))
+                                                  ? vlSelf->multiplier__DOT__booth5__DOT__minus_a
+                                                  : 
+                                                 (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth5__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__minus_a)) 
-                                            << 1U))))
-          : ((0x400U & vlSelf->b) ? ((0x200U & vlSelf->b)
-                                      ? (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__minus_a)) 
+                                                     << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0xaU))) ? 
+             ((1U & (IData)((vlSelf->b >> 9U))) ? (
+                                                   ((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)) 
-                                            << 1U))
-                                      : vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)
-              : ((0x200U & vlSelf->b) ? vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)) 
+                                                      << 1U))
+               : vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 9U))) ? vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth5__partial_product 
         = (vlSelf->multiplier__DOT__booth5__DOT__product 
            << 0xaU);
-    vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth6__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth6__DOT__product = 
-        ((0x2000U & vlSelf->b) ? ((0x1000U & vlSelf->b)
-                                   ? ((0x800U & vlSelf->b)
-                                       ? 0ULL : vlSelf->multiplier__DOT__booth6__DOT__minus_a)
-                                   : ((0x800U & vlSelf->b)
-                                       ? vlSelf->multiplier__DOT__booth6__DOT__minus_a
-                                       : (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0xdU))) ? ((1U 
+                                                 & (IData)(
+                                                           (vlSelf->b 
+                                                            >> 0xcU)))
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xbU)))
+                                                  ? 0ULL
+                                                  : vlSelf->multiplier__DOT__booth6__DOT__minus_a)
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xbU)))
+                                                  ? vlSelf->multiplier__DOT__booth6__DOT__minus_a
+                                                  : 
+                                                 (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth6__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__minus_a)) 
-                                             << 1U))))
-          : ((0x1000U & vlSelf->b) ? ((0x800U & vlSelf->b)
-                                       ? (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)) 
-                                             << 1U))
-                                       : vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)
-              : ((0x800U & vlSelf->b) ? vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__minus_a)) 
+                                                     << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0xcU))) ? 
+             ((1U & (IData)((vlSelf->b >> 0xbU))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0xbU)))
+                  ? vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth6__partial_product 
         = (vlSelf->multiplier__DOT__booth6__DOT__product 
            << 0xcU);
-    vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth7__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth7__DOT__product = 
-        ((0x8000U & vlSelf->b) ? ((0x4000U & vlSelf->b)
-                                   ? ((0x2000U & vlSelf->b)
-                                       ? 0ULL : vlSelf->multiplier__DOT__booth7__DOT__minus_a)
-                                   : ((0x2000U & vlSelf->b)
-                                       ? vlSelf->multiplier__DOT__booth7__DOT__minus_a
-                                       : (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0xfU))) ? ((1U 
+                                                 & (IData)(
+                                                           (vlSelf->b 
+                                                            >> 0xeU)))
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xdU)))
+                                                  ? 0ULL
+                                                  : vlSelf->multiplier__DOT__booth7__DOT__minus_a)
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xdU)))
+                                                  ? vlSelf->multiplier__DOT__booth7__DOT__minus_a
+                                                  : 
+                                                 (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth7__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__minus_a)) 
-                                             << 1U))))
-          : ((0x4000U & vlSelf->b) ? ((0x2000U & vlSelf->b)
-                                       ? (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)) 
-                                             << 1U))
-                                       : vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)
-              : ((0x2000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__minus_a)) 
+                                                     << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0xeU))) ? 
+             ((1U & (IData)((vlSelf->b >> 0xdU))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0xdU)))
+                  ? vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth7__partial_product 
         = (vlSelf->multiplier__DOT__booth7__DOT__product 
            << 0xeU);
-    vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth8__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth8__DOT__product = 
-        ((0x20000U & vlSelf->b) ? ((0x10000U & vlSelf->b)
-                                    ? ((0x8000U & vlSelf->b)
-                                        ? 0ULL : vlSelf->multiplier__DOT__booth8__DOT__minus_a)
-                                    : ((0x8000U & vlSelf->b)
-                                        ? vlSelf->multiplier__DOT__booth8__DOT__minus_a
-                                        : (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0x11U))) ? ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0x10U)))
+                                                  ? 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0xfU)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth8__DOT__minus_a)
+                                                  : 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0xfU)))
+                                                   ? vlSelf->multiplier__DOT__booth8__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth8__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__minus_a)) 
-                                              << 1U))))
-          : ((0x10000U & vlSelf->b) ? ((0x8000U & vlSelf->b)
-                                        ? (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)) 
-                                              << 1U))
-                                        : vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)
-              : ((0x8000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0x10U))) ? 
+             ((1U & (IData)((vlSelf->b >> 0xfU))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0xfU)))
+                  ? vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth8__partial_product 
         = (vlSelf->multiplier__DOT__booth8__DOT__product 
            << 0x10U);
-    vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth9__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth9__DOT__product = 
-        ((0x80000U & vlSelf->b) ? ((0x40000U & vlSelf->b)
-                                    ? ((0x20000U & vlSelf->b)
-                                        ? 0ULL : vlSelf->multiplier__DOT__booth9__DOT__minus_a)
-                                    : ((0x20000U & vlSelf->b)
-                                        ? vlSelf->multiplier__DOT__booth9__DOT__minus_a
-                                        : (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0x13U))) ? ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0x12U)))
+                                                  ? 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0x11U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth9__DOT__minus_a)
+                                                  : 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0x11U)))
+                                                   ? vlSelf->multiplier__DOT__booth9__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth9__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__minus_a)) 
-                                              << 1U))))
-          : ((0x40000U & vlSelf->b) ? ((0x20000U & vlSelf->b)
-                                        ? (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)) 
-                                              << 1U))
-                                        : vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)
-              : ((0x20000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0x12U))) ? 
+             ((1U & (IData)((vlSelf->b >> 0x11U))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0x11U)))
+                  ? vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth9__partial_product 
         = (vlSelf->multiplier__DOT__booth9__DOT__product 
            << 0x12U);
-    vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth10__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth10__DOT__product 
-        = ((0x200000U & vlSelf->b) ? ((0x100000U & vlSelf->b)
-                                       ? ((0x80000U 
-                                           & vlSelf->b)
-                                           ? 0ULL : vlSelf->multiplier__DOT__booth10__DOT__minus_a)
-                                       : ((0x80000U 
-                                           & vlSelf->b)
-                                           ? vlSelf->multiplier__DOT__booth10__DOT__minus_a
-                                           : (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x15U))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x14U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x13U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth10__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x13U)))
+                                                     ? vlSelf->multiplier__DOT__booth10__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth10__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__minus_a)) 
-                                                 << 1U))))
-            : ((0x100000U & vlSelf->b) ? ((0x80000U 
-                                           & vlSelf->b)
-                                           ? (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)) 
-                                                 << 1U))
-                                           : vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)
-                : ((0x80000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x14U)))
+                ? ((1U & (IData)((vlSelf->b >> 0x13U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x13U)))
+                    ? vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth10__partial_product 
         = (vlSelf->multiplier__DOT__booth10__DOT__product 
            << 0x14U);
-    vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth11__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth11__DOT__product 
-        = ((0x800000U & vlSelf->b) ? ((0x400000U & vlSelf->b)
-                                       ? ((0x200000U 
-                                           & vlSelf->b)
-                                           ? 0ULL : vlSelf->multiplier__DOT__booth11__DOT__minus_a)
-                                       : ((0x200000U 
-                                           & vlSelf->b)
-                                           ? vlSelf->multiplier__DOT__booth11__DOT__minus_a
-                                           : (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x17U))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x16U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x15U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth11__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x15U)))
+                                                     ? vlSelf->multiplier__DOT__booth11__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth11__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__minus_a)) 
-                                                 << 1U))))
-            : ((0x400000U & vlSelf->b) ? ((0x200000U 
-                                           & vlSelf->b)
-                                           ? (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)) 
-                                                 << 1U))
-                                           : vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)
-                : ((0x200000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x16U)))
+                ? ((1U & (IData)((vlSelf->b >> 0x15U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x15U)))
+                    ? vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth11__partial_product 
         = (vlSelf->multiplier__DOT__booth11__DOT__product 
            << 0x16U);
-    vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth12__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth12__DOT__product 
-        = ((0x2000000U & vlSelf->b) ? ((0x1000000U 
-                                        & vlSelf->b)
-                                        ? ((0x800000U 
-                                            & vlSelf->b)
-                                            ? 0ULL : vlSelf->multiplier__DOT__booth12__DOT__minus_a)
-                                        : ((0x800000U 
-                                            & vlSelf->b)
-                                            ? vlSelf->multiplier__DOT__booth12__DOT__minus_a
-                                            : (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x19U))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x18U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x17U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth12__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x17U)))
+                                                     ? vlSelf->multiplier__DOT__booth12__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth12__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__minus_a)) 
-                                                  << 1U))))
-            : ((0x1000000U & vlSelf->b) ? ((0x800000U 
-                                            & vlSelf->b)
-                                            ? (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)) 
-                                                  << 1U))
-                                            : vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)
-                : ((0x800000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x18U)))
+                ? ((1U & (IData)((vlSelf->b >> 0x17U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x17U)))
+                    ? vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth12__partial_product 
         = (vlSelf->multiplier__DOT__booth12__DOT__product 
            << 0x18U);
-    vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth13__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth13__DOT__product 
-        = ((0x8000000U & vlSelf->b) ? ((0x4000000U 
-                                        & vlSelf->b)
-                                        ? ((0x2000000U 
-                                            & vlSelf->b)
-                                            ? 0ULL : vlSelf->multiplier__DOT__booth13__DOT__minus_a)
-                                        : ((0x2000000U 
-                                            & vlSelf->b)
-                                            ? vlSelf->multiplier__DOT__booth13__DOT__minus_a
-                                            : (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x1bU))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x1aU)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x19U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth13__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x19U)))
+                                                     ? vlSelf->multiplier__DOT__booth13__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth13__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__minus_a)) 
-                                                  << 1U))))
-            : ((0x4000000U & vlSelf->b) ? ((0x2000000U 
-                                            & vlSelf->b)
-                                            ? (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)) 
-                                                  << 1U))
-                                            : vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)
-                : ((0x2000000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x1aU)))
+                ? ((1U & (IData)((vlSelf->b >> 0x19U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x19U)))
+                    ? vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth13__partial_product 
         = (vlSelf->multiplier__DOT__booth13__DOT__product 
            << 0x1aU);
-    vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth14__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth14__DOT__product 
-        = ((0x20000000U & vlSelf->b) ? ((0x10000000U 
-                                         & vlSelf->b)
-                                         ? ((0x8000000U 
-                                             & vlSelf->b)
-                                             ? 0ULL
-                                             : vlSelf->multiplier__DOT__booth14__DOT__minus_a)
-                                         : ((0x8000000U 
-                                             & vlSelf->b)
-                                             ? vlSelf->multiplier__DOT__booth14__DOT__minus_a
-                                             : (((QData)((IData)(
-                                                                 (0x7fffffffU 
-                                                                  & (- (IData)(
-                                                                               (1U 
+        = ((1U & (IData)((vlSelf->b >> 0x1dU))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x1cU)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1bU)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth14__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1bU)))
+                                                     ? vlSelf->multiplier__DOT__booth14__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
                                                                                 & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth14__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                                 << 0x21U) 
-                                                | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__minus_a)) 
-                                                   << 1U))))
-            : ((0x10000000U & vlSelf->b) ? ((0x8000000U 
-                                             & vlSelf->b)
-                                             ? (((QData)((IData)(
-                                                                 (0x7fffffffU 
-                                                                  & (- (IData)(
-                                                                               (1U 
-                                                                                & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                 << 0x21U) 
-                                                | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)) 
-                                                   << 1U))
-                                             : vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)
-                : ((0x8000000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x1cU)))
+                ? ((1U & (IData)((vlSelf->b >> 0x1bU)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x1bU)))
+                    ? vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth14__partial_product 
         = (vlSelf->multiplier__DOT__booth14__DOT__product 
            << 0x1cU);
-    vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth15__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth15__DOT__product 
-        = ((vlSelf->b >> 0x1fU) ? ((0x40000000U & vlSelf->b)
-                                    ? ((0x20000000U 
-                                        & vlSelf->b)
-                                        ? 0ULL : vlSelf->multiplier__DOT__booth15__DOT__minus_a)
-                                    : ((0x20000000U 
-                                        & vlSelf->b)
-                                        ? vlSelf->multiplier__DOT__booth15__DOT__minus_a
-                                        : (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x1fU))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x1eU)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1dU)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth15__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1dU)))
+                                                     ? vlSelf->multiplier__DOT__booth15__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth15__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__minus_a)) 
-                                              << 1U))))
-            : ((0x40000000U & vlSelf->b) ? ((0x20000000U 
-                                             & vlSelf->b)
-                                             ? (((QData)((IData)(
-                                                                 (0x7fffffffU 
-                                                                  & (- (IData)(
-                                                                               (1U 
-                                                                                & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                 << 0x21U) 
-                                                | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)) 
-                                                   << 1U))
-                                             : vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)
-                : ((0x20000000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x1eU)))
+                ? ((1U & (IData)((vlSelf->b >> 0x1dU)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x1dU)))
+                    ? vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth15__partial_product 
         = (vlSelf->multiplier__DOT__booth15__DOT__product 
            << 0x1eU);
+    multiplier__DOT____Vcellinp__booth16__triplet = 
+        ((4U & ((IData)((vlSelf->b >> 0x20U)) << 2U)) 
+         | (3U & (IData)((vlSelf->b >> 0x1fU))));
     vlSelf->multiplier__DOT__a = vlSelf->a;
+    vlSelf->multiplier__DOT__unsignedA = vlSelf->unsignedA;
     vlSelf->multiplier__DOT__booth0__DOT__partial_product 
         = multiplier__DOT____Vcellout__booth0__partial_product;
     vlSelf->multiplier__DOT__layer0[0U] = multiplier__DOT____Vcellout__booth0__partial_product;
@@ -734,6 +977,49 @@ VL_INLINE_OPT void Vmultiplier___024root___ico_sequent__TOP__0(Vmultiplier___024
     vlSelf->multiplier__DOT__booth15__DOT__partial_product 
         = multiplier__DOT____Vcellout__booth15__partial_product;
     vlSelf->multiplier__DOT__layer0[0xfU] = multiplier__DOT____Vcellout__booth15__partial_product;
+    vlSelf->multiplier__DOT__booth16__DOT__triplet 
+        = multiplier__DOT____Vcellinp__booth16__triplet;
+    vlSelf->multiplier__DOT__booth16__DOT__minus_a 
+        = (1ULL + (~ vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a));
+    vlSelf->multiplier__DOT__booth16__DOT__product 
+        = ((4U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+            ? ((2U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                ? ((1U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                    ? 0ULL : vlSelf->multiplier__DOT__booth16__DOT__minus_a)
+                : ((1U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                    ? vlSelf->multiplier__DOT__booth16__DOT__minus_a
+                    : (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth16__DOT__minus_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth16__DOT__minus_a)) 
+                                     << 1U)))) : ((2U 
+                                                   & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                                                   ? 
+                                                  ((1U 
+                                                    & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                                                    ? 
+                                                   (((QData)((IData)(
+                                                                     (0x7fffffffU 
+                                                                      & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a 
+                                                                                >> 0x3fU)))))))) 
+                                                     << 0x21U) 
+                                                    | ((QData)((IData)(vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a)) 
+                                                       << 1U))
+                                                    : vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a)
+                                                   : 
+                                                  ((1U 
+                                                    & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                                                    ? vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a
+                                                    : 0ULL)));
+    multiplier__DOT____Vcellout__booth16__partial_product 
+        = (vlSelf->multiplier__DOT__booth16__DOT__product 
+           << 0x20U);
     vlSelf->multiplier__DOT__booth0__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth1__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth2__DOT__a = vlSelf->multiplier__DOT__a;
@@ -750,6 +1036,44 @@ VL_INLINE_OPT void Vmultiplier___024root___ico_sequent__TOP__0(Vmultiplier___024
     vlSelf->multiplier__DOT__booth13__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth14__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth15__DOT__a = vlSelf->multiplier__DOT__a;
+    vlSelf->multiplier__DOT__booth16__DOT__a = vlSelf->multiplier__DOT__a;
+    vlSelf->multiplier__DOT__booth0__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth1__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth2__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth3__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth4__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth5__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth6__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth7__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth8__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth9__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth10__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth11__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth12__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth13__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth14__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth15__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth16__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth16__DOT__partial_product 
+        = multiplier__DOT____Vcellout__booth16__partial_product;
+    vlSelf->multiplier__DOT__layer0[0x10U] = multiplier__DOT____Vcellout__booth16__partial_product;
 }
 
 void Vmultiplier___024root___eval_ico(Vmultiplier___024root* vlSelf) {
@@ -5285,18 +5609,18 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      & (IData)(vlSelf->multiplier__DOT__cs9)) 
                                                                     + 
                                                                     (1U 
-                                                                     & (IData)(vlSelf->multiplier__DOT__cs4))) 
+                                                                     & (IData)(vlSelf->multiplier__DOT__cs14))) 
                                                                    + 
                                                                    (1U 
-                                                                    & (IData)(vlSelf->multiplier__DOT__s0))) 
+                                                                    & (IData)(vlSelf->multiplier__DOT__s14))) 
                                                                   >> 1U)))));
             vlSelf->multiplier__DOT__s11 = ((0xfffffffffffffffeULL 
                                              & vlSelf->multiplier__DOT__s11) 
                                             | (IData)((IData)(
                                                               (1U 
                                                                & (((IData)(vlSelf->multiplier__DOT__cs9) 
-                                                                   + (IData)(vlSelf->multiplier__DOT__cs4)) 
-                                                                  + (IData)(vlSelf->multiplier__DOT__s0))))));
+                                                                   + (IData)(vlSelf->multiplier__DOT__cs14)) 
+                                                                  + (IData)(vlSelf->multiplier__DOT__s14))))));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 2U;
             vlSelf->__Vdly__multiplier__DOT__state = 5U;
             vlSelf->multiplier__DOT__c10 = ((0xfffffffffffffffdULL 
@@ -5344,12 +5668,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 1U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 1U)))) 
                                                                    >> 1U)))) 
                                                << 1U));
@@ -5361,10 +5685,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 1U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 1U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 1U)))))) 
                                                << 1U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 3U;
@@ -5413,12 +5737,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 2U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 2U)))) 
                                                                    >> 1U)))) 
                                                << 2U));
@@ -5430,10 +5754,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 2U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 2U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 2U)))))) 
                                                << 2U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 4U;
@@ -5482,12 +5806,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 3U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 3U)))) 
                                                                    >> 1U)))) 
                                                << 3U));
@@ -5499,10 +5823,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 3U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 3U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 3U)))))) 
                                                << 3U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 5U;
@@ -5551,12 +5875,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 4U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 4U)))) 
                                                                    >> 1U)))) 
                                                << 4U));
@@ -5568,10 +5892,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 4U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 4U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 4U)))))) 
                                                << 4U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 6U;
@@ -5620,12 +5944,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 5U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 5U)))) 
                                                                    >> 1U)))) 
                                                << 5U));
@@ -5637,10 +5961,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 5U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 5U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 5U)))))) 
                                                << 5U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 7U;
@@ -5689,12 +6013,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 6U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 6U)))) 
                                                                    >> 1U)))) 
                                                << 6U));
@@ -5706,10 +6030,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 6U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 6U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 6U)))))) 
                                                << 6U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 8U;
@@ -5758,12 +6082,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 7U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 7U)))) 
                                                                    >> 1U)))) 
                                                << 7U));
@@ -5775,10 +6099,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 7U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 7U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 7U)))))) 
                                                << 7U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 9U;
@@ -5827,12 +6151,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 8U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 8U)))) 
                                                                    >> 1U)))) 
                                                << 8U));
@@ -5844,10 +6168,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 8U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 8U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 8U)))))) 
                                                << 8U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0xaU;
@@ -5896,12 +6220,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 9U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 9U)))) 
                                                                    >> 1U)))) 
                                                << 9U));
@@ -5913,10 +6237,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 9U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 9U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 9U)))))) 
                                                << 9U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0xbU;
@@ -5965,12 +6289,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0xaU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0xaU)))) 
                                                                    >> 1U)))) 
                                                << 0xaU));
@@ -5982,10 +6306,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0xaU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0xaU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0xaU)))))) 
                                                << 0xaU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0xcU;
@@ -6034,12 +6358,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0xbU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0xbU)))) 
                                                                    >> 1U)))) 
                                                << 0xbU));
@@ -6051,10 +6375,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0xbU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0xbU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0xbU)))))) 
                                                << 0xbU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0xdU;
@@ -6103,12 +6427,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0xcU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0xcU)))) 
                                                                    >> 1U)))) 
                                                << 0xcU));
@@ -6120,10 +6444,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0xcU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0xcU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0xcU)))))) 
                                                << 0xcU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0xeU;
@@ -6172,12 +6496,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0xdU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0xdU)))) 
                                                                    >> 1U)))) 
                                                << 0xdU));
@@ -6189,10 +6513,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0xdU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0xdU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0xdU)))))) 
                                                << 0xdU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0xfU;
@@ -6241,12 +6565,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0xeU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0xeU)))) 
                                                                    >> 1U)))) 
                                                << 0xeU));
@@ -6258,10 +6582,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0xeU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0xeU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0xeU)))))) 
                                                << 0xeU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x10U;
@@ -6310,12 +6634,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0xfU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0xfU)))) 
                                                                    >> 1U)))) 
                                                << 0xfU));
@@ -6327,10 +6651,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0xfU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0xfU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0xfU)))))) 
                                                << 0xfU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x11U;
@@ -6379,12 +6703,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x10U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x10U)))) 
                                                                    >> 1U)))) 
                                                << 0x10U));
@@ -6396,10 +6720,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x10U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x10U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x10U)))))) 
                                                << 0x10U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x12U;
@@ -6448,12 +6772,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x11U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x11U)))) 
                                                                    >> 1U)))) 
                                                << 0x11U));
@@ -6465,10 +6789,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x11U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x11U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x11U)))))) 
                                                << 0x11U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x13U;
@@ -6517,12 +6841,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x12U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x12U)))) 
                                                                    >> 1U)))) 
                                                << 0x12U));
@@ -6534,10 +6858,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x12U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x12U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x12U)))))) 
                                                << 0x12U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x14U;
@@ -6586,12 +6910,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x13U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x13U)))) 
                                                                    >> 1U)))) 
                                                << 0x13U));
@@ -6603,10 +6927,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x13U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x13U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x13U)))))) 
                                                << 0x13U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x15U;
@@ -6655,12 +6979,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x14U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x14U)))) 
                                                                    >> 1U)))) 
                                                << 0x14U));
@@ -6672,10 +6996,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x14U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x14U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x14U)))))) 
                                                << 0x14U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x16U;
@@ -6724,12 +7048,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x15U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x15U)))) 
                                                                    >> 1U)))) 
                                                << 0x15U));
@@ -6741,10 +7065,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x15U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x15U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x15U)))))) 
                                                << 0x15U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x17U;
@@ -6793,12 +7117,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x16U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x16U)))) 
                                                                    >> 1U)))) 
                                                << 0x16U));
@@ -6810,10 +7134,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x16U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x16U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x16U)))))) 
                                                << 0x16U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x18U;
@@ -6862,12 +7186,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x17U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x17U)))) 
                                                                    >> 1U)))) 
                                                << 0x17U));
@@ -6879,10 +7203,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x17U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x17U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x17U)))))) 
                                                << 0x17U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x19U;
@@ -6931,12 +7255,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x18U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x18U)))) 
                                                                    >> 1U)))) 
                                                << 0x18U));
@@ -6948,10 +7272,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x18U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x18U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x18U)))))) 
                                                << 0x18U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x1aU;
@@ -7000,12 +7324,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x19U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x19U)))) 
                                                                    >> 1U)))) 
                                                << 0x19U));
@@ -7017,10 +7341,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x19U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x19U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x19U)))))) 
                                                << 0x19U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x1bU;
@@ -7069,12 +7393,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x1aU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x1aU)))) 
                                                                    >> 1U)))) 
                                                << 0x1aU));
@@ -7086,10 +7410,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x1aU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x1aU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x1aU)))))) 
                                                << 0x1aU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x1cU;
@@ -7138,12 +7462,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x1bU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x1bU)))) 
                                                                    >> 1U)))) 
                                                << 0x1bU));
@@ -7155,10 +7479,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x1bU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x1bU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x1bU)))))) 
                                                << 0x1bU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x1dU;
@@ -7207,12 +7531,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x1cU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x1cU)))) 
                                                                    >> 1U)))) 
                                                << 0x1cU));
@@ -7224,10 +7548,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x1cU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x1cU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x1cU)))))) 
                                                << 0x1cU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x1eU;
@@ -7276,12 +7600,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x1dU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x1dU)))) 
                                                                    >> 1U)))) 
                                                << 0x1dU));
@@ -7293,10 +7617,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x1dU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x1dU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x1dU)))))) 
                                                << 0x1dU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x1fU;
@@ -7345,12 +7669,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x1eU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x1eU)))) 
                                                                    >> 1U)))) 
                                                << 0x1eU));
@@ -7362,10 +7686,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x1eU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x1eU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x1eU)))))) 
                                                << 0x1eU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x20U;
@@ -7414,12 +7738,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x1fU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x1fU)))) 
                                                                    >> 1U)))) 
                                                << 0x1fU));
@@ -7431,10 +7755,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x1fU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x1fU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x1fU)))))) 
                                                << 0x1fU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x21U;
@@ -7483,12 +7807,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x20U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x20U)))) 
                                                                    >> 1U)))) 
                                                << 0x20U));
@@ -7500,10 +7824,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x20U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x20U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x20U)))))) 
                                                << 0x20U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x22U;
@@ -7552,12 +7876,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x21U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x21U)))) 
                                                                    >> 1U)))) 
                                                << 0x21U));
@@ -7569,10 +7893,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x21U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x21U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x21U)))))) 
                                                << 0x21U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x23U;
@@ -7621,12 +7945,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x22U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x22U)))) 
                                                                    >> 1U)))) 
                                                << 0x22U));
@@ -7638,10 +7962,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x22U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x22U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x22U)))))) 
                                                << 0x22U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x24U;
@@ -7690,12 +8014,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x23U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x23U)))) 
                                                                    >> 1U)))) 
                                                << 0x23U));
@@ -7707,10 +8031,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x23U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x23U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x23U)))))) 
                                                << 0x23U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x25U;
@@ -7759,12 +8083,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x24U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x24U)))) 
                                                                    >> 1U)))) 
                                                << 0x24U));
@@ -7776,10 +8100,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x24U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x24U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x24U)))))) 
                                                << 0x24U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x26U;
@@ -7828,12 +8152,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x25U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x25U)))) 
                                                                    >> 1U)))) 
                                                << 0x25U));
@@ -7845,10 +8169,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x25U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x25U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x25U)))))) 
                                                << 0x25U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x27U;
@@ -7897,12 +8221,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x26U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x26U)))) 
                                                                    >> 1U)))) 
                                                << 0x26U));
@@ -7914,10 +8238,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x26U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x26U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x26U)))))) 
                                                << 0x26U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x28U;
@@ -7966,12 +8290,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x27U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x27U)))) 
                                                                    >> 1U)))) 
                                                << 0x27U));
@@ -7983,10 +8307,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x27U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x27U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x27U)))))) 
                                                << 0x27U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x29U;
@@ -8035,12 +8359,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x28U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x28U)))) 
                                                                    >> 1U)))) 
                                                << 0x28U));
@@ -8052,10 +8376,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x28U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x28U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x28U)))))) 
                                                << 0x28U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x2aU;
@@ -8104,12 +8428,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x29U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x29U)))) 
                                                                    >> 1U)))) 
                                                << 0x29U));
@@ -8121,10 +8445,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x29U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x29U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x29U)))))) 
                                                << 0x29U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x2bU;
@@ -8173,12 +8497,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x2aU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x2aU)))) 
                                                                    >> 1U)))) 
                                                << 0x2aU));
@@ -8190,10 +8514,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x2aU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x2aU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x2aU)))))) 
                                                << 0x2aU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x2cU;
@@ -8242,12 +8566,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x2bU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x2bU)))) 
                                                                    >> 1U)))) 
                                                << 0x2bU));
@@ -8259,10 +8583,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x2bU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x2bU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x2bU)))))) 
                                                << 0x2bU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x2dU;
@@ -8311,12 +8635,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x2cU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x2cU)))) 
                                                                    >> 1U)))) 
                                                << 0x2cU));
@@ -8328,10 +8652,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x2cU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x2cU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x2cU)))))) 
                                                << 0x2cU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x2eU;
@@ -8380,12 +8704,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x2dU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x2dU)))) 
                                                                    >> 1U)))) 
                                                << 0x2dU));
@@ -8397,10 +8721,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x2dU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x2dU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x2dU)))))) 
                                                << 0x2dU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x2fU;
@@ -8449,12 +8773,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x2eU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x2eU)))) 
                                                                    >> 1U)))) 
                                                << 0x2eU));
@@ -8466,10 +8790,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x2eU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x2eU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x2eU)))))) 
                                                << 0x2eU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x30U;
@@ -8518,12 +8842,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x2fU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x2fU)))) 
                                                                    >> 1U)))) 
                                                << 0x2fU));
@@ -8535,10 +8859,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x2fU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x2fU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x2fU)))))) 
                                                << 0x2fU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x31U;
@@ -8587,12 +8911,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x30U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x30U)))) 
                                                                    >> 1U)))) 
                                                << 0x30U));
@@ -8604,10 +8928,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x30U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x30U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x30U)))))) 
                                                << 0x30U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x32U;
@@ -8656,12 +8980,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x31U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x31U)))) 
                                                                    >> 1U)))) 
                                                << 0x31U));
@@ -8673,10 +8997,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x31U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x31U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x31U)))))) 
                                                << 0x31U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x33U;
@@ -8725,12 +9049,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x32U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x32U)))) 
                                                                    >> 1U)))) 
                                                << 0x32U));
@@ -8742,10 +9066,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x32U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x32U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x32U)))))) 
                                                << 0x32U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x34U;
@@ -8794,12 +9118,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x33U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x33U)))) 
                                                                    >> 1U)))) 
                                                << 0x33U));
@@ -8811,10 +9135,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x33U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x33U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x33U)))))) 
                                                << 0x33U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x35U;
@@ -8863,12 +9187,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x34U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x34U)))) 
                                                                    >> 1U)))) 
                                                << 0x34U));
@@ -8880,10 +9204,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x34U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x34U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x34U)))))) 
                                                << 0x34U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x36U;
@@ -8932,12 +9256,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x35U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x35U)))) 
                                                                    >> 1U)))) 
                                                << 0x35U));
@@ -8949,10 +9273,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x35U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x35U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x35U)))))) 
                                                << 0x35U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x37U;
@@ -9001,12 +9325,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x36U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x36U)))) 
                                                                    >> 1U)))) 
                                                << 0x36U));
@@ -9018,10 +9342,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x36U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x36U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x36U)))))) 
                                                << 0x36U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x38U;
@@ -9070,12 +9394,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x37U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x37U)))) 
                                                                    >> 1U)))) 
                                                << 0x37U));
@@ -9087,10 +9411,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x37U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x37U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x37U)))))) 
                                                << 0x37U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x39U;
@@ -9139,12 +9463,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x38U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x38U)))) 
                                                                    >> 1U)))) 
                                                << 0x38U));
@@ -9156,10 +9480,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x38U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x38U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x38U)))))) 
                                                << 0x38U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x3aU;
@@ -9208,12 +9532,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x39U)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x39U)))) 
                                                                    >> 1U)))) 
                                                << 0x39U));
@@ -9225,10 +9549,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x39U)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x39U))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x39U)))))) 
                                                << 0x39U));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x3bU;
@@ -9277,12 +9601,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x3aU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x3aU)))) 
                                                                    >> 1U)))) 
                                                << 0x3aU));
@@ -9294,10 +9618,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x3aU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x3aU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x3aU)))))) 
                                                << 0x3aU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x3cU;
@@ -9346,12 +9670,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x3bU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x3bU)))) 
                                                                    >> 1U)))) 
                                                << 0x3bU));
@@ -9363,10 +9687,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x3bU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x3bU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x3bU)))))) 
                                                << 0x3bU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x3dU;
@@ -9415,12 +9739,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x3cU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x3cU)))) 
                                                                    >> 1U)))) 
                                                << 0x3cU));
@@ -9432,10 +9756,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x3cU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x3cU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x3cU)))))) 
                                                << 0x3cU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x3eU;
@@ -9484,12 +9808,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x3dU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x3dU)))) 
                                                                    >> 1U)))) 
                                                << 0x3dU));
@@ -9501,10 +9825,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x3dU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x3dU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x3dU)))))) 
                                                << 0x3dU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x3fU;
@@ -9553,12 +9877,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x3eU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x3eU)))) 
                                                                    >> 1U)))) 
                                                << 0x3eU));
@@ -9570,10 +9894,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x3eU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x3eU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x3eU)))))) 
                                                << 0x3eU));
             vlSelf->multiplier__DOT__unnamedblk4__DOT__h = 0x40U;
@@ -9622,12 +9946,12 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                      + 
                                                                      (1U 
                                                                       & (IData)(
-                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                (vlSelf->multiplier__DOT__cs14 
                                                                                 >> 0x3fU)))) 
                                                                     + 
                                                                     (1U 
                                                                      & (IData)(
-                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                               (vlSelf->multiplier__DOT__s14 
                                                                                 >> 0x3fU)))) 
                                                                    >> 1U)))) 
                                                << 0x3fU));
@@ -9639,10 +9963,10 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs9 
                                                                              >> 0x3fU)) 
                                                                     + (IData)(
-                                                                              (vlSelf->multiplier__DOT__cs4 
+                                                                              (vlSelf->multiplier__DOT__cs14 
                                                                                >> 0x3fU))) 
                                                                    + (IData)(
-                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                             (vlSelf->multiplier__DOT__s14 
                                                                               >> 0x3fU)))))) 
                                                << 0x3fU));
         }
@@ -14103,6 +14427,30 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                               & (((IData)(vlSelf->multiplier__DOT__cs1) 
                                                                   + (IData)(vlSelf->multiplier__DOT__cs2)) 
                                                                  + (IData)(vlSelf->multiplier__DOT__cs3))))));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffffffeULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | (IData)((IData)(
+                                                              (1U 
+                                                               & ((((1U 
+                                                                     & (IData)(vlSelf->multiplier__DOT__cs4)) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U]))) 
+                                                                   + 
+                                                                   (1U 
+                                                                    & (IData)(vlSelf->multiplier__DOT__s0))) 
+                                                                  >> 1U)))));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffffffeULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | (IData)((IData)(
+                                                              (1U 
+                                                               & (((IData)(vlSelf->multiplier__DOT__cs4) 
+                                                                   + (IData)(
+                                                                             vlSelf->multiplier__DOT__layer0
+                                                                             [0x10U])) 
+                                                                  + (IData)(vlSelf->multiplier__DOT__s0))))));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 2U;
             vlSelf->__Vdly__multiplier__DOT__state = 3U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffffffdULL 
@@ -14209,6 +14557,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 1U)))))) 
                                               << 1U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffffffdULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 1U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 1U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 1U)))) 
+                                                                   >> 1U)))) 
+                                               << 1U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffffffdULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 1U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 1U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 1U)))))) 
+                                               << 1U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 3U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffffffbULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -14314,6 +14698,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 2U)))))) 
                                               << 2U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffffffbULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 2U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 2U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 2U)))) 
+                                                                   >> 1U)))) 
+                                               << 2U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffffffbULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 2U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 2U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 2U)))))) 
+                                               << 2U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 4U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffffff7ULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -14419,6 +14839,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 3U)))))) 
                                               << 3U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffffff7ULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 3U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 3U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 3U)))) 
+                                                                   >> 1U)))) 
+                                               << 3U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffffff7ULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 3U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 3U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 3U)))))) 
+                                               << 3U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 5U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffffffefULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -14524,6 +14980,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 4U)))))) 
                                               << 4U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffffffefULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 4U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 4U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 4U)))) 
+                                                                   >> 1U)))) 
+                                               << 4U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffffffefULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 4U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 4U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 4U)))))) 
+                                               << 4U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 6U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffffffdfULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -14629,6 +15121,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 5U)))))) 
                                               << 5U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffffffdfULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 5U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 5U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 5U)))) 
+                                                                   >> 1U)))) 
+                                               << 5U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffffffdfULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 5U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 5U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 5U)))))) 
+                                               << 5U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 7U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffffffbfULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -14734,6 +15262,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 6U)))))) 
                                               << 6U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffffffbfULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 6U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 6U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 6U)))) 
+                                                                   >> 1U)))) 
+                                               << 6U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffffffbfULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 6U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 6U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 6U)))))) 
+                                               << 6U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 8U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffffff7fULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -14839,6 +15403,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 7U)))))) 
                                               << 7U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffffff7fULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 7U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 7U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 7U)))) 
+                                                                   >> 1U)))) 
+                                               << 7U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffffff7fULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 7U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 7U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 7U)))))) 
+                                               << 7U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 9U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffffeffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -14944,6 +15544,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 8U)))))) 
                                               << 8U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffffeffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 8U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 8U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 8U)))) 
+                                                                   >> 1U)))) 
+                                               << 8U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffffeffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 8U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 8U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 8U)))))) 
+                                               << 8U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0xaU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffffdffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15049,6 +15685,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 9U)))))) 
                                               << 9U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffffdffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 9U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 9U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 9U)))) 
+                                                                   >> 1U)))) 
+                                               << 9U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffffdffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 9U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 9U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 9U)))))) 
+                                               << 9U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0xbU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffffbffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15154,6 +15826,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0xaU)))))) 
                                               << 0xaU));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffffbffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0xaU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0xaU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0xaU)))) 
+                                                                   >> 1U)))) 
+                                               << 0xaU));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffffbffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0xaU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0xaU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0xaU)))))) 
+                                               << 0xaU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0xcU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffff7ffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15259,6 +15967,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0xbU)))))) 
                                               << 0xbU));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffff7ffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0xbU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0xbU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0xbU)))) 
+                                                                   >> 1U)))) 
+                                               << 0xbU));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffff7ffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0xbU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0xbU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0xbU)))))) 
+                                               << 0xbU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0xdU;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffffefffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15364,6 +16108,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0xcU)))))) 
                                               << 0xcU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffffefffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0xcU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0xcU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0xcU)))) 
+                                                                   >> 1U)))) 
+                                               << 0xcU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffffefffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0xcU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0xcU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0xcU)))))) 
+                                               << 0xcU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0xeU;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffffdfffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15469,6 +16249,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0xdU)))))) 
                                               << 0xdU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffffdfffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0xdU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0xdU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0xdU)))) 
+                                                                   >> 1U)))) 
+                                               << 0xdU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffffdfffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0xdU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0xdU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0xdU)))))) 
+                                               << 0xdU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0xfU;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffffbfffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15574,6 +16390,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0xeU)))))) 
                                               << 0xeU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffffbfffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0xeU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0xeU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0xeU)))) 
+                                                                   >> 1U)))) 
+                                               << 0xeU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffffbfffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0xeU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0xeU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0xeU)))))) 
+                                               << 0xeU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x10U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffff7fffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15679,6 +16531,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0xfU)))))) 
                                               << 0xfU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffff7fffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0xfU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0xfU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0xfU)))) 
+                                                                   >> 1U)))) 
+                                               << 0xfU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffff7fffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0xfU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0xfU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0xfU)))))) 
+                                               << 0xfU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x11U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffeffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15784,6 +16672,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x10U)))))) 
                                               << 0x10U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffeffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x10U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x10U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x10U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x10U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffeffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x10U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x10U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x10U)))))) 
+                                               << 0x10U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x12U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffdffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15889,6 +16813,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x11U)))))) 
                                               << 0x11U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffdffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x11U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x11U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x11U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x11U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffdffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x11U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x11U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x11U)))))) 
+                                               << 0x11U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x13U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffffbffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -15994,6 +16954,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x12U)))))) 
                                               << 0x12U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffffbffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x12U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x12U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x12U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x12U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffffbffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x12U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x12U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x12U)))))) 
+                                               << 0x12U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x14U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffff7ffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16099,6 +17095,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x13U)))))) 
                                               << 0x13U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffff7ffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x13U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x13U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x13U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x13U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffff7ffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x13U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x13U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x13U)))))) 
+                                               << 0x13U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x15U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffefffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16204,6 +17236,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x14U)))))) 
                                               << 0x14U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffefffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x14U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x14U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x14U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x14U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffefffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x14U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x14U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x14U)))))) 
+                                               << 0x14U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x16U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffdfffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16309,6 +17377,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x15U)))))) 
                                               << 0x15U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffdfffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x15U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x15U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x15U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x15U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffdfffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x15U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x15U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x15U)))))) 
+                                               << 0x15U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x17U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffffbfffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16414,6 +17518,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x16U)))))) 
                                               << 0x16U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffffbfffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x16U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x16U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x16U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x16U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffffbfffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x16U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x16U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x16U)))))) 
+                                               << 0x16U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x18U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffff7fffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16519,6 +17659,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x17U)))))) 
                                               << 0x17U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffff7fffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x17U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x17U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x17U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x17U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffff7fffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x17U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x17U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x17U)))))) 
+                                               << 0x17U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x19U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffeffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16624,6 +17800,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x18U)))))) 
                                               << 0x18U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffeffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x18U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x18U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x18U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x18U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffeffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x18U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x18U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x18U)))))) 
+                                               << 0x18U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x1aU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffdffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16729,6 +17941,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x19U)))))) 
                                               << 0x19U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffdffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x19U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x19U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x19U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x19U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffdffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x19U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x19U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x19U)))))) 
+                                               << 0x19U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x1bU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffffbffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16834,6 +18082,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x1aU)))))) 
                                               << 0x1aU));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffffbffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x1aU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x1aU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x1aU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x1aU));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffffbffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x1aU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x1aU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x1aU)))))) 
+                                               << 0x1aU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x1cU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffff7ffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -16939,6 +18223,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x1bU)))))) 
                                               << 0x1bU));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffff7ffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x1bU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x1bU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x1bU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x1bU));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffff7ffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x1bU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x1bU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x1bU)))))) 
+                                               << 0x1bU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x1dU;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffefffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17044,6 +18364,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x1cU)))))) 
                                               << 0x1cU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffefffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x1cU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x1cU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x1cU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x1cU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffefffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x1cU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x1cU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x1cU)))))) 
+                                               << 0x1cU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x1eU;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffdfffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17149,6 +18505,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x1dU)))))) 
                                               << 0x1dU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffdfffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x1dU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x1dU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x1dU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x1dU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffdfffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x1dU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x1dU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x1dU)))))) 
+                                               << 0x1dU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x1fU;
             vlSelf->multiplier__DOT__c5 = ((0xffffffffbfffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17254,6 +18646,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x1eU)))))) 
                                               << 0x1eU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffffbfffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x1eU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x1eU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x1eU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x1eU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffffbfffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x1eU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x1eU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x1eU)))))) 
+                                               << 0x1eU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x20U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffff7fffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17359,6 +18787,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x1fU)))))) 
                                               << 0x1fU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffff7fffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x1fU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x1fU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x1fU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x1fU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffff7fffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x1fU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x1fU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x1fU)))))) 
+                                               << 0x1fU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x21U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffeffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17464,6 +18928,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x20U)))))) 
                                               << 0x20U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffeffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x20U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x20U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x20U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x20U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffeffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x20U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x20U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x20U)))))) 
+                                               << 0x20U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x22U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffdffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17569,6 +19069,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x21U)))))) 
                                               << 0x21U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffdffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x21U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x21U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x21U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x21U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffdffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x21U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x21U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x21U)))))) 
+                                               << 0x21U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x23U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffffbffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17674,6 +19210,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x22U)))))) 
                                               << 0x22U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffffbffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x22U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x22U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x22U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x22U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffffbffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x22U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x22U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x22U)))))) 
+                                               << 0x22U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x24U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffff7ffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17779,6 +19351,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x23U)))))) 
                                               << 0x23U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffff7ffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x23U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x23U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x23U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x23U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffff7ffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x23U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x23U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x23U)))))) 
+                                               << 0x23U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x25U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffefffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17884,6 +19492,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x24U)))))) 
                                               << 0x24U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffefffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x24U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x24U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x24U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x24U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffefffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x24U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x24U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x24U)))))) 
+                                               << 0x24U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x26U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffdfffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -17989,6 +19633,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x25U)))))) 
                                               << 0x25U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffdfffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x25U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x25U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x25U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x25U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffdfffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x25U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x25U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x25U)))))) 
+                                               << 0x25U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x27U;
             vlSelf->multiplier__DOT__c5 = ((0xffffffbfffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18094,6 +19774,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x26U)))))) 
                                               << 0x26U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffffbfffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x26U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x26U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x26U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x26U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffffbfffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x26U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x26U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x26U)))))) 
+                                               << 0x26U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x28U;
             vlSelf->multiplier__DOT__c5 = ((0xffffff7fffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18199,6 +19915,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x27U)))))) 
                                               << 0x27U));
+            vlSelf->multiplier__DOT__c14 = ((0xffffff7fffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x27U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x27U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x27U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x27U));
+            vlSelf->multiplier__DOT__s14 = ((0xffffff7fffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x27U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x27U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x27U)))))) 
+                                               << 0x27U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x29U;
             vlSelf->multiplier__DOT__c5 = ((0xfffffeffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18304,6 +20056,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x28U)))))) 
                                               << 0x28U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffeffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x28U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x28U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x28U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x28U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffeffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x28U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x28U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x28U)))))) 
+                                               << 0x28U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x2aU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffdffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18409,6 +20197,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x29U)))))) 
                                               << 0x29U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffdffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x29U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x29U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x29U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x29U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffdffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x29U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x29U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x29U)))))) 
+                                               << 0x29U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x2bU;
             vlSelf->multiplier__DOT__c5 = ((0xfffffbffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18514,6 +20338,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x2aU)))))) 
                                               << 0x2aU));
+            vlSelf->multiplier__DOT__c14 = ((0xfffffbffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x2aU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x2aU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x2aU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x2aU));
+            vlSelf->multiplier__DOT__s14 = ((0xfffffbffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x2aU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x2aU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x2aU)))))) 
+                                               << 0x2aU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x2cU;
             vlSelf->multiplier__DOT__c5 = ((0xfffff7ffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18619,6 +20479,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x2bU)))))) 
                                               << 0x2bU));
+            vlSelf->multiplier__DOT__c14 = ((0xfffff7ffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x2bU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x2bU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x2bU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x2bU));
+            vlSelf->multiplier__DOT__s14 = ((0xfffff7ffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x2bU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x2bU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x2bU)))))) 
+                                               << 0x2bU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x2dU;
             vlSelf->multiplier__DOT__c5 = ((0xffffefffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18724,6 +20620,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x2cU)))))) 
                                               << 0x2cU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffefffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x2cU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x2cU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x2cU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x2cU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffefffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x2cU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x2cU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x2cU)))))) 
+                                               << 0x2cU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x2eU;
             vlSelf->multiplier__DOT__c5 = ((0xffffdfffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18829,6 +20761,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x2dU)))))) 
                                               << 0x2dU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffdfffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x2dU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x2dU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x2dU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x2dU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffdfffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x2dU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x2dU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x2dU)))))) 
+                                               << 0x2dU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x2fU;
             vlSelf->multiplier__DOT__c5 = ((0xffffbfffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -18934,6 +20902,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x2eU)))))) 
                                               << 0x2eU));
+            vlSelf->multiplier__DOT__c14 = ((0xffffbfffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x2eU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x2eU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x2eU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x2eU));
+            vlSelf->multiplier__DOT__s14 = ((0xffffbfffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x2eU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x2eU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x2eU)))))) 
+                                               << 0x2eU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x30U;
             vlSelf->multiplier__DOT__c5 = ((0xffff7fffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19039,6 +21043,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x2fU)))))) 
                                               << 0x2fU));
+            vlSelf->multiplier__DOT__c14 = ((0xffff7fffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x2fU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x2fU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x2fU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x2fU));
+            vlSelf->multiplier__DOT__s14 = ((0xffff7fffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x2fU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x2fU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x2fU)))))) 
+                                               << 0x2fU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x31U;
             vlSelf->multiplier__DOT__c5 = ((0xfffeffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19144,6 +21184,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x30U)))))) 
                                               << 0x30U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffeffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x30U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x30U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x30U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x30U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffeffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x30U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x30U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x30U)))))) 
+                                               << 0x30U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x32U;
             vlSelf->multiplier__DOT__c5 = ((0xfffdffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19249,6 +21325,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x31U)))))) 
                                               << 0x31U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffdffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x31U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x31U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x31U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x31U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffdffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x31U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x31U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x31U)))))) 
+                                               << 0x31U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x33U;
             vlSelf->multiplier__DOT__c5 = ((0xfffbffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19354,6 +21466,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x32U)))))) 
                                               << 0x32U));
+            vlSelf->multiplier__DOT__c14 = ((0xfffbffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x32U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x32U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x32U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x32U));
+            vlSelf->multiplier__DOT__s14 = ((0xfffbffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x32U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x32U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x32U)))))) 
+                                               << 0x32U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x34U;
             vlSelf->multiplier__DOT__c5 = ((0xfff7ffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19459,6 +21607,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x33U)))))) 
                                               << 0x33U));
+            vlSelf->multiplier__DOT__c14 = ((0xfff7ffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x33U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x33U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x33U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x33U));
+            vlSelf->multiplier__DOT__s14 = ((0xfff7ffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x33U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x33U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x33U)))))) 
+                                               << 0x33U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x35U;
             vlSelf->multiplier__DOT__c5 = ((0xffefffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19564,6 +21748,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x34U)))))) 
                                               << 0x34U));
+            vlSelf->multiplier__DOT__c14 = ((0xffefffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x34U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x34U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x34U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x34U));
+            vlSelf->multiplier__DOT__s14 = ((0xffefffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x34U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x34U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x34U)))))) 
+                                               << 0x34U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x36U;
             vlSelf->multiplier__DOT__c5 = ((0xffdfffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19669,6 +21889,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x35U)))))) 
                                               << 0x35U));
+            vlSelf->multiplier__DOT__c14 = ((0xffdfffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x35U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x35U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x35U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x35U));
+            vlSelf->multiplier__DOT__s14 = ((0xffdfffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x35U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x35U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x35U)))))) 
+                                               << 0x35U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x37U;
             vlSelf->multiplier__DOT__c5 = ((0xffbfffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19774,6 +22030,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x36U)))))) 
                                               << 0x36U));
+            vlSelf->multiplier__DOT__c14 = ((0xffbfffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x36U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x36U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x36U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x36U));
+            vlSelf->multiplier__DOT__s14 = ((0xffbfffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x36U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x36U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x36U)))))) 
+                                               << 0x36U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x38U;
             vlSelf->multiplier__DOT__c5 = ((0xff7fffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19879,6 +22171,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x37U)))))) 
                                               << 0x37U));
+            vlSelf->multiplier__DOT__c14 = ((0xff7fffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x37U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x37U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x37U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x37U));
+            vlSelf->multiplier__DOT__s14 = ((0xff7fffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x37U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x37U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x37U)))))) 
+                                               << 0x37U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x39U;
             vlSelf->multiplier__DOT__c5 = ((0xfeffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -19984,6 +22312,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x38U)))))) 
                                               << 0x38U));
+            vlSelf->multiplier__DOT__c14 = ((0xfeffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x38U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x38U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x38U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x38U));
+            vlSelf->multiplier__DOT__s14 = ((0xfeffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x38U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x38U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x38U)))))) 
+                                               << 0x38U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x3aU;
             vlSelf->multiplier__DOT__c5 = ((0xfdffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -20089,6 +22453,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x39U)))))) 
                                               << 0x39U));
+            vlSelf->multiplier__DOT__c14 = ((0xfdffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x39U))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x39U)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x39U)))) 
+                                                                   >> 1U)))) 
+                                               << 0x39U));
+            vlSelf->multiplier__DOT__s14 = ((0xfdffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x39U)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x39U))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x39U)))))) 
+                                               << 0x39U));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x3bU;
             vlSelf->multiplier__DOT__c5 = ((0xfbffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -20194,6 +22594,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x3aU)))))) 
                                               << 0x3aU));
+            vlSelf->multiplier__DOT__c14 = ((0xfbffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x3aU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x3aU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x3aU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x3aU));
+            vlSelf->multiplier__DOT__s14 = ((0xfbffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x3aU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x3aU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x3aU)))))) 
+                                               << 0x3aU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x3cU;
             vlSelf->multiplier__DOT__c5 = ((0xf7ffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -20299,6 +22735,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x3bU)))))) 
                                               << 0x3bU));
+            vlSelf->multiplier__DOT__c14 = ((0xf7ffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x3bU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x3bU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x3bU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x3bU));
+            vlSelf->multiplier__DOT__s14 = ((0xf7ffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x3bU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x3bU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x3bU)))))) 
+                                               << 0x3bU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x3dU;
             vlSelf->multiplier__DOT__c5 = ((0xefffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -20404,6 +22876,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x3cU)))))) 
                                               << 0x3cU));
+            vlSelf->multiplier__DOT__c14 = ((0xefffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x3cU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x3cU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x3cU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x3cU));
+            vlSelf->multiplier__DOT__s14 = ((0xefffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x3cU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x3cU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x3cU)))))) 
+                                               << 0x3cU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x3eU;
             vlSelf->multiplier__DOT__c5 = ((0xdfffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -20509,6 +23017,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x3dU)))))) 
                                               << 0x3dU));
+            vlSelf->multiplier__DOT__c14 = ((0xdfffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x3dU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x3dU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x3dU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x3dU));
+            vlSelf->multiplier__DOT__s14 = ((0xdfffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x3dU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x3dU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x3dU)))))) 
+                                               << 0x3dU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x3fU;
             vlSelf->multiplier__DOT__c5 = ((0xbfffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -20614,6 +23158,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x3eU)))))) 
                                               << 0x3eU));
+            vlSelf->multiplier__DOT__c14 = ((0xbfffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x3eU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x3eU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x3eU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x3eU));
+            vlSelf->multiplier__DOT__s14 = ((0xbfffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x3eU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x3eU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x3eU)))))) 
+                                               << 0x3eU));
             vlSelf->multiplier__DOT__unnamedblk2__DOT__j = 0x40U;
             vlSelf->multiplier__DOT__c5 = ((0x7fffffffffffffffULL 
                                             & vlSelf->multiplier__DOT__c5) 
@@ -20719,6 +23299,42 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__0(Vmultiplier___024
                                                                             (vlSelf->multiplier__DOT__cs3 
                                                                              >> 0x3fU)))))) 
                                               << 0x3fU));
+            vlSelf->multiplier__DOT__c14 = ((0x7fffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__c14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & ((((1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__cs4 
+                                                                                >> 0x3fU))) 
+                                                                     + 
+                                                                     (1U 
+                                                                      & (IData)(
+                                                                                (vlSelf->multiplier__DOT__layer0
+                                                                                [0x10U] 
+                                                                                >> 0x3fU)))) 
+                                                                    + 
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               (vlSelf->multiplier__DOT__s0 
+                                                                                >> 0x3fU)))) 
+                                                                   >> 1U)))) 
+                                               << 0x3fU));
+            vlSelf->multiplier__DOT__s14 = ((0x7fffffffffffffffULL 
+                                             & vlSelf->multiplier__DOT__s14) 
+                                            | ((QData)((IData)(
+                                                               (1U 
+                                                                & (((IData)(
+                                                                            (vlSelf->multiplier__DOT__cs4 
+                                                                             >> 0x3fU)) 
+                                                                    + (IData)(
+                                                                              (vlSelf->multiplier__DOT__layer0
+                                                                               [0x10U] 
+                                                                               >> 0x3fU))) 
+                                                                   + (IData)(
+                                                                             (vlSelf->multiplier__DOT__s0 
+                                                                              >> 0x3fU)))))) 
+                                               << 0x3fU));
         }
     } else if ((1U & (IData)(vlSelf->multiplier__DOT__state))) {
         vlSelf->multiplier__DOT__unnamedblk1__DOT__i = 1U;

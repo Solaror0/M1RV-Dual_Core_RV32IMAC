@@ -17,9 +17,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
     // Anonymous structures to workaround compiler member-count bugs
     struct {
         VL_IN8(clk,0,0);
+        VL_IN8(unsignedA,0,0);
         VL_IN8(rst,0,0);
         VL_OUT8(done,0,0);
         VL_OUT8(running,0,0);
+        CData/*0:0*/ multiplier__DOT__unsignedA;
         CData/*0:0*/ multiplier__DOT__rst;
         CData/*0:0*/ multiplier__DOT__clk;
         CData/*0:0*/ multiplier__DOT__done;
@@ -27,38 +29,59 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*2:0*/ multiplier__DOT__state;
         CData/*0:0*/ multiplier__DOT__cout;
         CData/*0:0*/ multiplier__DOT__cout_upper;
+        CData/*0:0*/ multiplier__DOT__booth0__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth0__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth0__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth0__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth1__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth1__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth1__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth1__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth2__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth2__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth2__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth2__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth3__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth3__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth3__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth3__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth4__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth4__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth4__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth4__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth5__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth5__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth5__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth5__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth6__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth6__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth6__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth6__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth7__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth7__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth7__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth7__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth8__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth8__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth8__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth8__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth9__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth9__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth9__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth9__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth10__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth10__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth10__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth10__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth11__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth11__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth11__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth11__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth12__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth12__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth12__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth12__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth13__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth13__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth13__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth13__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth14__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth14__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth14__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth14__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth15__DOT__unsignedA;
         CData/*2:0*/ multiplier__DOT__booth15__DOT__triplet;
-        CData/*4:0*/ multiplier__DOT__booth15__DOT__shamt;
+        CData/*5:0*/ multiplier__DOT__booth15__DOT__shamt;
+        CData/*0:0*/ multiplier__DOT__booth16__DOT__unsignedA;
+        CData/*2:0*/ multiplier__DOT__booth16__DOT__triplet;
+        CData/*5:0*/ multiplier__DOT__booth16__DOT__shamt;
+    };
+    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__Subtract;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__cin;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__cout;
@@ -80,8 +103,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block0__DOT__slice0__DOT__P;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block0__DOT__slice1__DOT__a;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block0__DOT__slice1__DOT__b;
-    };
-    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block0__DOT__slice1__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block0__DOT__slice1__DOT__P;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block0__DOT__slice2__DOT__a;
@@ -125,6 +146,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block2__DOT__cout;
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block2__DOT__P;
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block2__DOT__G;
+    };
+    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c0;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c1;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block2__DOT__c2;
@@ -146,8 +169,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block2__DOT__slice3__DOT__P;
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block3__DOT__a;
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block3__DOT__b;
-    };
-    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block3__DOT__cin;
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block3__DOT__s;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block3__DOT__cout;
@@ -191,6 +212,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block4__DOT__slice1__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block4__DOT__slice1__DOT__P;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block4__DOT__slice2__DOT__a;
+    };
+    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block4__DOT__slice2__DOT__b;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block4__DOT__slice2__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block4__DOT__slice2__DOT__P;
@@ -212,8 +235,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block5__DOT__slice0__DOT__b;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block5__DOT__slice0__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block5__DOT__slice0__DOT__P;
-    };
-    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block5__DOT__slice1__DOT__a;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block5__DOT__slice1__DOT__b;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block5__DOT__slice1__DOT__G;
@@ -257,6 +278,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__cin;
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__s;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__cout;
+    };
+    struct {
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__P;
         CData/*3:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__c0;
@@ -278,8 +301,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__slice3__DOT__b;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__slice3__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_lower__DOT__block7__DOT__slice3__DOT__P;
-    };
-    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__Subtract;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__cin;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__cout;
@@ -323,6 +344,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block1__DOT__c2;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block1__DOT__slice0__DOT__a;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block1__DOT__slice0__DOT__b;
+    };
+    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block1__DOT__slice0__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block1__DOT__slice0__DOT__P;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block1__DOT__slice1__DOT__a;
@@ -344,8 +367,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block2__DOT__cout;
         CData/*3:0*/ multiplier__DOT__fast_adder_upper__DOT__block2__DOT__P;
         CData/*3:0*/ multiplier__DOT__fast_adder_upper__DOT__block2__DOT__G;
-    };
-    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c0;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c1;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block2__DOT__c2;
@@ -389,6 +410,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block3__DOT__slice2__DOT__P;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block3__DOT__slice3__DOT__a;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block3__DOT__slice3__DOT__b;
+    };
+    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block3__DOT__slice3__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block3__DOT__slice3__DOT__P;
         CData/*3:0*/ multiplier__DOT__fast_adder_upper__DOT__block4__DOT__a;
@@ -410,8 +433,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block4__DOT__slice1__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block4__DOT__slice1__DOT__P;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block4__DOT__slice2__DOT__a;
-    };
-    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block4__DOT__slice2__DOT__b;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block4__DOT__slice2__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block4__DOT__slice2__DOT__P;
@@ -455,6 +476,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c0;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c1;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block6__DOT__c2;
+    };
+    struct {
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block6__DOT__slice0__DOT__a;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block6__DOT__slice0__DOT__b;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block6__DOT__slice0__DOT__G;
@@ -476,8 +499,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block7__DOT__cin;
         CData/*3:0*/ multiplier__DOT__fast_adder_upper__DOT__block7__DOT__s;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block7__DOT__cout;
-    };
-    struct {
         CData/*3:0*/ multiplier__DOT__fast_adder_upper__DOT__block7__DOT__P;
         CData/*3:0*/ multiplier__DOT__fast_adder_upper__DOT__block7__DOT__G;
         CData/*0:0*/ multiplier__DOT__fast_adder_upper__DOT__block7__DOT__c0;
@@ -505,9 +526,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
         CData/*0:0*/ __VactContinue;
         VL_IN(a,31,0);
-        VL_IN(b,31,0);
         IData/*31:0*/ multiplier__DOT__a;
-        IData/*31:0*/ multiplier__DOT__b;
         IData/*31:0*/ multiplier__DOT__unnamedblk1__DOT__i;
         IData/*31:0*/ multiplier__DOT__unnamedblk2__DOT__j;
         IData/*31:0*/ multiplier__DOT__unnamedblk3__DOT__k;
@@ -523,6 +542,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         IData/*31:0*/ multiplier__DOT__booth6__DOT__a;
         IData/*31:0*/ multiplier__DOT__booth7__DOT__a;
         IData/*31:0*/ multiplier__DOT__booth8__DOT__a;
+    };
+    struct {
         IData/*31:0*/ multiplier__DOT__booth9__DOT__a;
         IData/*31:0*/ multiplier__DOT__booth10__DOT__a;
         IData/*31:0*/ multiplier__DOT__booth11__DOT__a;
@@ -530,6 +551,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         IData/*31:0*/ multiplier__DOT__booth13__DOT__a;
         IData/*31:0*/ multiplier__DOT__booth14__DOT__a;
         IData/*31:0*/ multiplier__DOT__booth15__DOT__a;
+        IData/*31:0*/ multiplier__DOT__booth16__DOT__a;
         IData/*31:0*/ multiplier__DOT__fast_adder_lower__DOT__a;
         IData/*31:0*/ multiplier__DOT__fast_adder_lower__DOT__b;
         IData/*31:0*/ multiplier__DOT__fast_adder_lower__DOT__s;
@@ -539,11 +561,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         IData/*31:0*/ multiplier__DOT__fast_adder_upper__DOT__s;
         IData/*31:0*/ multiplier__DOT__fast_adder_upper__DOT__b_in;
         IData/*31:0*/ __VactIterCount;
+        VL_IN64(b,32,0);
         VL_OUT64(output_product,63,0);
+        QData/*32:0*/ multiplier__DOT__b;
         QData/*63:0*/ multiplier__DOT__output_product;
         QData/*63:0*/ multiplier__DOT__product;
-    };
-    struct {
         QData/*63:0*/ multiplier__DOT__c0;
         QData/*63:0*/ multiplier__DOT__c1;
         QData/*63:0*/ multiplier__DOT__c2;
@@ -558,6 +580,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         QData/*63:0*/ multiplier__DOT__c11;
         QData/*63:0*/ multiplier__DOT__c12;
         QData/*63:0*/ multiplier__DOT__c13;
+        QData/*63:0*/ multiplier__DOT__c14;
         QData/*63:0*/ multiplier__DOT__s0;
         QData/*63:0*/ multiplier__DOT__s1;
         QData/*63:0*/ multiplier__DOT__s2;
@@ -572,6 +595,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         QData/*63:0*/ multiplier__DOT__s11;
         QData/*63:0*/ multiplier__DOT__s12;
         QData/*63:0*/ multiplier__DOT__s13;
+        QData/*63:0*/ multiplier__DOT__s14;
         QData/*63:0*/ multiplier__DOT__cs0;
         QData/*63:0*/ multiplier__DOT__cs1;
         QData/*63:0*/ multiplier__DOT__cs2;
@@ -584,8 +608,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         QData/*63:0*/ multiplier__DOT__cs9;
         QData/*63:0*/ multiplier__DOT__cs10;
         QData/*63:0*/ multiplier__DOT__cs11;
+    };
+    struct {
         QData/*63:0*/ multiplier__DOT__cs12;
         QData/*63:0*/ multiplier__DOT__cs13;
+        QData/*63:0*/ multiplier__DOT__cs14;
         QData/*63:0*/ multiplier__DOT__booth0__DOT__partial_product;
         QData/*63:0*/ multiplier__DOT__booth0__DOT__product;
         QData/*63:0*/ multiplier__DOT__booth0__DOT__minus_a;
@@ -608,8 +635,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         QData/*63:0*/ multiplier__DOT__booth4__DOT__sign_ext_a;
         QData/*63:0*/ multiplier__DOT__booth5__DOT__partial_product;
         QData/*63:0*/ multiplier__DOT__booth5__DOT__product;
-    };
-    struct {
         QData/*63:0*/ multiplier__DOT__booth5__DOT__minus_a;
         QData/*63:0*/ multiplier__DOT__booth5__DOT__sign_ext_a;
         QData/*63:0*/ multiplier__DOT__booth6__DOT__partial_product;
@@ -649,10 +674,16 @@ class alignas(VL_CACHE_LINE_BYTES) Vmultiplier___024root final : public Verilate
         QData/*63:0*/ multiplier__DOT__booth14__DOT__minus_a;
         QData/*63:0*/ multiplier__DOT__booth14__DOT__sign_ext_a;
         QData/*63:0*/ multiplier__DOT__booth15__DOT__partial_product;
+    };
+    struct {
         QData/*63:0*/ multiplier__DOT__booth15__DOT__product;
         QData/*63:0*/ multiplier__DOT__booth15__DOT__minus_a;
         QData/*63:0*/ multiplier__DOT__booth15__DOT__sign_ext_a;
-        VlUnpacked<QData/*63:0*/, 16> multiplier__DOT__layer0;
+        QData/*63:0*/ multiplier__DOT__booth16__DOT__partial_product;
+        QData/*63:0*/ multiplier__DOT__booth16__DOT__product;
+        QData/*63:0*/ multiplier__DOT__booth16__DOT__minus_a;
+        QData/*63:0*/ multiplier__DOT__booth16__DOT__sign_ext_a;
+        VlUnpacked<QData/*63:0*/, 17> multiplier__DOT__layer0;
     };
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<1> __VicoTriggered;

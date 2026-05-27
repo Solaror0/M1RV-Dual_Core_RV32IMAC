@@ -31,6 +31,7 @@ int main(int argc, char ** argv){
 
         int a = (int)dut->a;
         int b = (int)dut->b;
+        
         int j = 0;
         int timeout = 100;
 

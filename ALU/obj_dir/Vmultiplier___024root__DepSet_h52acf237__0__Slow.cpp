@@ -46,6 +46,7 @@ VL_ATTR_COLD void Vmultiplier___024root___eval_initial__TOP(Vmultiplier___024roo
     vlSelf->multiplier__DOT__booth13__DOT__shamt = 0x1aU;
     vlSelf->multiplier__DOT__booth14__DOT__shamt = 0x1cU;
     vlSelf->multiplier__DOT__booth15__DOT__shamt = 0x1eU;
+    vlSelf->multiplier__DOT__booth16__DOT__shamt = 0x20U;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__Subtract = 0U;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__cin = 0U;
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__Subtract = 0U;
@@ -142,6 +143,10 @@ VL_ATTR_COLD void Vmultiplier___024root___stl_sequent__TOP__0(Vmultiplier___024r
     multiplier__DOT____Vcellout__booth14__partial_product = 0;
     QData/*63:0*/ multiplier__DOT____Vcellout__booth15__partial_product;
     multiplier__DOT____Vcellout__booth15__partial_product = 0;
+    QData/*63:0*/ multiplier__DOT____Vcellout__booth16__partial_product;
+    multiplier__DOT____Vcellout__booth16__partial_product = 0;
+    CData/*2:0*/ multiplier__DOT____Vcellinp__booth16__triplet;
+    multiplier__DOT____Vcellinp__booth16__triplet = 0;
     IData/*31:0*/ multiplier__DOT____Vcellout__fast_adder_lower__s;
     multiplier__DOT____Vcellout__fast_adder_lower__s = 0;
     IData/*31:0*/ multiplier__DOT____Vcellout__fast_adder_upper__s;
@@ -466,37 +471,38 @@ VL_ATTR_COLD void Vmultiplier___024root___stl_sequent__TOP__0(Vmultiplier___024r
     vlSelf->multiplier__DOT__done = vlSelf->done;
     vlSelf->multiplier__DOT__running = vlSelf->running;
     vlSelf->multiplier__DOT__booth0__DOT__triplet = 
-        (((3U & (vlSelf->b >> 0U)) << 1U) | 0U);
+        (((3U & (IData)((vlSelf->b >> 0U))) << 1U) 
+         | 0U);
     vlSelf->multiplier__DOT__booth1__DOT__triplet = 
-        (7U & (vlSelf->b >> 1U));
+        (7U & (IData)((vlSelf->b >> 1U)));
     vlSelf->multiplier__DOT__booth2__DOT__triplet = 
-        (7U & (vlSelf->b >> 3U));
+        (7U & (IData)((vlSelf->b >> 3U)));
     vlSelf->multiplier__DOT__booth3__DOT__triplet = 
-        (7U & (vlSelf->b >> 5U));
+        (7U & (IData)((vlSelf->b >> 5U)));
     vlSelf->multiplier__DOT__booth4__DOT__triplet = 
-        (7U & (vlSelf->b >> 7U));
+        (7U & (IData)((vlSelf->b >> 7U)));
     vlSelf->multiplier__DOT__booth5__DOT__triplet = 
-        (7U & (vlSelf->b >> 9U));
+        (7U & (IData)((vlSelf->b >> 9U)));
     vlSelf->multiplier__DOT__booth6__DOT__triplet = 
-        (7U & (vlSelf->b >> 0xbU));
+        (7U & (IData)((vlSelf->b >> 0xbU)));
     vlSelf->multiplier__DOT__booth7__DOT__triplet = 
-        (7U & (vlSelf->b >> 0xdU));
+        (7U & (IData)((vlSelf->b >> 0xdU)));
     vlSelf->multiplier__DOT__booth8__DOT__triplet = 
-        (7U & (vlSelf->b >> 0xfU));
+        (7U & (IData)((vlSelf->b >> 0xfU)));
     vlSelf->multiplier__DOT__booth9__DOT__triplet = 
-        (7U & (vlSelf->b >> 0x11U));
+        (7U & (IData)((vlSelf->b >> 0x11U)));
     vlSelf->multiplier__DOT__booth10__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x13U));
+        = (7U & (IData)((vlSelf->b >> 0x13U)));
     vlSelf->multiplier__DOT__booth11__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x15U));
+        = (7U & (IData)((vlSelf->b >> 0x15U)));
     vlSelf->multiplier__DOT__booth12__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x17U));
+        = (7U & (IData)((vlSelf->b >> 0x17U)));
     vlSelf->multiplier__DOT__booth13__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x19U));
+        = (7U & (IData)((vlSelf->b >> 0x19U)));
     vlSelf->multiplier__DOT__booth14__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x1bU));
+        = (7U & (IData)((vlSelf->b >> 0x1bU)));
     vlSelf->multiplier__DOT__booth15__DOT__triplet 
-        = (7U & (vlSelf->b >> 0x1dU));
+        = (7U & (IData)((vlSelf->b >> 0x1dU)));
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__a 
         = VL_SHIFTL_III(32,32,32, (IData)((vlSelf->multiplier__DOT__c13 
                                            >> 0U)), 1U);
@@ -919,6 +925,7 @@ VL_ATTR_COLD void Vmultiplier___024root___stl_sequent__TOP__0(Vmultiplier___024r
     vlSelf->multiplier__DOT__cs5 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c5, 1U);
     vlSelf->multiplier__DOT__cs6 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c6, 1U);
     vlSelf->multiplier__DOT__cs7 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c7, 1U);
+    vlSelf->multiplier__DOT__cs14 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c14, 1U);
     vlSelf->multiplier__DOT__cs8 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c8, 1U);
     vlSelf->multiplier__DOT__cs9 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c9, 1U);
     vlSelf->multiplier__DOT__cs10 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c10, 1U);
@@ -928,614 +935,852 @@ VL_ATTR_COLD void Vmultiplier___024root___stl_sequent__TOP__0(Vmultiplier___024r
         = (IData)(vlSelf->multiplier__DOT__s13);
     vlSelf->multiplier__DOT__fast_adder_upper__DOT__b_in 
         = (IData)((vlSelf->multiplier__DOT__s13 >> 0x20U));
-    vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
+    if (vlSelf->unsignedA) {
+        vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+        vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a 
+            = (QData)((IData)(vlSelf->a));
+    } else {
+        vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+        vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a 
+            = (((QData)((IData)((- (IData)((vlSelf->a 
+                                            >> 0x1fU))))) 
+                << 0x20U) | (QData)((IData)(vlSelf->a)));
+    }
     vlSelf->multiplier__DOT__booth0__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth0__DOT__product = 
-        ((2U & vlSelf->b) ? ((1U & vlSelf->b) ? vlSelf->multiplier__DOT__booth0__DOT__minus_a
-                              : (((QData)((IData)((0x7fffffffU 
-                                                   & (- (IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           (vlSelf->multiplier__DOT__booth0__DOT__minus_a 
-                                                                            >> 0x3fU)))))))) 
-                                  << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth0__DOT__minus_a)) 
-                                               << 1U)))
-          : ((1U & vlSelf->b) ? vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a
+        ((1U & (IData)((vlSelf->b >> 1U))) ? ((1U & (IData)(vlSelf->b))
+                                               ? vlSelf->multiplier__DOT__booth0__DOT__minus_a
+                                               : (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth0__DOT__minus_a 
+                                                                                >> 0x3fU)))))))) 
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth0__DOT__minus_a)) 
+                                                     << 1U)))
+          : ((1U & (IData)(vlSelf->b)) ? vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a
               : 0ULL));
     multiplier__DOT____Vcellout__booth0__partial_product 
         = vlSelf->multiplier__DOT__booth0__DOT__product;
-    vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth1__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth1__DOT__product = 
-        ((8U & vlSelf->b) ? ((4U & vlSelf->b) ? ((2U 
-                                                  & vlSelf->b)
-                                                  ? 0ULL
-                                                  : vlSelf->multiplier__DOT__booth1__DOT__minus_a)
-                              : ((2U & vlSelf->b) ? vlSelf->multiplier__DOT__booth1__DOT__minus_a
-                                  : (((QData)((IData)(
-                                                      (0x7fffffffU 
-                                                       & (- (IData)(
-                                                                    (1U 
-                                                                     & (IData)(
-                                                                               (vlSelf->multiplier__DOT__booth1__DOT__minus_a 
+        ((1U & (IData)((vlSelf->b >> 3U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 2U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 1U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth1__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 1U)))
+                                                   ? vlSelf->multiplier__DOT__booth1__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth1__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                      << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__minus_a)) 
-                                                   << 1U))))
-          : ((4U & vlSelf->b) ? ((2U & vlSelf->b) ? 
-                                 (((QData)((IData)(
-                                                   (0x7fffffffU 
-                                                    & (- (IData)(
-                                                                 (1U 
-                                                                  & (IData)(
-                                                                            (vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
-                                                                             >> 0x3fU)))))))) 
-                                   << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)) 
-                                                << 1U))
-                                  : vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)
-              : ((2U & vlSelf->b) ? vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 2U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 1U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a 
+                                                                                >> 0x3fU)))))))) 
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 1U))) ? vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth1__partial_product 
         = (vlSelf->multiplier__DOT__booth1__DOT__product 
            << 2U);
-    vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth2__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth2__DOT__product = 
-        ((0x20U & vlSelf->b) ? ((0x10U & vlSelf->b)
-                                 ? ((8U & vlSelf->b)
-                                     ? 0ULL : vlSelf->multiplier__DOT__booth2__DOT__minus_a)
-                                 : ((8U & vlSelf->b)
-                                     ? vlSelf->multiplier__DOT__booth2__DOT__minus_a
-                                     : (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+        ((1U & (IData)((vlSelf->b >> 5U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 4U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 3U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth2__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 3U)))
+                                                   ? vlSelf->multiplier__DOT__booth2__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth2__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__minus_a)) 
-                                           << 1U))))
-          : ((0x10U & vlSelf->b) ? ((8U & vlSelf->b)
-                                     ? (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 4U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 3U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)) 
-                                           << 1U)) : vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)
-              : ((8U & vlSelf->b) ? vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 3U))) ? vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth2__partial_product 
         = (vlSelf->multiplier__DOT__booth2__DOT__product 
            << 4U);
-    vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth3__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth3__DOT__product = 
-        ((0x80U & vlSelf->b) ? ((0x40U & vlSelf->b)
-                                 ? ((0x20U & vlSelf->b)
-                                     ? 0ULL : vlSelf->multiplier__DOT__booth3__DOT__minus_a)
-                                 : ((0x20U & vlSelf->b)
-                                     ? vlSelf->multiplier__DOT__booth3__DOT__minus_a
-                                     : (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+        ((1U & (IData)((vlSelf->b >> 7U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 6U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 5U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth3__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 5U)))
+                                                   ? vlSelf->multiplier__DOT__booth3__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth3__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__minus_a)) 
-                                           << 1U))))
-          : ((0x40U & vlSelf->b) ? ((0x20U & vlSelf->b)
-                                     ? (((QData)((IData)(
-                                                         (0x7fffffffU 
-                                                          & (- (IData)(
-                                                                       (1U 
-                                                                        & (IData)(
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 6U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 5U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                         << 0x21U) 
-                                        | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)) 
-                                           << 1U)) : vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)
-              : ((0x20U & vlSelf->b) ? vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 5U))) ? vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth3__partial_product 
         = (vlSelf->multiplier__DOT__booth3__DOT__product 
            << 6U);
-    vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth4__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth4__DOT__product = 
-        ((0x200U & vlSelf->b) ? ((0x100U & vlSelf->b)
-                                  ? ((0x80U & vlSelf->b)
-                                      ? 0ULL : vlSelf->multiplier__DOT__booth4__DOT__minus_a)
-                                  : ((0x80U & vlSelf->b)
-                                      ? vlSelf->multiplier__DOT__booth4__DOT__minus_a
-                                      : (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+        ((1U & (IData)((vlSelf->b >> 9U))) ? ((1U & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 8U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 7U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth4__DOT__minus_a)
+                                               : ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 7U)))
+                                                   ? vlSelf->multiplier__DOT__booth4__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth4__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__minus_a)) 
-                                            << 1U))))
-          : ((0x100U & vlSelf->b) ? ((0x80U & vlSelf->b)
-                                      ? (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 8U))) ? ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 7U)))
+                                                   ? 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)) 
-                                            << 1U))
-                                      : vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)
-              : ((0x80U & vlSelf->b) ? vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)) 
+                                                      << 1U))
+                                                   : vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 7U))) ? vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth4__partial_product 
         = (vlSelf->multiplier__DOT__booth4__DOT__product 
            << 8U);
-    vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth5__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth5__DOT__product = 
-        ((0x800U & vlSelf->b) ? ((0x400U & vlSelf->b)
-                                  ? ((0x200U & vlSelf->b)
-                                      ? 0ULL : vlSelf->multiplier__DOT__booth5__DOT__minus_a)
-                                  : ((0x200U & vlSelf->b)
-                                      ? vlSelf->multiplier__DOT__booth5__DOT__minus_a
-                                      : (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0xbU))) ? ((1U 
+                                                 & (IData)(
+                                                           (vlSelf->b 
+                                                            >> 0xaU)))
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 9U)))
+                                                  ? 0ULL
+                                                  : vlSelf->multiplier__DOT__booth5__DOT__minus_a)
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 9U)))
+                                                  ? vlSelf->multiplier__DOT__booth5__DOT__minus_a
+                                                  : 
+                                                 (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth5__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__minus_a)) 
-                                            << 1U))))
-          : ((0x400U & vlSelf->b) ? ((0x200U & vlSelf->b)
-                                      ? (((QData)((IData)(
-                                                          (0x7fffffffU 
-                                                           & (- (IData)(
-                                                                        (1U 
-                                                                         & (IData)(
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__minus_a)) 
+                                                     << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0xaU))) ? 
+             ((1U & (IData)((vlSelf->b >> 9U))) ? (
+                                                   ((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a 
                                                                                 >> 0x3fU)))))))) 
-                                          << 0x21U) 
-                                         | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)) 
-                                            << 1U))
-                                      : vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)
-              : ((0x200U & vlSelf->b) ? vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)) 
+                                                      << 1U))
+               : vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 9U))) ? vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth5__partial_product 
         = (vlSelf->multiplier__DOT__booth5__DOT__product 
            << 0xaU);
-    vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth6__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth6__DOT__product = 
-        ((0x2000U & vlSelf->b) ? ((0x1000U & vlSelf->b)
-                                   ? ((0x800U & vlSelf->b)
-                                       ? 0ULL : vlSelf->multiplier__DOT__booth6__DOT__minus_a)
-                                   : ((0x800U & vlSelf->b)
-                                       ? vlSelf->multiplier__DOT__booth6__DOT__minus_a
-                                       : (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0xdU))) ? ((1U 
+                                                 & (IData)(
+                                                           (vlSelf->b 
+                                                            >> 0xcU)))
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xbU)))
+                                                  ? 0ULL
+                                                  : vlSelf->multiplier__DOT__booth6__DOT__minus_a)
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xbU)))
+                                                  ? vlSelf->multiplier__DOT__booth6__DOT__minus_a
+                                                  : 
+                                                 (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth6__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__minus_a)) 
-                                             << 1U))))
-          : ((0x1000U & vlSelf->b) ? ((0x800U & vlSelf->b)
-                                       ? (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)) 
-                                             << 1U))
-                                       : vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)
-              : ((0x800U & vlSelf->b) ? vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__minus_a)) 
+                                                     << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0xcU))) ? 
+             ((1U & (IData)((vlSelf->b >> 0xbU))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0xbU)))
+                  ? vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth6__partial_product 
         = (vlSelf->multiplier__DOT__booth6__DOT__product 
            << 0xcU);
-    vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth7__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth7__DOT__product = 
-        ((0x8000U & vlSelf->b) ? ((0x4000U & vlSelf->b)
-                                   ? ((0x2000U & vlSelf->b)
-                                       ? 0ULL : vlSelf->multiplier__DOT__booth7__DOT__minus_a)
-                                   : ((0x2000U & vlSelf->b)
-                                       ? vlSelf->multiplier__DOT__booth7__DOT__minus_a
-                                       : (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0xfU))) ? ((1U 
+                                                 & (IData)(
+                                                           (vlSelf->b 
+                                                            >> 0xeU)))
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xdU)))
+                                                  ? 0ULL
+                                                  : vlSelf->multiplier__DOT__booth7__DOT__minus_a)
+                                                 : 
+                                                ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0xdU)))
+                                                  ? vlSelf->multiplier__DOT__booth7__DOT__minus_a
+                                                  : 
+                                                 (((QData)((IData)(
+                                                                   (0x7fffffffU 
+                                                                    & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth7__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__minus_a)) 
-                                             << 1U))))
-          : ((0x4000U & vlSelf->b) ? ((0x2000U & vlSelf->b)
-                                       ? (((QData)((IData)(
-                                                           (0x7fffffffU 
-                                                            & (- (IData)(
-                                                                         (1U 
-                                                                          & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                           << 0x21U) 
-                                          | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)) 
-                                             << 1U))
-                                       : vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)
-              : ((0x2000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a
+                                                   << 0x21U) 
+                                                  | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__minus_a)) 
+                                                     << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0xeU))) ? 
+             ((1U & (IData)((vlSelf->b >> 0xdU))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0xdU)))
+                  ? vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth7__partial_product 
         = (vlSelf->multiplier__DOT__booth7__DOT__product 
            << 0xeU);
-    vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth8__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth8__DOT__product = 
-        ((0x20000U & vlSelf->b) ? ((0x10000U & vlSelf->b)
-                                    ? ((0x8000U & vlSelf->b)
-                                        ? 0ULL : vlSelf->multiplier__DOT__booth8__DOT__minus_a)
-                                    : ((0x8000U & vlSelf->b)
-                                        ? vlSelf->multiplier__DOT__booth8__DOT__minus_a
-                                        : (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0x11U))) ? ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0x10U)))
+                                                  ? 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0xfU)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth8__DOT__minus_a)
+                                                  : 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0xfU)))
+                                                   ? vlSelf->multiplier__DOT__booth8__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth8__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__minus_a)) 
-                                              << 1U))))
-          : ((0x10000U & vlSelf->b) ? ((0x8000U & vlSelf->b)
-                                        ? (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)) 
-                                              << 1U))
-                                        : vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)
-              : ((0x8000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0x10U))) ? 
+             ((1U & (IData)((vlSelf->b >> 0xfU))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0xfU)))
+                  ? vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth8__partial_product 
         = (vlSelf->multiplier__DOT__booth8__DOT__product 
            << 0x10U);
-    vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth9__DOT__minus_a = 
         (1ULL + (~ vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth9__DOT__product = 
-        ((0x80000U & vlSelf->b) ? ((0x40000U & vlSelf->b)
-                                    ? ((0x20000U & vlSelf->b)
-                                        ? 0ULL : vlSelf->multiplier__DOT__booth9__DOT__minus_a)
-                                    : ((0x20000U & vlSelf->b)
-                                        ? vlSelf->multiplier__DOT__booth9__DOT__minus_a
-                                        : (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
+        ((1U & (IData)((vlSelf->b >> 0x13U))) ? ((1U 
+                                                  & (IData)(
+                                                            (vlSelf->b 
+                                                             >> 0x12U)))
+                                                  ? 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0x11U)))
+                                                   ? 0ULL
+                                                   : vlSelf->multiplier__DOT__booth9__DOT__minus_a)
+                                                  : 
+                                                 ((1U 
+                                                   & (IData)(
+                                                             (vlSelf->b 
+                                                              >> 0x11U)))
+                                                   ? vlSelf->multiplier__DOT__booth9__DOT__minus_a
+                                                   : 
+                                                  (((QData)((IData)(
+                                                                    (0x7fffffffU 
+                                                                     & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth9__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__minus_a)) 
-                                              << 1U))))
-          : ((0x40000U & vlSelf->b) ? ((0x20000U & vlSelf->b)
-                                        ? (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)) 
-                                              << 1U))
-                                        : vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)
-              : ((0x20000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a
+                                                    << 0x21U) 
+                                                   | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__minus_a)) 
+                                                      << 1U))))
+          : ((1U & (IData)((vlSelf->b >> 0x12U))) ? 
+             ((1U & (IData)((vlSelf->b >> 0x11U))) ? 
+              (((QData)((IData)((0x7fffffffU & (- (IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a 
+                                                                      >> 0x3fU)))))))) 
+                << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)) 
+                             << 1U)) : vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a)
+              : ((1U & (IData)((vlSelf->b >> 0x11U)))
+                  ? vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a
                   : 0ULL)));
     multiplier__DOT____Vcellout__booth9__partial_product 
         = (vlSelf->multiplier__DOT__booth9__DOT__product 
            << 0x12U);
-    vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth10__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth10__DOT__product 
-        = ((0x200000U & vlSelf->b) ? ((0x100000U & vlSelf->b)
-                                       ? ((0x80000U 
-                                           & vlSelf->b)
-                                           ? 0ULL : vlSelf->multiplier__DOT__booth10__DOT__minus_a)
-                                       : ((0x80000U 
-                                           & vlSelf->b)
-                                           ? vlSelf->multiplier__DOT__booth10__DOT__minus_a
-                                           : (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x15U))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x14U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x13U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth10__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x13U)))
+                                                     ? vlSelf->multiplier__DOT__booth10__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth10__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__minus_a)) 
-                                                 << 1U))))
-            : ((0x100000U & vlSelf->b) ? ((0x80000U 
-                                           & vlSelf->b)
-                                           ? (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)) 
-                                                 << 1U))
-                                           : vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)
-                : ((0x80000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x14U)))
+                ? ((1U & (IData)((vlSelf->b >> 0x13U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x13U)))
+                    ? vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth10__partial_product 
         = (vlSelf->multiplier__DOT__booth10__DOT__product 
            << 0x14U);
-    vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth11__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth11__DOT__product 
-        = ((0x800000U & vlSelf->b) ? ((0x400000U & vlSelf->b)
-                                       ? ((0x200000U 
-                                           & vlSelf->b)
-                                           ? 0ULL : vlSelf->multiplier__DOT__booth11__DOT__minus_a)
-                                       : ((0x200000U 
-                                           & vlSelf->b)
-                                           ? vlSelf->multiplier__DOT__booth11__DOT__minus_a
-                                           : (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x17U))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x16U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x15U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth11__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x15U)))
+                                                     ? vlSelf->multiplier__DOT__booth11__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth11__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__minus_a)) 
-                                                 << 1U))))
-            : ((0x400000U & vlSelf->b) ? ((0x200000U 
-                                           & vlSelf->b)
-                                           ? (((QData)((IData)(
-                                                               (0x7fffffffU 
-                                                                & (- (IData)(
-                                                                             (1U 
-                                                                              & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                               << 0x21U) 
-                                              | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)) 
-                                                 << 1U))
-                                           : vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)
-                : ((0x200000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x16U)))
+                ? ((1U & (IData)((vlSelf->b >> 0x15U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x15U)))
+                    ? vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth11__partial_product 
         = (vlSelf->multiplier__DOT__booth11__DOT__product 
            << 0x16U);
-    vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth12__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth12__DOT__product 
-        = ((0x2000000U & vlSelf->b) ? ((0x1000000U 
-                                        & vlSelf->b)
-                                        ? ((0x800000U 
-                                            & vlSelf->b)
-                                            ? 0ULL : vlSelf->multiplier__DOT__booth12__DOT__minus_a)
-                                        : ((0x800000U 
-                                            & vlSelf->b)
-                                            ? vlSelf->multiplier__DOT__booth12__DOT__minus_a
-                                            : (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x19U))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x18U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x17U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth12__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x17U)))
+                                                     ? vlSelf->multiplier__DOT__booth12__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth12__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__minus_a)) 
-                                                  << 1U))))
-            : ((0x1000000U & vlSelf->b) ? ((0x800000U 
-                                            & vlSelf->b)
-                                            ? (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)) 
-                                                  << 1U))
-                                            : vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)
-                : ((0x800000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x18U)))
+                ? ((1U & (IData)((vlSelf->b >> 0x17U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x17U)))
+                    ? vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth12__partial_product 
         = (vlSelf->multiplier__DOT__booth12__DOT__product 
            << 0x18U);
-    vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth13__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth13__DOT__product 
-        = ((0x8000000U & vlSelf->b) ? ((0x4000000U 
-                                        & vlSelf->b)
-                                        ? ((0x2000000U 
-                                            & vlSelf->b)
-                                            ? 0ULL : vlSelf->multiplier__DOT__booth13__DOT__minus_a)
-                                        : ((0x2000000U 
-                                            & vlSelf->b)
-                                            ? vlSelf->multiplier__DOT__booth13__DOT__minus_a
-                                            : (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x1bU))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x1aU)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x19U)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth13__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x19U)))
+                                                     ? vlSelf->multiplier__DOT__booth13__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth13__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__minus_a)) 
-                                                  << 1U))))
-            : ((0x4000000U & vlSelf->b) ? ((0x2000000U 
-                                            & vlSelf->b)
-                                            ? (((QData)((IData)(
-                                                                (0x7fffffffU 
-                                                                 & (- (IData)(
-                                                                              (1U 
-                                                                               & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                << 0x21U) 
-                                               | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)) 
-                                                  << 1U))
-                                            : vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)
-                : ((0x2000000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x1aU)))
+                ? ((1U & (IData)((vlSelf->b >> 0x19U)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x19U)))
+                    ? vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth13__partial_product 
         = (vlSelf->multiplier__DOT__booth13__DOT__product 
            << 0x1aU);
-    vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth14__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth14__DOT__product 
-        = ((0x20000000U & vlSelf->b) ? ((0x10000000U 
-                                         & vlSelf->b)
-                                         ? ((0x8000000U 
-                                             & vlSelf->b)
-                                             ? 0ULL
-                                             : vlSelf->multiplier__DOT__booth14__DOT__minus_a)
-                                         : ((0x8000000U 
-                                             & vlSelf->b)
-                                             ? vlSelf->multiplier__DOT__booth14__DOT__minus_a
-                                             : (((QData)((IData)(
-                                                                 (0x7fffffffU 
-                                                                  & (- (IData)(
-                                                                               (1U 
+        = ((1U & (IData)((vlSelf->b >> 0x1dU))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x1cU)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1bU)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth14__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1bU)))
+                                                     ? vlSelf->multiplier__DOT__booth14__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
                                                                                 & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth14__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                                 << 0x21U) 
-                                                | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__minus_a)) 
-                                                   << 1U))))
-            : ((0x10000000U & vlSelf->b) ? ((0x8000000U 
-                                             & vlSelf->b)
-                                             ? (((QData)((IData)(
-                                                                 (0x7fffffffU 
-                                                                  & (- (IData)(
-                                                                               (1U 
-                                                                                & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                 << 0x21U) 
-                                                | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)) 
-                                                   << 1U))
-                                             : vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)
-                : ((0x8000000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x1cU)))
+                ? ((1U & (IData)((vlSelf->b >> 0x1bU)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x1bU)))
+                    ? vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth14__partial_product 
         = (vlSelf->multiplier__DOT__booth14__DOT__product 
            << 0x1cU);
-    vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
-        = (((QData)((IData)((- (IData)((vlSelf->a >> 0x1fU))))) 
-            << 0x20U) | (QData)((IData)(vlSelf->a)));
     vlSelf->multiplier__DOT__booth15__DOT__minus_a 
         = (1ULL + (~ vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a));
     vlSelf->multiplier__DOT__booth15__DOT__product 
-        = ((vlSelf->b >> 0x1fU) ? ((0x40000000U & vlSelf->b)
-                                    ? ((0x20000000U 
-                                        & vlSelf->b)
-                                        ? 0ULL : vlSelf->multiplier__DOT__booth15__DOT__minus_a)
-                                    : ((0x20000000U 
-                                        & vlSelf->b)
-                                        ? vlSelf->multiplier__DOT__booth15__DOT__minus_a
-                                        : (((QData)((IData)(
-                                                            (0x7fffffffU 
-                                                             & (- (IData)(
-                                                                          (1U 
-                                                                           & (IData)(
+        = ((1U & (IData)((vlSelf->b >> 0x1fU))) ? (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->b 
+                                                               >> 0x1eU)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1dU)))
+                                                     ? 0ULL
+                                                     : vlSelf->multiplier__DOT__booth15__DOT__minus_a)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(
+                                                               (vlSelf->b 
+                                                                >> 0x1dU)))
+                                                     ? vlSelf->multiplier__DOT__booth15__DOT__minus_a
+                                                     : 
+                                                    (((QData)((IData)(
+                                                                      (0x7fffffffU 
+                                                                       & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
                                                                                 (vlSelf->multiplier__DOT__booth15__DOT__minus_a 
                                                                                 >> 0x3fU)))))))) 
-                                            << 0x21U) 
-                                           | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__minus_a)) 
-                                              << 1U))))
-            : ((0x40000000U & vlSelf->b) ? ((0x20000000U 
-                                             & vlSelf->b)
-                                             ? (((QData)((IData)(
-                                                                 (0x7fffffffU 
-                                                                  & (- (IData)(
-                                                                               (1U 
-                                                                                & (IData)(
-                                                                                (vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
-                                                                                >> 0x3fU)))))))) 
-                                                 << 0x21U) 
-                                                | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)) 
-                                                   << 1U))
-                                             : vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)
-                : ((0x20000000U & vlSelf->b) ? vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a
+                                                      << 0x21U) 
+                                                     | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__minus_a)) 
+                                                        << 1U))))
+            : ((1U & (IData)((vlSelf->b >> 0x1eU)))
+                ? ((1U & (IData)((vlSelf->b >> 0x1dU)))
+                    ? (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)) 
+                                     << 1U)) : vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a)
+                : ((1U & (IData)((vlSelf->b >> 0x1dU)))
+                    ? vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a
                     : 0ULL)));
     multiplier__DOT____Vcellout__booth15__partial_product 
         = (vlSelf->multiplier__DOT__booth15__DOT__product 
            << 0x1eU);
+    multiplier__DOT____Vcellinp__booth16__triplet = 
+        ((4U & ((IData)((vlSelf->b >> 0x20U)) << 2U)) 
+         | (3U & (IData)((vlSelf->b >> 0x1fU))));
     vlSelf->multiplier__DOT__a = vlSelf->a;
+    vlSelf->multiplier__DOT__unsignedA = vlSelf->unsignedA;
     multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice3__G 
         = (1U & ((VL_SHIFTL_III(32,32,32, (IData)(vlSelf->multiplier__DOT__c13), 1U) 
                   >> 0x1fU) & (IData)((vlSelf->multiplier__DOT__s13 
@@ -1833,6 +2078,49 @@ VL_ATTR_COLD void Vmultiplier___024root___stl_sequent__TOP__0(Vmultiplier___024r
     vlSelf->multiplier__DOT__booth15__DOT__partial_product 
         = multiplier__DOT____Vcellout__booth15__partial_product;
     vlSelf->multiplier__DOT__layer0[0xfU] = multiplier__DOT____Vcellout__booth15__partial_product;
+    vlSelf->multiplier__DOT__booth16__DOT__triplet 
+        = multiplier__DOT____Vcellinp__booth16__triplet;
+    vlSelf->multiplier__DOT__booth16__DOT__minus_a 
+        = (1ULL + (~ vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a));
+    vlSelf->multiplier__DOT__booth16__DOT__product 
+        = ((4U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+            ? ((2U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                ? ((1U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                    ? 0ULL : vlSelf->multiplier__DOT__booth16__DOT__minus_a)
+                : ((1U & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                    ? vlSelf->multiplier__DOT__booth16__DOT__minus_a
+                    : (((QData)((IData)((0x7fffffffU 
+                                         & (- (IData)(
+                                                      (1U 
+                                                       & (IData)(
+                                                                 (vlSelf->multiplier__DOT__booth16__DOT__minus_a 
+                                                                  >> 0x3fU)))))))) 
+                        << 0x21U) | ((QData)((IData)(vlSelf->multiplier__DOT__booth16__DOT__minus_a)) 
+                                     << 1U)))) : ((2U 
+                                                   & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                                                   ? 
+                                                  ((1U 
+                                                    & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                                                    ? 
+                                                   (((QData)((IData)(
+                                                                     (0x7fffffffU 
+                                                                      & (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                (vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a 
+                                                                                >> 0x3fU)))))))) 
+                                                     << 0x21U) 
+                                                    | ((QData)((IData)(vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a)) 
+                                                       << 1U))
+                                                    : vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a)
+                                                   : 
+                                                  ((1U 
+                                                    & (IData)(multiplier__DOT____Vcellinp__booth16__triplet))
+                                                    ? vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a
+                                                    : 0ULL)));
+    multiplier__DOT____Vcellout__booth16__partial_product 
+        = (vlSelf->multiplier__DOT__booth16__DOT__product 
+           << 0x20U);
     vlSelf->multiplier__DOT__booth0__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth1__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth2__DOT__a = vlSelf->multiplier__DOT__a;
@@ -1849,6 +2137,41 @@ VL_ATTR_COLD void Vmultiplier___024root___stl_sequent__TOP__0(Vmultiplier___024r
     vlSelf->multiplier__DOT__booth13__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth14__DOT__a = vlSelf->multiplier__DOT__a;
     vlSelf->multiplier__DOT__booth15__DOT__a = vlSelf->multiplier__DOT__a;
+    vlSelf->multiplier__DOT__booth16__DOT__a = vlSelf->multiplier__DOT__a;
+    vlSelf->multiplier__DOT__booth0__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth1__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth2__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth3__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth4__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth5__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth6__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth7__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth8__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth9__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth10__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth11__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth12__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth13__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth14__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth15__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
+    vlSelf->multiplier__DOT__booth16__DOT__unsignedA 
+        = vlSelf->multiplier__DOT__unsignedA;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__slice3__DOT__G 
         = multiplier__DOT__fast_adder_lower__DOT__block7__DOT____Vcellout__slice3__G;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block7__DOT__slice3__DOT__P 
@@ -2433,6 +2756,9 @@ VL_ATTR_COLD void Vmultiplier___024root___stl_sequent__TOP__0(Vmultiplier___024r
         = (1U & ((IData)((vlSelf->multiplier__DOT__cs13 
                           >> 0x20U)) ^ (IData)((vlSelf->multiplier__DOT__s13 
                                                 >> 0x20U))));
+    vlSelf->multiplier__DOT__booth16__DOT__partial_product 
+        = multiplier__DOT____Vcellout__booth16__partial_product;
+    vlSelf->multiplier__DOT__layer0[0x10U] = multiplier__DOT____Vcellout__booth16__partial_product;
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__block0__DOT__c2 
         = (1U & ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice2__G) 
                  | ((IData)(multiplier__DOT__fast_adder_lower__DOT__block0__DOT____Vcellout__slice2__P) 
@@ -3269,20 +3595,22 @@ VL_ATTR_COLD void Vmultiplier___024root___ctor_var_reset(Vmultiplier___024root* 
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmultiplier___024root___ctor_var_reset\n"); );
     // Body
     vlSelf->a = VL_RAND_RESET_I(32);
-    vlSelf->b = VL_RAND_RESET_I(32);
+    vlSelf->b = VL_RAND_RESET_Q(33);
+    vlSelf->unsignedA = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->output_product = VL_RAND_RESET_Q(64);
     vlSelf->done = VL_RAND_RESET_I(1);
     vlSelf->running = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__a = VL_RAND_RESET_I(32);
-    vlSelf->multiplier__DOT__b = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__b = VL_RAND_RESET_Q(33);
+    vlSelf->multiplier__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__rst = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__clk = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__output_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__done = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__running = VL_RAND_RESET_I(1);
-    for (int __Vi0 = 0; __Vi0 < 16; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 17; ++__Vi0) {
         vlSelf->multiplier__DOT__layer0[__Vi0] = VL_RAND_RESET_Q(64);
     }
     vlSelf->multiplier__DOT__product = VL_RAND_RESET_Q(64);
@@ -3300,6 +3628,7 @@ VL_ATTR_COLD void Vmultiplier___024root___ctor_var_reset(Vmultiplier___024root* 
     vlSelf->multiplier__DOT__c11 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__c12 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__c13 = VL_RAND_RESET_Q(64);
+    vlSelf->multiplier__DOT__c14 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__s0 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__s1 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__s2 = VL_RAND_RESET_Q(64);
@@ -3314,6 +3643,7 @@ VL_ATTR_COLD void Vmultiplier___024root___ctor_var_reset(Vmultiplier___024root* 
     vlSelf->multiplier__DOT__s11 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__s12 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__s13 = VL_RAND_RESET_Q(64);
+    vlSelf->multiplier__DOT__s14 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__cs0 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__cs1 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__cs2 = VL_RAND_RESET_Q(64);
@@ -3328,6 +3658,7 @@ VL_ATTR_COLD void Vmultiplier___024root___ctor_var_reset(Vmultiplier___024root* 
     vlSelf->multiplier__DOT__cs11 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__cs12 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__cs13 = VL_RAND_RESET_Q(64);
+    vlSelf->multiplier__DOT__cs14 = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__state = VL_RAND_RESET_I(3);
     vlSelf->multiplier__DOT__cout = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__cout_upper = VL_RAND_RESET_I(1);
@@ -3338,117 +3669,141 @@ VL_ATTR_COLD void Vmultiplier___024root___ctor_var_reset(Vmultiplier___024root* 
     vlSelf->multiplier__DOT__unnamedblk5__DOT__g = 0;
     vlSelf->multiplier__DOT__unnamedblk6__DOT__f = 0;
     vlSelf->multiplier__DOT__booth0__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth0__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth0__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth0__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth0__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth0__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth0__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth0__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth0__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth1__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth1__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth1__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth1__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth1__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth1__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth1__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth1__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth1__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth2__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth2__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth2__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth2__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth2__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth2__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth2__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth2__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth2__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth3__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth3__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth3__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth3__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth3__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth3__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth3__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth3__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth3__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth4__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth4__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth4__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth4__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth4__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth4__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth4__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth4__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth4__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth5__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth5__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth5__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth5__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth5__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth5__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth5__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth5__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth5__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth6__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth6__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth6__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth6__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth6__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth6__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth6__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth6__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth6__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth7__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth7__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth7__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth7__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth7__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth7__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth7__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth7__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth7__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth8__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth8__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth8__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth8__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth8__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth8__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth8__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth8__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth8__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth9__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth9__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth9__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth9__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth9__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth9__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth9__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth9__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth9__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth10__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth10__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth10__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth10__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth10__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth10__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth10__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth10__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth10__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth11__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth11__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth11__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth11__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth11__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth11__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth11__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth11__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth11__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth12__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth12__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth12__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth12__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth12__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth12__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth12__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth12__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth12__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth13__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth13__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth13__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth13__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth13__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth13__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth13__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth13__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth13__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth14__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth14__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth14__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth14__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth14__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth14__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth14__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth14__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth14__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth15__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth15__DOT__unsignedA = VL_RAND_RESET_I(1);
     vlSelf->multiplier__DOT__booth15__DOT__triplet = VL_RAND_RESET_I(3);
-    vlSelf->multiplier__DOT__booth15__DOT__shamt = VL_RAND_RESET_I(5);
+    vlSelf->multiplier__DOT__booth15__DOT__shamt = VL_RAND_RESET_I(6);
     vlSelf->multiplier__DOT__booth15__DOT__partial_product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth15__DOT__product = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth15__DOT__minus_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__booth15__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
+    vlSelf->multiplier__DOT__booth16__DOT__a = VL_RAND_RESET_I(32);
+    vlSelf->multiplier__DOT__booth16__DOT__unsignedA = VL_RAND_RESET_I(1);
+    vlSelf->multiplier__DOT__booth16__DOT__triplet = VL_RAND_RESET_I(3);
+    vlSelf->multiplier__DOT__booth16__DOT__shamt = VL_RAND_RESET_I(6);
+    vlSelf->multiplier__DOT__booth16__DOT__partial_product = VL_RAND_RESET_Q(64);
+    vlSelf->multiplier__DOT__booth16__DOT__product = VL_RAND_RESET_Q(64);
+    vlSelf->multiplier__DOT__booth16__DOT__minus_a = VL_RAND_RESET_Q(64);
+    vlSelf->multiplier__DOT__booth16__DOT__sign_ext_a = VL_RAND_RESET_Q(64);
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__a = VL_RAND_RESET_I(32);
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__b = VL_RAND_RESET_I(32);
     vlSelf->multiplier__DOT__fast_adder_lower__DOT__Subtract = VL_RAND_RESET_I(1);

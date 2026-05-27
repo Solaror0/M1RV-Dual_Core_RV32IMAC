@@ -46,7 +46,8 @@ int main(int argc, char ** argv){
     ctx->commandArgs(argc, argv);
     Vdivider* dut = new Vdivider{ctx};
     std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<int> dist(1, 2147483647);
+    std::uniform_int_distribution<int> dist(-2147483647, 2147483647);
+    std::uniform_int_distribution<int> distD(1, 2147483647);
     int p, d;
     int pass, fail;
     std::string prevPass;
@@ -56,9 +57,9 @@ int main(int argc, char ** argv){
 
     
 
-    for (int j = 0; j<1000000000; j++) {
+    for (int j = 0; j<100000; j++) {
         p = dist(rng); // also try 1024/2
-        d = dist(rng); //note 98743283/32932; 780/90
+        d = distD(rng); //note 98743283/32932; 780/90
         
         dut->a = p;
         dut->d = d;

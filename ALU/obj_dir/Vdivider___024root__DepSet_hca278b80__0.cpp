@@ -14,9 +14,15 @@ VL_INLINE_OPT void Vdivider___024root___ico_sequent__TOP__0(Vdivider___024root* 
     // Body
     vlSelf->divider__DOT__clk = vlSelf->clk;
     vlSelf->divider__DOT__rst = vlSelf->rst;
+    vlSelf->divider__DOT__unsign = vlSelf->unsign;
     vlSelf->divider__DOT__a = vlSelf->a;
     vlSelf->divider__DOT__d = vlSelf->d;
-    vlSelf->divider__DOT__pBig = (QData)((IData)(vlSelf->a));
+    vlSelf->divider__DOT__trueA = (((vlSelf->a >> 0x1fU) 
+                                    & (~ (IData)(vlSelf->unsign)))
+                                    ? ((IData)(1U) 
+                                       + (~ vlSelf->a))
+                                    : vlSelf->a);
+    vlSelf->divider__DOT__pBig = (QData)((IData)(vlSelf->divider__DOT__trueA));
     vlSelf->divider__DOT__clz = 0x20U;
     vlSelf->divider__DOT__unnamedblk1__DOT__i = 0x1fU;
     {
@@ -43,6 +49,8 @@ VL_INLINE_OPT void Vdivider___024root___ico_sequent__TOP__0(Vdivider___024root* 
                                                      << (IData)(vlSelf->divider__DOT__clz)) 
                                                     >> 0x20U));
     vlSelf->divider__DOT__regPA_temp[2U] = 0U;
+    vlSelf->divByZero = (0U == (IData)(vlSelf->divider__DOT__clz));
+    vlSelf->divider__DOT__divByZero = vlSelf->divByZero;
     vlSelf->divider__DOT__lut__DOT__d = (0xfU & (IData)(
                                                         (vlSelf->divider__DOT__dNorm 
                                                          >> 0x1cU)));
@@ -1602,5 +1610,7 @@ void Vdivider___024root___eval_debug_assertions(Vdivider___024root* vlSelf) {
         Verilated::overWidthError("clk");}
     if (VL_UNLIKELY((vlSelf->rst & 0xfeU))) {
         Verilated::overWidthError("rst");}
+    if (VL_UNLIKELY((vlSelf->unsign & 0xfeU))) {
+        Verilated::overWidthError("unsign");}
 }
 #endif  // VL_DEBUG

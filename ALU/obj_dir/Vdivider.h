@@ -26,8 +26,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vdivider VL_NOT_FINAL : public VerilatedModel
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clk,0,0);
     VL_IN8(&rst,0,0);
+    VL_IN8(&unsign,0,0);
     VL_OUT8(&done,0,0);
     VL_OUT8(&running,0,0);
+    VL_OUT8(&divByZero,0,0);
     VL_IN(&a,31,0);
     VL_IN(&d,31,0);
     VL_OUT(&q,31,0);

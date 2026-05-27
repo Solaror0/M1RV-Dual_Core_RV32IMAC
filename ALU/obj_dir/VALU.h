@@ -27,13 +27,17 @@ class alignas(VL_CACHE_LINE_BYTES) VALU VL_NOT_FINAL : public VerilatedModel {
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clk,0,0);
-    VL_IN8(&ALUControl,3,0);
+    VL_IN8(&ALUControl,4,0);
     VL_IN8(&cin,0,0);
     VL_OUT8(&ZeroFlag,0,0);
     VL_OUT8(&NegativeFlag,0,0);
     VL_OUT8(&OverflowFlag,0,0);
     VL_OUT8(&CarryOutFlag,0,0);
     VL_OUT8(&multiply_done,0,0);
+    VL_OUT8(&multiply_running,0,0);
+    VL_OUT8(&divide_done,0,0);
+    VL_OUT8(&divide_running,0,0);
+    VL_OUT8(&divByZero,0,0);
     VL_IN(&a,31,0);
     VL_IN(&b,31,0);
     VL_OUT(&ALUResult,31,0);

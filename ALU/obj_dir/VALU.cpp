@@ -17,6 +17,10 @@ VALU::VALU(VerilatedContext* _vcontextp__, const char* _vcname__)
     , OverflowFlag{vlSymsp->TOP.OverflowFlag}
     , CarryOutFlag{vlSymsp->TOP.CarryOutFlag}
     , multiply_done{vlSymsp->TOP.multiply_done}
+    , multiply_running{vlSymsp->TOP.multiply_running}
+    , divide_done{vlSymsp->TOP.divide_done}
+    , divide_running{vlSymsp->TOP.divide_running}
+    , divByZero{vlSymsp->TOP.divByZero}
     , a{vlSymsp->TOP.a}
     , b{vlSymsp->TOP.b}
     , ALUResult{vlSymsp->TOP.ALUResult}

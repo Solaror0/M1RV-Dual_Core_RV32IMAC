@@ -11,8 +11,10 @@ Vdivider::Vdivider(VerilatedContext* _vcontextp__, const char* _vcname__)
     , vlSymsp{new Vdivider__Syms(contextp(), _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
+    , unsign{vlSymsp->TOP.unsign}
     , done{vlSymsp->TOP.done}
     , running{vlSymsp->TOP.running}
+    , divByZero{vlSymsp->TOP.divByZero}
     , a{vlSymsp->TOP.a}
     , d{vlSymsp->TOP.d}
     , q{vlSymsp->TOP.q}

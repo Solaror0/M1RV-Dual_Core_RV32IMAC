@@ -1,9 +1,10 @@
 module divider(
-    input logic clk, rst,
+    input logic clk, rst, unsign,
     input logic [31:0] a, d,
     output logic [31:0] q,
     output logic [34:0] rem,
-    output logic done, running
+    output logic done, running,
+    output logic divByZero
 );
 
 logic [66:0] regPA,regPA_temp, regPA_TS;
@@ -11,9 +12,10 @@ logic [63:0] pBig;
 logic [34:0] dNorm;
 logic [5:0] clz;
 logic [34:0] p, pNext;
-
+logic [31:0] trueA;
 always_comb begin
-    pBig = {32'b0, a}; //maybe change this to 35?? idk
+    trueA = (a[31]& ~unsign) ? (~a+1) : a;
+    pBig = {32'b0, trueA}; //maybe change this to 35?? idk
     clz = 6'b100000; // Default if all bits are 0
     for (int i = 31; i >= 0; i--) begin
         if (d[i]) begin
@@ -23,6 +25,7 @@ always_comb begin
     end
     dNorm ={3'b0,d << clz};
     regPA_temp = {3'b0,pBig << clz}; 
+    divByZero = (clz == 0);
 end
 
 logic [2:0] qC;

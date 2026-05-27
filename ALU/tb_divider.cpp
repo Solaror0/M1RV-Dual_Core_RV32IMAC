@@ -26,11 +26,12 @@ int main(int argc, char ** argv){
     //d = rand() % 31 + 1;
     // p = 33166; // also try 1024/2
     // d = 24773; //note 98743283/32932; 780/90
-    p = 4423279;
-    d = 749;
+    p = -1140600350; 
+    d = 2044979940;
 
     dut->a = p;
     dut->d = d;
+    dut->unsign = 1;
     dut->rst = 1;
    
     for (int i = 0; i < 32; i++){
@@ -68,7 +69,7 @@ int main(int argc, char ** argv){
         }
     }
     
-    std::cout << std::bitset<32>(p) << " " << std::bitset<32>(d) << " " << int(p/d) << " " << int(p%d) << " " << int(dut->q) << " " << int(dut->rem) <<std::endl;
+    std::cout << std::bitset<32>(p) << " " << std::bitset<32>(d) << " " << int(p/d) << " " << uint32_t(p)%d << " " << int(dut->q) << " " << uint32_t(dut->rem) <<std::endl;
 
     dut->final();
     delete dut;

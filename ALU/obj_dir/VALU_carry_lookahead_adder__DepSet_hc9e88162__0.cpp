@@ -661,13 +661,13 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                          (((IData)(block0__DOT____Vcellout__slice1__P) 
                                            << 1U) | (IData)(block0__DOT____Vcellout__slice0__P))));
     vlSelf->block0__DOT__c0 = (1U & ((IData)(block0__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block0__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block0__DOT____Vcellout__slice0__P) 
                                         * (IData)(vlSelf->cin_effective))));
     vlSelf->block0__DOT__c1 = (1U & ((IData)(block0__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block0__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block0__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block0__DOT__c0))));
     vlSelf->block0__DOT__c2 = (1U & ((IData)(block0__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block0__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block0__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block0__DOT__c1))));
     __Vcellout__block0__s = ((((IData)(block0__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block0__DOT__c2)) 
@@ -680,19 +680,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                    | ((IData)(block0__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(vlSelf->cin_effective)))));
     __Vcellinp__block1__cin = (1U & ((IData)(block0__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(block0__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(block0__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block0__DOT__c2))));
     vlSelf->block0__DOT__s = __Vcellout__block0__s;
     vlSelf->block0__DOT__cout = __Vcellinp__block1__cin;
     vlSelf->block1__DOT__cin = __Vcellinp__block1__cin;
     vlSelf->block1__DOT__c0 = (1U & ((IData)(block1__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block1__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block1__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block1__cin))));
     vlSelf->block1__DOT__c1 = (1U & ((IData)(block1__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block1__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block1__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block1__DOT__c0))));
     vlSelf->block1__DOT__c2 = (1U & ((IData)(block1__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block1__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block1__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block1__DOT__c1))));
     __Vcellout__block1__s = ((((IData)(block1__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block1__DOT__c2)) 
@@ -705,19 +705,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                    | ((IData)(block1__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block1__cin)))));
     __Vcellinp__block2__cin = (1U & ((IData)(block1__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(block1__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(block1__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block1__DOT__c2))));
     vlSelf->block1__DOT__s = __Vcellout__block1__s;
     vlSelf->block1__DOT__cout = __Vcellinp__block2__cin;
     vlSelf->block2__DOT__cin = __Vcellinp__block2__cin;
     vlSelf->block2__DOT__c0 = (1U & ((IData)(block2__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block2__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block2__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block2__cin))));
     vlSelf->block2__DOT__c1 = (1U & ((IData)(block2__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block2__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block2__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block2__DOT__c0))));
     vlSelf->block2__DOT__c2 = (1U & ((IData)(block2__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block2__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block2__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block2__DOT__c1))));
     __Vcellout__block2__s = ((((IData)(block2__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block2__DOT__c2)) 
@@ -730,19 +730,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                    | ((IData)(block2__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block2__cin)))));
     __Vcellinp__block3__cin = (1U & ((IData)(block2__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(block2__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(block2__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block2__DOT__c2))));
     vlSelf->block2__DOT__s = __Vcellout__block2__s;
     vlSelf->block2__DOT__cout = __Vcellinp__block3__cin;
     vlSelf->block3__DOT__cin = __Vcellinp__block3__cin;
     vlSelf->block3__DOT__c0 = (1U & ((IData)(block3__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block3__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block3__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block3__cin))));
     vlSelf->block3__DOT__c1 = (1U & ((IData)(block3__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block3__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block3__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block3__DOT__c0))));
     vlSelf->block3__DOT__c2 = (1U & ((IData)(block3__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block3__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block3__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block3__DOT__c1))));
     __Vcellout__block3__s = ((((IData)(block3__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block3__DOT__c2)) 
@@ -755,19 +755,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                    | ((IData)(block3__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block3__cin)))));
     __Vcellinp__block4__cin = (1U & ((IData)(block3__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(block3__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(block3__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block3__DOT__c2))));
     vlSelf->block3__DOT__s = __Vcellout__block3__s;
     vlSelf->block3__DOT__cout = __Vcellinp__block4__cin;
     vlSelf->block4__DOT__cin = __Vcellinp__block4__cin;
     vlSelf->block4__DOT__c0 = (1U & ((IData)(block4__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block4__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block4__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block4__cin))));
     vlSelf->block4__DOT__c1 = (1U & ((IData)(block4__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block4__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block4__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block4__DOT__c0))));
     vlSelf->block4__DOT__c2 = (1U & ((IData)(block4__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block4__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block4__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block4__DOT__c1))));
     __Vcellout__block4__s = ((((IData)(block4__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block4__DOT__c2)) 
@@ -780,19 +780,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                    | ((IData)(block4__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block4__cin)))));
     __Vcellinp__block5__cin = (1U & ((IData)(block4__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(block4__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(block4__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block4__DOT__c2))));
     vlSelf->block4__DOT__s = __Vcellout__block4__s;
     vlSelf->block4__DOT__cout = __Vcellinp__block5__cin;
     vlSelf->block5__DOT__cin = __Vcellinp__block5__cin;
     vlSelf->block5__DOT__c0 = (1U & ((IData)(block5__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block5__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block5__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block5__cin))));
     vlSelf->block5__DOT__c1 = (1U & ((IData)(block5__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block5__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block5__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block5__DOT__c0))));
     vlSelf->block5__DOT__c2 = (1U & ((IData)(block5__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block5__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block5__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block5__DOT__c1))));
     __Vcellout__block5__s = ((((IData)(block5__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block5__DOT__c2)) 
@@ -805,19 +805,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                    | ((IData)(block5__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block5__cin)))));
     __Vcellinp__block6__cin = (1U & ((IData)(block5__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(block5__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(block5__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block5__DOT__c2))));
     vlSelf->block5__DOT__s = __Vcellout__block5__s;
     vlSelf->block5__DOT__cout = __Vcellinp__block6__cin;
     vlSelf->block6__DOT__cin = __Vcellinp__block6__cin;
     vlSelf->block6__DOT__c0 = (1U & ((IData)(block6__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block6__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block6__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block6__cin))));
     vlSelf->block6__DOT__c1 = (1U & ((IData)(block6__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block6__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block6__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block6__DOT__c0))));
     vlSelf->block6__DOT__c2 = (1U & ((IData)(block6__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block6__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block6__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block6__DOT__c1))));
     __Vcellout__block6__s = ((((IData)(block6__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block6__DOT__c2)) 
@@ -830,7 +830,7 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                    | ((IData)(block6__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block6__cin)))));
     __Vcellinp__block7__cin = (1U & ((IData)(block6__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(block6__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(block6__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block6__DOT__c2))));
     vlSelf->block6__DOT__s = __Vcellout__block6__s;
     vlSelf->block6__DOT__cout = __Vcellinp__block7__cin;
@@ -846,16 +846,16 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___ico_sequent__TOP__ALU__DOT__adde
                                                          << 1U) 
                                                         | (IData)(__Vcellinp__block1__cin)))))));
     vlSelf->block7__DOT__c0 = (1U & ((IData)(block7__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(block7__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(block7__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block7__cin))));
     vlSelf->block7__DOT__c1 = (1U & ((IData)(block7__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(block7__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(block7__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block7__DOT__c0))));
     vlSelf->block7__DOT__c2 = (1U & ((IData)(block7__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(block7__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(block7__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block7__DOT__c1))));
     vlSelf->cout = (1U & ((IData)(block7__DOT____Vcellout__slice3__G) 
-                          + ((IData)(block7__DOT____Vcellout__slice3__P) 
+                          | ((IData)(block7__DOT____Vcellout__slice3__P) 
                              * (IData)(vlSelf->block7__DOT__c2))));
     __Vcellout__block7__s = ((((IData)(block7__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block7__DOT__c2)) 
@@ -1477,13 +1477,13 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
     __Vcellinp__block7__cin = 0;
     // Body
     vlSelf->block0__DOT__c0 = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice0__P) 
                                         * (IData)(vlSelf->cin_effective))));
     vlSelf->block0__DOT__c1 = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block0__DOT__c0))));
     vlSelf->block0__DOT__c2 = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block0__DOT__c1))));
     __Vcellout__block0__s = ((((IData)(vlSelf->block0__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block0__DOT__c2)) 
@@ -1496,19 +1496,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block0__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(vlSelf->cin_effective)))));
     __Vcellinp__block1__cin = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block0__DOT__c2))));
     vlSelf->block0__DOT__s = __Vcellout__block0__s;
     vlSelf->block0__DOT__cout = __Vcellinp__block1__cin;
     vlSelf->block1__DOT__cin = __Vcellinp__block1__cin;
     vlSelf->block1__DOT__c0 = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block1__cin))));
     vlSelf->block1__DOT__c1 = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block1__DOT__c0))));
     vlSelf->block1__DOT__c2 = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block1__DOT__c1))));
     __Vcellout__block1__s = ((((IData)(vlSelf->block1__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block1__DOT__c2)) 
@@ -1521,19 +1521,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block1__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block1__cin)))));
     __Vcellinp__block2__cin = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block1__DOT__c2))));
     vlSelf->block1__DOT__s = __Vcellout__block1__s;
     vlSelf->block1__DOT__cout = __Vcellinp__block2__cin;
     vlSelf->block2__DOT__cin = __Vcellinp__block2__cin;
     vlSelf->block2__DOT__c0 = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block2__cin))));
     vlSelf->block2__DOT__c1 = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block2__DOT__c0))));
     vlSelf->block2__DOT__c2 = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block2__DOT__c1))));
     __Vcellout__block2__s = ((((IData)(vlSelf->block2__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block2__DOT__c2)) 
@@ -1546,19 +1546,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block2__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block2__cin)))));
     __Vcellinp__block3__cin = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block2__DOT__c2))));
     vlSelf->block2__DOT__s = __Vcellout__block2__s;
     vlSelf->block2__DOT__cout = __Vcellinp__block3__cin;
     vlSelf->block3__DOT__cin = __Vcellinp__block3__cin;
     vlSelf->block3__DOT__c0 = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block3__cin))));
     vlSelf->block3__DOT__c1 = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block3__DOT__c0))));
     vlSelf->block3__DOT__c2 = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block3__DOT__c1))));
     __Vcellout__block3__s = ((((IData)(vlSelf->block3__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block3__DOT__c2)) 
@@ -1571,19 +1571,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block3__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block3__cin)))));
     __Vcellinp__block4__cin = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block3__DOT__c2))));
     vlSelf->block3__DOT__s = __Vcellout__block3__s;
     vlSelf->block3__DOT__cout = __Vcellinp__block4__cin;
     vlSelf->block4__DOT__cin = __Vcellinp__block4__cin;
     vlSelf->block4__DOT__c0 = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block4__cin))));
     vlSelf->block4__DOT__c1 = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block4__DOT__c0))));
     vlSelf->block4__DOT__c2 = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block4__DOT__c1))));
     __Vcellout__block4__s = ((((IData)(vlSelf->block4__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block4__DOT__c2)) 
@@ -1596,19 +1596,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block4__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block4__cin)))));
     __Vcellinp__block5__cin = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block4__DOT__c2))));
     vlSelf->block4__DOT__s = __Vcellout__block4__s;
     vlSelf->block4__DOT__cout = __Vcellinp__block5__cin;
     vlSelf->block5__DOT__cin = __Vcellinp__block5__cin;
     vlSelf->block5__DOT__c0 = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block5__cin))));
     vlSelf->block5__DOT__c1 = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block5__DOT__c0))));
     vlSelf->block5__DOT__c2 = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block5__DOT__c1))));
     __Vcellout__block5__s = ((((IData)(vlSelf->block5__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block5__DOT__c2)) 
@@ -1621,19 +1621,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block5__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block5__cin)))));
     __Vcellinp__block6__cin = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block5__DOT__c2))));
     vlSelf->block5__DOT__s = __Vcellout__block5__s;
     vlSelf->block5__DOT__cout = __Vcellinp__block6__cin;
     vlSelf->block6__DOT__cin = __Vcellinp__block6__cin;
     vlSelf->block6__DOT__c0 = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block6__cin))));
     vlSelf->block6__DOT__c1 = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block6__DOT__c0))));
     vlSelf->block6__DOT__c2 = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block6__DOT__c1))));
     __Vcellout__block6__s = ((((IData)(vlSelf->block6__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block6__DOT__c2)) 
@@ -1646,7 +1646,7 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block6__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block6__cin)))));
     __Vcellinp__block7__cin = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block6__DOT__c2))));
     vlSelf->block6__DOT__s = __Vcellout__block6__s;
     vlSelf->block6__DOT__cout = __Vcellinp__block7__cin;
@@ -1662,13 +1662,13 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                          << 1U) 
                                                         | (IData)(__Vcellinp__block1__cin)))))));
     vlSelf->block7__DOT__c0 = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block7__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block7__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block7__cin))));
     vlSelf->block7__DOT__c1 = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block7__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block7__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block7__DOT__c0))));
     vlSelf->block7__DOT__c2 = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block7__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block7__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block7__DOT__c1))));
     __Vcellout__block7__s = ((((IData)(vlSelf->block7__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block7__DOT__c2)) 
@@ -1681,7 +1681,7 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block7__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block7__cin)))));
     vlSelf->cout = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice3__G) 
-                          + ((IData)(vlSelf->block7__DOT____Vcellout__slice3__P) 
+                          | ((IData)(vlSelf->block7__DOT____Vcellout__slice3__P) 
                              * (IData)(vlSelf->block7__DOT__c2))));
     vlSelf->block7__DOT__s = __Vcellout__block7__s;
     vlSelf->s = (((IData)(__Vcellout__block7__s) << 0x1cU) 
@@ -2296,13 +2296,13 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                              | (IData)(vlSelf->cin));
     vlSelf->block0__DOT__cin = vlSelf->cin_effective;
     vlSelf->block0__DOT__c0 = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice0__P) 
                                         * (IData)(vlSelf->cin_effective))));
     vlSelf->block0__DOT__c1 = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block0__DOT__c0))));
     vlSelf->block0__DOT__c2 = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block0__DOT__c1))));
     __Vcellout__block0__s = ((((IData)(vlSelf->block0__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block0__DOT__c2)) 
@@ -2315,19 +2315,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block0__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(vlSelf->cin_effective)))));
     __Vcellinp__block1__cin = (1U & ((IData)(vlSelf->block0__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block0__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block0__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block0__DOT__c2))));
     vlSelf->block0__DOT__s = __Vcellout__block0__s;
     vlSelf->block0__DOT__cout = __Vcellinp__block1__cin;
     vlSelf->block1__DOT__cin = __Vcellinp__block1__cin;
     vlSelf->block1__DOT__c0 = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block1__cin))));
     vlSelf->block1__DOT__c1 = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block1__DOT__c0))));
     vlSelf->block1__DOT__c2 = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block1__DOT__c1))));
     __Vcellout__block1__s = ((((IData)(vlSelf->block1__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block1__DOT__c2)) 
@@ -2340,19 +2340,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block1__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block1__cin)))));
     __Vcellinp__block2__cin = (1U & ((IData)(vlSelf->block1__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block1__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block1__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block1__DOT__c2))));
     vlSelf->block1__DOT__s = __Vcellout__block1__s;
     vlSelf->block1__DOT__cout = __Vcellinp__block2__cin;
     vlSelf->block2__DOT__cin = __Vcellinp__block2__cin;
     vlSelf->block2__DOT__c0 = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block2__cin))));
     vlSelf->block2__DOT__c1 = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block2__DOT__c0))));
     vlSelf->block2__DOT__c2 = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block2__DOT__c1))));
     __Vcellout__block2__s = ((((IData)(vlSelf->block2__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block2__DOT__c2)) 
@@ -2365,19 +2365,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block2__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block2__cin)))));
     __Vcellinp__block3__cin = (1U & ((IData)(vlSelf->block2__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block2__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block2__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block2__DOT__c2))));
     vlSelf->block2__DOT__s = __Vcellout__block2__s;
     vlSelf->block2__DOT__cout = __Vcellinp__block3__cin;
     vlSelf->block3__DOT__cin = __Vcellinp__block3__cin;
     vlSelf->block3__DOT__c0 = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block3__cin))));
     vlSelf->block3__DOT__c1 = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block3__DOT__c0))));
     vlSelf->block3__DOT__c2 = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block3__DOT__c1))));
     __Vcellout__block3__s = ((((IData)(vlSelf->block3__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block3__DOT__c2)) 
@@ -2390,19 +2390,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block3__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block3__cin)))));
     __Vcellinp__block4__cin = (1U & ((IData)(vlSelf->block3__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block3__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block3__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block3__DOT__c2))));
     vlSelf->block3__DOT__s = __Vcellout__block3__s;
     vlSelf->block3__DOT__cout = __Vcellinp__block4__cin;
     vlSelf->block4__DOT__cin = __Vcellinp__block4__cin;
     vlSelf->block4__DOT__c0 = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block4__cin))));
     vlSelf->block4__DOT__c1 = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block4__DOT__c0))));
     vlSelf->block4__DOT__c2 = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block4__DOT__c1))));
     __Vcellout__block4__s = ((((IData)(vlSelf->block4__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block4__DOT__c2)) 
@@ -2415,19 +2415,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block4__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block4__cin)))));
     __Vcellinp__block5__cin = (1U & ((IData)(vlSelf->block4__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block4__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block4__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block4__DOT__c2))));
     vlSelf->block4__DOT__s = __Vcellout__block4__s;
     vlSelf->block4__DOT__cout = __Vcellinp__block5__cin;
     vlSelf->block5__DOT__cin = __Vcellinp__block5__cin;
     vlSelf->block5__DOT__c0 = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block5__cin))));
     vlSelf->block5__DOT__c1 = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block5__DOT__c0))));
     vlSelf->block5__DOT__c2 = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block5__DOT__c1))));
     __Vcellout__block5__s = ((((IData)(vlSelf->block5__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block5__DOT__c2)) 
@@ -2440,19 +2440,19 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block5__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block5__cin)))));
     __Vcellinp__block6__cin = (1U & ((IData)(vlSelf->block5__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block5__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block5__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block5__DOT__c2))));
     vlSelf->block5__DOT__s = __Vcellout__block5__s;
     vlSelf->block5__DOT__cout = __Vcellinp__block6__cin;
     vlSelf->block6__DOT__cin = __Vcellinp__block6__cin;
     vlSelf->block6__DOT__c0 = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block6__cin))));
     vlSelf->block6__DOT__c1 = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block6__DOT__c0))));
     vlSelf->block6__DOT__c2 = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block6__DOT__c1))));
     __Vcellout__block6__s = ((((IData)(vlSelf->block6__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block6__DOT__c2)) 
@@ -2465,7 +2465,7 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                    | ((IData)(vlSelf->block6__DOT____Vcellout__slice0__P) 
                                                       ^ (IData)(__Vcellinp__block6__cin)))));
     __Vcellinp__block7__cin = (1U & ((IData)(vlSelf->block6__DOT____Vcellout__slice3__G) 
-                                     + ((IData)(vlSelf->block6__DOT____Vcellout__slice3__P) 
+                                     | ((IData)(vlSelf->block6__DOT____Vcellout__slice3__P) 
                                         * (IData)(vlSelf->block6__DOT__c2))));
     vlSelf->block6__DOT__s = __Vcellout__block6__s;
     vlSelf->block6__DOT__cout = __Vcellinp__block7__cin;
@@ -2481,16 +2481,16 @@ VL_INLINE_OPT void VALU_carry_lookahead_adder___nba_sequent__TOP__ALU__DOT__mult
                                                          << 1U) 
                                                         | (IData)(__Vcellinp__block1__cin)))))));
     vlSelf->block7__DOT__c0 = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice0__G) 
-                                     + ((IData)(vlSelf->block7__DOT____Vcellout__slice0__P) 
+                                     | ((IData)(vlSelf->block7__DOT____Vcellout__slice0__P) 
                                         * (IData)(__Vcellinp__block7__cin))));
     vlSelf->block7__DOT__c1 = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice1__G) 
-                                     + ((IData)(vlSelf->block7__DOT____Vcellout__slice1__P) 
+                                     | ((IData)(vlSelf->block7__DOT____Vcellout__slice1__P) 
                                         * (IData)(vlSelf->block7__DOT__c0))));
     vlSelf->block7__DOT__c2 = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice2__G) 
-                                     + ((IData)(vlSelf->block7__DOT____Vcellout__slice2__P) 
+                                     | ((IData)(vlSelf->block7__DOT____Vcellout__slice2__P) 
                                         * (IData)(vlSelf->block7__DOT__c1))));
     vlSelf->cout = (1U & ((IData)(vlSelf->block7__DOT____Vcellout__slice3__G) 
-                          + ((IData)(vlSelf->block7__DOT____Vcellout__slice3__P) 
+                          | ((IData)(vlSelf->block7__DOT____Vcellout__slice3__P) 
                              * (IData)(vlSelf->block7__DOT__c2))));
     __Vcellout__block7__s = ((((IData)(vlSelf->block7__DOT____Vcellout__slice3__P) 
                                ^ (IData)(vlSelf->block7__DOT__c2)) 

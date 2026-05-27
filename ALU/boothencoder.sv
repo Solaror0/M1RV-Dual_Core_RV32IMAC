@@ -1,7 +1,8 @@
 module boothencoder(
     input logic [31:0] a,
+    input logic unsignedA,
     input logic [2:0] triplet,
-    input logic [4:0] shamt,
+    input logic [5:0] shamt,
     output logic [63:0] partial_product
 );
 
@@ -10,7 +11,7 @@ logic[63:0] minus_a;
 logic [63:0] sign_ext_a;
 
 always_comb begin
-    sign_ext_a = {{32{a[31]}}, a};
+    sign_ext_a = unsignedA ? {32'b0, a} : {{32{a[31]}}, a}; //maybe have to edit this logic
     minus_a = ~sign_ext_a + 1;
     case (triplet)
     3'b000: product = 64'b0;

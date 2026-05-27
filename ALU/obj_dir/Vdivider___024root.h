@@ -16,12 +16,16 @@ class alignas(VL_CACHE_LINE_BYTES) Vdivider___024root final : public VerilatedMo
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
+    VL_IN8(unsign,0,0);
     VL_OUT8(done,0,0);
     VL_OUT8(running,0,0);
+    VL_OUT8(divByZero,0,0);
     CData/*0:0*/ divider__DOT__clk;
     CData/*0:0*/ divider__DOT__rst;
+    CData/*0:0*/ divider__DOT__unsign;
     CData/*0:0*/ divider__DOT__done;
     CData/*0:0*/ divider__DOT__running;
+    CData/*0:0*/ divider__DOT__divByZero;
     CData/*5:0*/ divider__DOT__clz;
     CData/*2:0*/ divider__DOT__qC;
     CData/*5:0*/ divider__DOT__topBits;
@@ -44,6 +48,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vdivider___024root final : public VerilatedMo
     VlWide<3>/*66:0*/ divider__DOT__regPA;
     VlWide<3>/*66:0*/ divider__DOT__regPA_temp;
     VlWide<3>/*66:0*/ divider__DOT__regPA_TS;
+    IData/*31:0*/ divider__DOT__trueA;
     IData/*31:0*/ divider__DOT__Qm;
     IData/*31:0*/ divider__DOT__Qp;
     IData/*31:0*/ divider__DOT__aLow;

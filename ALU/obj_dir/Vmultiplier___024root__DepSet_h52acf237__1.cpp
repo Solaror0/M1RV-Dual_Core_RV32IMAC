@@ -339,6 +339,7 @@ VL_INLINE_OPT void Vmultiplier___024root___nba_sequent__TOP__1(Vmultiplier___024
     vlSelf->multiplier__DOT__cs5 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c5, 1U);
     vlSelf->multiplier__DOT__cs6 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c6, 1U);
     vlSelf->multiplier__DOT__cs7 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c7, 1U);
+    vlSelf->multiplier__DOT__cs14 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c14, 1U);
     vlSelf->multiplier__DOT__cs0 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c0, 1U);
     vlSelf->multiplier__DOT__cs1 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c1, 1U);
     vlSelf->multiplier__DOT__cs2 = VL_SHIFTL_QQI(64,64,32, vlSelf->multiplier__DOT__c2, 1U);
@@ -2477,6 +2478,10 @@ void Vmultiplier___024root___eval_debug_assertions(Vmultiplier___024root* vlSelf
     Vmultiplier__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmultiplier___024root___eval_debug_assertions\n"); );
     // Body
+    if (VL_UNLIKELY((vlSelf->b & 0ULL))) {
+        Verilated::overWidthError("b");}
+    if (VL_UNLIKELY((vlSelf->unsignedA & 0xfeU))) {
+        Verilated::overWidthError("unsignedA");}
     if (VL_UNLIKELY((vlSelf->rst & 0xfeU))) {
         Verilated::overWidthError("rst");}
     if (VL_UNLIKELY((vlSelf->clk & 0xfeU))) {

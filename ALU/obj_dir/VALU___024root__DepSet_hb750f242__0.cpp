@@ -34,16 +34,153 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
     VALU__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VALU___024root___nba_sequent__TOP__0\n"); );
     // Body
+    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm = vlSelf->ALU__DOT__divider__DOT__Qm;
+    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp = vlSelf->ALU__DOT__divider__DOT__Qp;
+    vlSelf->__Vdly__ALU__DOT__divider__DOT__count = vlSelf->ALU__DOT__divider__DOT__count;
+    vlSelf->__Vdly__divide_running = vlSelf->divide_running;
+    vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[0U] 
+        = vlSelf->ALU__DOT__divider__DOT__regPA[0U];
+    vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[1U] 
+        = vlSelf->ALU__DOT__divider__DOT__regPA[1U];
+    vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[2U] 
+        = vlSelf->ALU__DOT__divider__DOT__regPA[2U];
     vlSelf->__Vdly__ALU__DOT__multiplier__DOT__state 
         = vlSelf->ALU__DOT__multiplier__DOT__state;
-    vlSelf->__Vdly__multiply_done = vlSelf->multiply_done;
+    vlSelf->__Vdly__ALU__DOT__multdiv_rst = vlSelf->ALU__DOT__multdiv_rst;
+    vlSelf->__Vdly__ALU__DOT__multdiv_rst = (IData)(
+                                                    ((0xcU 
+                                                      == 
+                                                      (0xcU 
+                                                       & (IData)(vlSelf->ALUControl))) 
+                                                     & (~ (IData)(vlSelf->multiply_done))));
+    vlSelf->__Vdly__ALU__DOT__multdiv_rst = (IData)(
+                                                    (((IData)(vlSelf->ALUControl) 
+                                                      >> 4U) 
+                                                     & (~ (IData)(vlSelf->divide_done))));
+    if (((IData)(vlSelf->ALU__DOT__multdiv_rst) & (~ (IData)(vlSelf->divide_running)))) {
+        vlSelf->__Vdly__ALU__DOT__divider__DOT__count = 0U;
+        vlSelf->__Vdly__divide_running = 1U;
+        vlSelf->divide_done = 0U;
+        vlSelf->ALU__DOT__quotient = 0U;
+        vlSelf->ALU__DOT__remainder = 0ULL;
+        vlSelf->ALU__DOT__divider__DOT__rem_temp = 0ULL;
+        vlSelf->ALU__DOT__divider__DOT__p = (0x7ffffffffULL 
+                                             & (((QData)((IData)(
+                                                                 vlSelf->ALU__DOT__divider__DOT__regPA[2U])) 
+                                                 << 0x20U) 
+                                                | (QData)((IData)(
+                                                                  vlSelf->ALU__DOT__divider__DOT__regPA[1U]))));
+        vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp = 0U;
+        vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm = 0xffffffffU;
+        vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[0U] 
+            = vlSelf->ALU__DOT__divider__DOT__regPA_temp[0U];
+        vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[1U] 
+            = vlSelf->ALU__DOT__divider__DOT__regPA_temp[1U];
+        vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[2U] 
+            = vlSelf->ALU__DOT__divider__DOT__regPA_temp[2U];
+    }
+    if (vlSelf->divide_running) {
+        if ((0x10U == (IData)(vlSelf->ALU__DOT__divider__DOT__count))) {
+            vlSelf->__Vdly__divide_running = 0U;
+            vlSelf->divide_done = 1U;
+            if ((4U & vlSelf->ALU__DOT__divider__DOT__regPA[2U])) {
+                vlSelf->ALU__DOT__remainder = (0x7ffffffffULL 
+                                               & ((0x7ffffffffULL 
+                                                   & ((((QData)((IData)(
+                                                                        vlSelf->ALU__DOT__divider__DOT__regPA[2U])) 
+                                                        << 0x20U) 
+                                                       | (QData)((IData)(
+                                                                         vlSelf->ALU__DOT__divider__DOT__regPA[1U]))) 
+                                                      + vlSelf->ALU__DOT__divider__DOT__dNorm)) 
+                                                  >> (IData)(vlSelf->ALU__DOT__divider__DOT__clz)));
+                vlSelf->ALU__DOT__quotient = vlSelf->ALU__DOT__divider__DOT__Qm;
+            } else {
+                vlSelf->ALU__DOT__quotient = vlSelf->ALU__DOT__divider__DOT__Qp;
+                vlSelf->ALU__DOT__remainder = (0x7ffffffffULL 
+                                               & ((0x7ffffffffULL 
+                                                   & (((QData)((IData)(
+                                                                       vlSelf->ALU__DOT__divider__DOT__regPA[2U])) 
+                                                       << 0x20U) 
+                                                      | (QData)((IData)(
+                                                                        vlSelf->ALU__DOT__divider__DOT__regPA[1U])))) 
+                                                  >> (IData)(vlSelf->ALU__DOT__divider__DOT__clz)));
+            }
+        } else {
+            vlSelf->__Vdly__ALU__DOT__divider__DOT__count 
+                = (0x1fU & ((IData)(1U) + (IData)(vlSelf->ALU__DOT__divider__DOT__count)));
+            if ((4U & (IData)(vlSelf->ALU__DOT__divider__DOT__qC))) {
+                if ((2U & (IData)(vlSelf->ALU__DOT__divider__DOT__qC))) {
+                    if ((1U & (IData)(vlSelf->ALU__DOT__divider__DOT__qC))) {
+                        vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp 
+                            = (3U | (vlSelf->ALU__DOT__divider__DOT__Qm 
+                                     << 2U));
+                        vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm 
+                            = (2U | (vlSelf->ALU__DOT__divider__DOT__Qm 
+                                     << 2U));
+                    } else {
+                        vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp 
+                            = (2U | (vlSelf->ALU__DOT__divider__DOT__Qm 
+                                     << 2U));
+                        vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm 
+                            = (1U | (vlSelf->ALU__DOT__divider__DOT__Qm 
+                                     << 2U));
+                    }
+                } else {
+                    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp 
+                        = (vlSelf->ALU__DOT__divider__DOT__Qp 
+                           << 2U);
+                    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm 
+                        = (3U | (vlSelf->ALU__DOT__divider__DOT__Qm 
+                                 << 2U));
+                }
+            } else if ((2U & (IData)(vlSelf->ALU__DOT__divider__DOT__qC))) {
+                if ((1U & (IData)(vlSelf->ALU__DOT__divider__DOT__qC))) {
+                    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp 
+                        = (vlSelf->ALU__DOT__divider__DOT__Qp 
+                           << 2U);
+                    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm 
+                        = (3U | (vlSelf->ALU__DOT__divider__DOT__Qm 
+                                 << 2U));
+                } else {
+                    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp 
+                        = (2U | (vlSelf->ALU__DOT__divider__DOT__Qp 
+                                 << 2U));
+                    vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm 
+                        = (1U | (vlSelf->ALU__DOT__divider__DOT__Qp 
+                                 << 2U));
+                }
+            } else if ((1U & (IData)(vlSelf->ALU__DOT__divider__DOT__qC))) {
+                vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp 
+                    = (1U | (vlSelf->ALU__DOT__divider__DOT__Qp 
+                             << 2U));
+                vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm 
+                    = (vlSelf->ALU__DOT__divider__DOT__Qp 
+                       << 2U);
+            } else {
+                vlSelf->__Vdly__ALU__DOT__divider__DOT__Qp 
+                    = (vlSelf->ALU__DOT__divider__DOT__Qp 
+                       << 2U);
+                vlSelf->__Vdly__ALU__DOT__divider__DOT__Qm 
+                    = (3U | (vlSelf->ALU__DOT__divider__DOT__Qm 
+                             << 2U));
+            }
+            vlSelf->ALU__DOT__divider__DOT__p = vlSelf->ALU__DOT__divider__DOT__pNext;
+            vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[0U] 
+                = vlSelf->ALU__DOT__divider__DOT__regPA_TS[0U];
+            vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[1U] 
+                = (IData)(vlSelf->ALU__DOT__divider__DOT__pNext);
+            vlSelf->__Vdly__ALU__DOT__divider__DOT__regPA[2U] 
+                = (IData)((vlSelf->ALU__DOT__divider__DOT__pNext 
+                           >> 0x20U));
+        }
+    }
     if ((4U & (IData)(vlSelf->ALU__DOT__multiplier__DOT__state))) {
         if ((2U & (IData)(vlSelf->ALU__DOT__multiplier__DOT__state))) {
             if ((1U & (IData)(vlSelf->ALU__DOT__multiplier__DOT__state))) {
                 vlSelf->ALU__DOT__multiplied_product 
                     = vlSelf->ALU__DOT__multiplier__DOT__product;
-                vlSelf->__Vdly__multiply_done = 1U;
-                vlSelf->ALU__DOT__multiply_running = 0U;
+                vlSelf->multiply_done = 1U;
+                vlSelf->multiply_running = 0U;
                 vlSelf->__Vdly__ALU__DOT__multiplier__DOT__state = 0U;
             } else {
                 vlSelf->ALU__DOT__multiplier__DOT__unnamedblk6__DOT__f = 1U;
@@ -3943,15 +4080,15 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                 = ((0xfffffffffffffffeULL & vlSelf->ALU__DOT__multiplier__DOT__c11) 
                    | (IData)((IData)((1U & ((((1U & (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs9)) 
                                               + (1U 
-                                                 & (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs4))) 
+                                                 & (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs14))) 
                                              + (1U 
-                                                & (IData)(vlSelf->ALU__DOT__multiplier__DOT__s0))) 
+                                                & (IData)(vlSelf->ALU__DOT__multiplier__DOT__s14))) 
                                             >> 1U)))));
             vlSelf->ALU__DOT__multiplier__DOT__s11 
                 = ((0xfffffffffffffffeULL & vlSelf->ALU__DOT__multiplier__DOT__s11) 
                    | (IData)((IData)((1U & (((IData)(vlSelf->ALU__DOT__multiplier__DOT__cs9) 
-                                             + (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs4)) 
-                                            + (IData)(vlSelf->ALU__DOT__multiplier__DOT__s0))))));
+                                             + (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs14)) 
+                                            + (IData)(vlSelf->ALU__DOT__multiplier__DOT__s14))))));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 2U;
             vlSelf->__Vdly__ALU__DOT__multiplier__DOT__state = 5U;
             vlSelf->ALU__DOT__multiplier__DOT__c10 
@@ -3990,11 +4127,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 1U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 1U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 1U)))) 
                                              >> 1U)))) 
                       << 1U));
@@ -4004,10 +4141,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 1U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 1U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 1U)))))) 
                       << 1U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 3U;
@@ -4047,11 +4184,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 2U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 2U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 2U)))) 
                                              >> 1U)))) 
                       << 2U));
@@ -4061,10 +4198,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 2U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 2U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 2U)))))) 
                       << 2U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 4U;
@@ -4104,11 +4241,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 3U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 3U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 3U)))) 
                                              >> 1U)))) 
                       << 3U));
@@ -4118,10 +4255,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 3U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 3U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 3U)))))) 
                       << 3U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 5U;
@@ -4161,11 +4298,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 4U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 4U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 4U)))) 
                                              >> 1U)))) 
                       << 4U));
@@ -4175,10 +4312,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 4U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 4U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 4U)))))) 
                       << 4U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 6U;
@@ -4218,11 +4355,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 5U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 5U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 5U)))) 
                                              >> 1U)))) 
                       << 5U));
@@ -4232,10 +4369,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 5U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 5U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 5U)))))) 
                       << 5U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 7U;
@@ -4275,11 +4412,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 6U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 6U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 6U)))) 
                                              >> 1U)))) 
                       << 6U));
@@ -4289,10 +4426,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 6U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 6U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 6U)))))) 
                       << 6U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 8U;
@@ -4332,11 +4469,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 7U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 7U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 7U)))) 
                                              >> 1U)))) 
                       << 7U));
@@ -4346,10 +4483,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 7U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 7U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 7U)))))) 
                       << 7U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 9U;
@@ -4389,11 +4526,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 8U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 8U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 8U)))) 
                                              >> 1U)))) 
                       << 8U));
@@ -4403,10 +4540,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 8U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 8U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 8U)))))) 
                       << 8U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0xaU;
@@ -4446,11 +4583,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 9U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 9U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 9U)))) 
                                              >> 1U)))) 
                       << 9U));
@@ -4460,10 +4597,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 9U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 9U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 9U)))))) 
                       << 9U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0xbU;
@@ -4503,11 +4640,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0xaU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0xaU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0xaU)))) 
                                              >> 1U)))) 
                       << 0xaU));
@@ -4517,10 +4654,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0xaU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0xaU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0xaU)))))) 
                       << 0xaU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0xcU;
@@ -4560,11 +4697,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0xbU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0xbU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0xbU)))) 
                                              >> 1U)))) 
                       << 0xbU));
@@ -4574,10 +4711,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0xbU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0xbU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0xbU)))))) 
                       << 0xbU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0xdU;
@@ -4617,11 +4754,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0xcU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0xcU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0xcU)))) 
                                              >> 1U)))) 
                       << 0xcU));
@@ -4631,10 +4768,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0xcU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0xcU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0xcU)))))) 
                       << 0xcU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0xeU;
@@ -4674,11 +4811,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0xdU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0xdU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0xdU)))) 
                                              >> 1U)))) 
                       << 0xdU));
@@ -4688,10 +4825,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0xdU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0xdU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0xdU)))))) 
                       << 0xdU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0xfU;
@@ -4731,11 +4868,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0xeU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0xeU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0xeU)))) 
                                              >> 1U)))) 
                       << 0xeU));
@@ -4745,10 +4882,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0xeU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0xeU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0xeU)))))) 
                       << 0xeU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x10U;
@@ -4788,11 +4925,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0xfU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0xfU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0xfU)))) 
                                              >> 1U)))) 
                       << 0xfU));
@@ -4802,10 +4939,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0xfU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0xfU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0xfU)))))) 
                       << 0xfU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x11U;
@@ -4845,11 +4982,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x10U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x10U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x10U)))) 
                                              >> 1U)))) 
                       << 0x10U));
@@ -4859,10 +4996,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x10U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x10U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x10U)))))) 
                       << 0x10U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x12U;
@@ -4902,11 +5039,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x11U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x11U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x11U)))) 
                                              >> 1U)))) 
                       << 0x11U));
@@ -4916,10 +5053,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x11U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x11U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x11U)))))) 
                       << 0x11U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x13U;
@@ -4959,11 +5096,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x12U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x12U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x12U)))) 
                                              >> 1U)))) 
                       << 0x12U));
@@ -4973,10 +5110,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x12U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x12U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x12U)))))) 
                       << 0x12U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x14U;
@@ -5016,11 +5153,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x13U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x13U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x13U)))) 
                                              >> 1U)))) 
                       << 0x13U));
@@ -5030,10 +5167,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x13U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x13U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x13U)))))) 
                       << 0x13U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x15U;
@@ -5073,11 +5210,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x14U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x14U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x14U)))) 
                                              >> 1U)))) 
                       << 0x14U));
@@ -5087,10 +5224,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x14U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x14U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x14U)))))) 
                       << 0x14U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x16U;
@@ -5130,11 +5267,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x15U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x15U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x15U)))) 
                                              >> 1U)))) 
                       << 0x15U));
@@ -5144,10 +5281,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x15U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x15U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x15U)))))) 
                       << 0x15U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x17U;
@@ -5187,11 +5324,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x16U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x16U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x16U)))) 
                                              >> 1U)))) 
                       << 0x16U));
@@ -5201,10 +5338,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x16U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x16U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x16U)))))) 
                       << 0x16U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x18U;
@@ -5244,11 +5381,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x17U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x17U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x17U)))) 
                                              >> 1U)))) 
                       << 0x17U));
@@ -5258,10 +5395,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x17U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x17U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x17U)))))) 
                       << 0x17U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x19U;
@@ -5301,11 +5438,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x18U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x18U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x18U)))) 
                                              >> 1U)))) 
                       << 0x18U));
@@ -5315,10 +5452,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x18U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x18U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x18U)))))) 
                       << 0x18U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x1aU;
@@ -5358,11 +5495,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x19U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x19U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x19U)))) 
                                              >> 1U)))) 
                       << 0x19U));
@@ -5372,10 +5509,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x19U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x19U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x19U)))))) 
                       << 0x19U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x1bU;
@@ -5415,11 +5552,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x1aU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x1aU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x1aU)))) 
                                              >> 1U)))) 
                       << 0x1aU));
@@ -5429,10 +5566,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x1aU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x1aU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x1aU)))))) 
                       << 0x1aU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x1cU;
@@ -5472,11 +5609,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x1bU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x1bU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x1bU)))) 
                                              >> 1U)))) 
                       << 0x1bU));
@@ -5486,10 +5623,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x1bU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x1bU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x1bU)))))) 
                       << 0x1bU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x1dU;
@@ -5529,11 +5666,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x1cU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x1cU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x1cU)))) 
                                              >> 1U)))) 
                       << 0x1cU));
@@ -5543,10 +5680,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x1cU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x1cU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x1cU)))))) 
                       << 0x1cU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x1eU;
@@ -5586,11 +5723,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x1dU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x1dU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x1dU)))) 
                                              >> 1U)))) 
                       << 0x1dU));
@@ -5600,10 +5737,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x1dU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x1dU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x1dU)))))) 
                       << 0x1dU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x1fU;
@@ -5643,11 +5780,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x1eU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x1eU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x1eU)))) 
                                              >> 1U)))) 
                       << 0x1eU));
@@ -5657,10 +5794,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x1eU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x1eU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x1eU)))))) 
                       << 0x1eU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x20U;
@@ -5700,11 +5837,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x1fU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x1fU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x1fU)))) 
                                              >> 1U)))) 
                       << 0x1fU));
@@ -5714,10 +5851,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x1fU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x1fU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x1fU)))))) 
                       << 0x1fU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x21U;
@@ -5757,11 +5894,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x20U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x20U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x20U)))) 
                                              >> 1U)))) 
                       << 0x20U));
@@ -5771,10 +5908,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x20U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x20U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x20U)))))) 
                       << 0x20U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x22U;
@@ -5814,11 +5951,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x21U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x21U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x21U)))) 
                                              >> 1U)))) 
                       << 0x21U));
@@ -5828,10 +5965,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x21U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x21U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x21U)))))) 
                       << 0x21U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x23U;
@@ -5871,11 +6008,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x22U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x22U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x22U)))) 
                                              >> 1U)))) 
                       << 0x22U));
@@ -5885,10 +6022,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x22U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x22U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x22U)))))) 
                       << 0x22U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x24U;
@@ -5928,11 +6065,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x23U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x23U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x23U)))) 
                                              >> 1U)))) 
                       << 0x23U));
@@ -5942,10 +6079,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x23U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x23U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x23U)))))) 
                       << 0x23U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x25U;
@@ -5985,11 +6122,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x24U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x24U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x24U)))) 
                                              >> 1U)))) 
                       << 0x24U));
@@ -5999,10 +6136,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x24U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x24U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x24U)))))) 
                       << 0x24U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x26U;
@@ -6042,11 +6179,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x25U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x25U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x25U)))) 
                                              >> 1U)))) 
                       << 0x25U));
@@ -6056,10 +6193,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x25U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x25U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x25U)))))) 
                       << 0x25U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x27U;
@@ -6099,11 +6236,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x26U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x26U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x26U)))) 
                                              >> 1U)))) 
                       << 0x26U));
@@ -6113,10 +6250,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x26U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x26U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x26U)))))) 
                       << 0x26U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x28U;
@@ -6156,11 +6293,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x27U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x27U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x27U)))) 
                                              >> 1U)))) 
                       << 0x27U));
@@ -6170,10 +6307,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x27U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x27U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x27U)))))) 
                       << 0x27U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x29U;
@@ -6213,11 +6350,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x28U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x28U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x28U)))) 
                                              >> 1U)))) 
                       << 0x28U));
@@ -6227,10 +6364,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x28U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x28U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x28U)))))) 
                       << 0x28U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x2aU;
@@ -6270,11 +6407,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x29U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x29U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x29U)))) 
                                              >> 1U)))) 
                       << 0x29U));
@@ -6284,10 +6421,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x29U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x29U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x29U)))))) 
                       << 0x29U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x2bU;
@@ -6327,11 +6464,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x2aU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x2aU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x2aU)))) 
                                              >> 1U)))) 
                       << 0x2aU));
@@ -6341,10 +6478,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x2aU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x2aU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x2aU)))))) 
                       << 0x2aU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x2cU;
@@ -6384,11 +6521,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x2bU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x2bU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x2bU)))) 
                                              >> 1U)))) 
                       << 0x2bU));
@@ -6398,10 +6535,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x2bU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x2bU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x2bU)))))) 
                       << 0x2bU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x2dU;
@@ -6441,11 +6578,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x2cU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x2cU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x2cU)))) 
                                              >> 1U)))) 
                       << 0x2cU));
@@ -6455,10 +6592,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x2cU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x2cU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x2cU)))))) 
                       << 0x2cU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x2eU;
@@ -6498,11 +6635,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x2dU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x2dU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x2dU)))) 
                                              >> 1U)))) 
                       << 0x2dU));
@@ -6512,10 +6649,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x2dU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x2dU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x2dU)))))) 
                       << 0x2dU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x2fU;
@@ -6555,11 +6692,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x2eU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x2eU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x2eU)))) 
                                              >> 1U)))) 
                       << 0x2eU));
@@ -6569,10 +6706,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x2eU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x2eU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x2eU)))))) 
                       << 0x2eU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x30U;
@@ -6612,11 +6749,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x2fU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x2fU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x2fU)))) 
                                              >> 1U)))) 
                       << 0x2fU));
@@ -6626,10 +6763,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x2fU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x2fU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x2fU)))))) 
                       << 0x2fU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x31U;
@@ -6669,11 +6806,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x30U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x30U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x30U)))) 
                                              >> 1U)))) 
                       << 0x30U));
@@ -6683,10 +6820,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x30U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x30U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x30U)))))) 
                       << 0x30U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x32U;
@@ -6726,11 +6863,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x31U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x31U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x31U)))) 
                                              >> 1U)))) 
                       << 0x31U));
@@ -6740,10 +6877,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x31U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x31U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x31U)))))) 
                       << 0x31U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x33U;
@@ -6783,11 +6920,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x32U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x32U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x32U)))) 
                                              >> 1U)))) 
                       << 0x32U));
@@ -6797,10 +6934,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x32U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x32U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x32U)))))) 
                       << 0x32U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x34U;
@@ -6840,11 +6977,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x33U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x33U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x33U)))) 
                                              >> 1U)))) 
                       << 0x33U));
@@ -6854,10 +6991,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x33U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x33U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x33U)))))) 
                       << 0x33U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x35U;
@@ -6897,11 +7034,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x34U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x34U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x34U)))) 
                                              >> 1U)))) 
                       << 0x34U));
@@ -6911,10 +7048,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x34U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x34U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x34U)))))) 
                       << 0x34U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x36U;
@@ -6954,11 +7091,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x35U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x35U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x35U)))) 
                                              >> 1U)))) 
                       << 0x35U));
@@ -6968,10 +7105,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x35U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x35U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x35U)))))) 
                       << 0x35U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x37U;
@@ -7011,11 +7148,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x36U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x36U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x36U)))) 
                                              >> 1U)))) 
                       << 0x36U));
@@ -7025,10 +7162,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x36U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x36U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x36U)))))) 
                       << 0x36U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x38U;
@@ -7068,11 +7205,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x37U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x37U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x37U)))) 
                                              >> 1U)))) 
                       << 0x37U));
@@ -7082,10 +7219,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x37U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x37U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x37U)))))) 
                       << 0x37U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x39U;
@@ -7125,11 +7262,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x38U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x38U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x38U)))) 
                                              >> 1U)))) 
                       << 0x38U));
@@ -7139,10 +7276,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x38U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x38U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x38U)))))) 
                       << 0x38U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x3aU;
@@ -7182,11 +7319,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x39U))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x39U)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x39U)))) 
                                              >> 1U)))) 
                       << 0x39U));
@@ -7196,10 +7333,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x39U)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x39U))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x39U)))))) 
                       << 0x39U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x3bU;
@@ -7239,11 +7376,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x3aU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x3aU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x3aU)))) 
                                              >> 1U)))) 
                       << 0x3aU));
@@ -7253,10 +7390,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x3aU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x3aU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x3aU)))))) 
                       << 0x3aU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x3cU;
@@ -7296,11 +7433,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x3bU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x3bU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x3bU)))) 
                                              >> 1U)))) 
                       << 0x3bU));
@@ -7310,10 +7447,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x3bU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x3bU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x3bU)))))) 
                       << 0x3bU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x3dU;
@@ -7353,11 +7490,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x3cU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x3cU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x3cU)))) 
                                              >> 1U)))) 
                       << 0x3cU));
@@ -7367,10 +7504,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x3cU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x3cU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x3cU)))))) 
                       << 0x3cU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x3eU;
@@ -7410,11 +7547,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x3dU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x3dU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x3dU)))) 
                                              >> 1U)))) 
                       << 0x3dU));
@@ -7424,10 +7561,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x3dU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x3dU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x3dU)))))) 
                       << 0x3dU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x3fU;
@@ -7467,11 +7604,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x3eU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x3eU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x3eU)))) 
                                              >> 1U)))) 
                       << 0x3eU));
@@ -7481,10 +7618,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x3eU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x3eU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x3eU)))))) 
                       << 0x3eU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk4__DOT__h = 0x40U;
@@ -7524,11 +7661,11 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                            >> 0x3fU))) 
                                                + (1U 
                                                   & (IData)(
-                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                              >> 0x3fU)))) 
                                               + (1U 
                                                  & (IData)(
-                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                             >> 0x3fU)))) 
                                              >> 1U)))) 
                       << 0x3fU));
@@ -7538,10 +7675,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                       (vlSelf->ALU__DOT__multiplier__DOT__cs9 
                                                        >> 0x3fU)) 
                                               + (IData)(
-                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__cs14 
                                                          >> 0x3fU))) 
                                              + (IData)(
-                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s14 
                                                         >> 0x3fU)))))) 
                       << 0x3fU));
         }
@@ -10949,6 +11086,23 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                  | (IData)((IData)((1U & (((IData)(vlSelf->ALU__DOT__multiplier__DOT__cs1) 
                                            + (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs2)) 
                                           + (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs3))))));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffffffeULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | (IData)((IData)((1U & ((((1U & (IData)(vlSelf->ALU__DOT__multiplier__DOT__cs4)) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                           [0x10U]))) 
+                                             + (1U 
+                                                & (IData)(vlSelf->ALU__DOT__multiplier__DOT__s0))) 
+                                            >> 1U)))));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffffffeULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | (IData)((IData)((1U & (((IData)(vlSelf->ALU__DOT__multiplier__DOT__cs4) 
+                                             + (IData)(
+                                                       vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                       [0x10U])) 
+                                            + (IData)(vlSelf->ALU__DOT__multiplier__DOT__s0))))));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 2U;
             vlSelf->__Vdly__ALU__DOT__multiplier__DOT__state = 3U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
@@ -11031,6 +11185,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 1U)))))) 
                     << 1U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffffffdULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 1U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 1U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 1U)))) 
+                                             >> 1U)))) 
+                      << 1U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffffffdULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 1U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 1U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 1U)))))) 
+                      << 1U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 3U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffffffbULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11112,6 +11296,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 2U)))))) 
                     << 2U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffffffbULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 2U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 2U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 2U)))) 
+                                             >> 1U)))) 
+                      << 2U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffffffbULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 2U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 2U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 2U)))))) 
+                      << 2U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 4U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffffff7ULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11193,6 +11407,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 3U)))))) 
                     << 3U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffffff7ULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 3U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 3U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 3U)))) 
+                                             >> 1U)))) 
+                      << 3U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffffff7ULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 3U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 3U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 3U)))))) 
+                      << 3U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 5U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffffffefULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11274,6 +11518,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 4U)))))) 
                     << 4U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffffffefULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 4U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 4U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 4U)))) 
+                                             >> 1U)))) 
+                      << 4U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffffffefULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 4U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 4U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 4U)))))) 
+                      << 4U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 6U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffffffdfULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11355,6 +11629,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 5U)))))) 
                     << 5U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffffffdfULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 5U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 5U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 5U)))) 
+                                             >> 1U)))) 
+                      << 5U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffffffdfULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 5U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 5U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 5U)))))) 
+                      << 5U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 7U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffffffbfULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11436,6 +11740,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 6U)))))) 
                     << 6U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffffffbfULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 6U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 6U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 6U)))) 
+                                             >> 1U)))) 
+                      << 6U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffffffbfULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 6U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 6U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 6U)))))) 
+                      << 6U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 8U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffffff7fULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11517,6 +11851,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 7U)))))) 
                     << 7U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffffff7fULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 7U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 7U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 7U)))) 
+                                             >> 1U)))) 
+                      << 7U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffffff7fULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 7U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 7U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 7U)))))) 
+                      << 7U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 9U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffffeffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11598,6 +11962,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 8U)))))) 
                     << 8U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffffeffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 8U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 8U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 8U)))) 
+                                             >> 1U)))) 
+                      << 8U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffffeffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 8U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 8U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 8U)))))) 
+                      << 8U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0xaU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffffdffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11679,6 +12073,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 9U)))))) 
                     << 9U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffffdffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 9U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 9U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 9U)))) 
+                                             >> 1U)))) 
+                      << 9U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffffdffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 9U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 9U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 9U)))))) 
+                      << 9U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0xbU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffffbffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11760,6 +12184,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0xaU)))))) 
                     << 0xaU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffffbffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0xaU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0xaU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0xaU)))) 
+                                             >> 1U)))) 
+                      << 0xaU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffffbffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0xaU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0xaU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0xaU)))))) 
+                      << 0xaU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0xcU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffff7ffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11841,6 +12295,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0xbU)))))) 
                     << 0xbU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffff7ffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0xbU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0xbU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0xbU)))) 
+                                             >> 1U)))) 
+                      << 0xbU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffff7ffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0xbU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0xbU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0xbU)))))) 
+                      << 0xbU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0xdU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffffefffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -11922,6 +12406,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0xcU)))))) 
                     << 0xcU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffffefffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0xcU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0xcU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0xcU)))) 
+                                             >> 1U)))) 
+                      << 0xcU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffffefffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0xcU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0xcU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0xcU)))))) 
+                      << 0xcU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0xeU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffffdfffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12003,6 +12517,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0xdU)))))) 
                     << 0xdU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffffdfffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0xdU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0xdU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0xdU)))) 
+                                             >> 1U)))) 
+                      << 0xdU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffffdfffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0xdU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0xdU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0xdU)))))) 
+                      << 0xdU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0xfU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffffbfffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12084,6 +12628,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0xeU)))))) 
                     << 0xeU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffffbfffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0xeU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0xeU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0xeU)))) 
+                                             >> 1U)))) 
+                      << 0xeU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffffbfffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0xeU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0xeU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0xeU)))))) 
+                      << 0xeU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x10U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffff7fffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12165,6 +12739,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0xfU)))))) 
                     << 0xfU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffff7fffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0xfU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0xfU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0xfU)))) 
+                                             >> 1U)))) 
+                      << 0xfU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffff7fffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0xfU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0xfU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0xfU)))))) 
+                      << 0xfU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x11U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffeffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12246,6 +12850,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x10U)))))) 
                     << 0x10U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffeffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x10U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x10U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x10U)))) 
+                                             >> 1U)))) 
+                      << 0x10U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffeffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x10U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x10U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x10U)))))) 
+                      << 0x10U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x12U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffdffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12327,6 +12961,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x11U)))))) 
                     << 0x11U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffdffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x11U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x11U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x11U)))) 
+                                             >> 1U)))) 
+                      << 0x11U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffdffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x11U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x11U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x11U)))))) 
+                      << 0x11U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x13U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffffbffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12408,6 +13072,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x12U)))))) 
                     << 0x12U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffffbffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x12U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x12U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x12U)))) 
+                                             >> 1U)))) 
+                      << 0x12U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffffbffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x12U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x12U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x12U)))))) 
+                      << 0x12U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x14U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffff7ffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12489,6 +13183,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x13U)))))) 
                     << 0x13U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffff7ffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x13U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x13U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x13U)))) 
+                                             >> 1U)))) 
+                      << 0x13U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffff7ffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x13U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x13U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x13U)))))) 
+                      << 0x13U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x15U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffefffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12570,6 +13294,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x14U)))))) 
                     << 0x14U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffefffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x14U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x14U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x14U)))) 
+                                             >> 1U)))) 
+                      << 0x14U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffefffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x14U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x14U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x14U)))))) 
+                      << 0x14U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x16U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffdfffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12651,6 +13405,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x15U)))))) 
                     << 0x15U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffdfffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x15U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x15U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x15U)))) 
+                                             >> 1U)))) 
+                      << 0x15U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffdfffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x15U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x15U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x15U)))))) 
+                      << 0x15U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x17U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffffbfffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12732,6 +13516,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x16U)))))) 
                     << 0x16U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffffbfffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x16U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x16U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x16U)))) 
+                                             >> 1U)))) 
+                      << 0x16U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffffbfffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x16U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x16U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x16U)))))) 
+                      << 0x16U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x18U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffff7fffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12813,6 +13627,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x17U)))))) 
                     << 0x17U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffff7fffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x17U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x17U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x17U)))) 
+                                             >> 1U)))) 
+                      << 0x17U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffff7fffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x17U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x17U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x17U)))))) 
+                      << 0x17U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x19U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffeffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12894,6 +13738,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x18U)))))) 
                     << 0x18U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffeffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x18U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x18U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x18U)))) 
+                                             >> 1U)))) 
+                      << 0x18U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffeffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x18U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x18U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x18U)))))) 
+                      << 0x18U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x1aU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffdffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -12975,6 +13849,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x19U)))))) 
                     << 0x19U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffdffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x19U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x19U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x19U)))) 
+                                             >> 1U)))) 
+                      << 0x19U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffdffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x19U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x19U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x19U)))))) 
+                      << 0x19U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x1bU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffffbffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13056,6 +13960,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x1aU)))))) 
                     << 0x1aU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffffbffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x1aU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x1aU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x1aU)))) 
+                                             >> 1U)))) 
+                      << 0x1aU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffffbffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x1aU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x1aU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x1aU)))))) 
+                      << 0x1aU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x1cU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffff7ffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13137,6 +14071,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x1bU)))))) 
                     << 0x1bU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffff7ffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x1bU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x1bU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x1bU)))) 
+                                             >> 1U)))) 
+                      << 0x1bU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffff7ffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x1bU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x1bU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x1bU)))))) 
+                      << 0x1bU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x1dU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffefffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13218,6 +14182,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x1cU)))))) 
                     << 0x1cU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffefffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x1cU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x1cU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x1cU)))) 
+                                             >> 1U)))) 
+                      << 0x1cU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffefffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x1cU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x1cU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x1cU)))))) 
+                      << 0x1cU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x1eU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffdfffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13299,6 +14293,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x1dU)))))) 
                     << 0x1dU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffdfffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x1dU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x1dU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x1dU)))) 
+                                             >> 1U)))) 
+                      << 0x1dU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffdfffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x1dU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x1dU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x1dU)))))) 
+                      << 0x1dU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x1fU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffffbfffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13380,6 +14404,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x1eU)))))) 
                     << 0x1eU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffffbfffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x1eU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x1eU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x1eU)))) 
+                                             >> 1U)))) 
+                      << 0x1eU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffffbfffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x1eU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x1eU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x1eU)))))) 
+                      << 0x1eU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x20U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffff7fffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13461,6 +14515,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x1fU)))))) 
                     << 0x1fU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffff7fffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x1fU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x1fU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x1fU)))) 
+                                             >> 1U)))) 
+                      << 0x1fU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffff7fffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x1fU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x1fU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x1fU)))))) 
+                      << 0x1fU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x21U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffeffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13542,6 +14626,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x20U)))))) 
                     << 0x20U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffeffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x20U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x20U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x20U)))) 
+                                             >> 1U)))) 
+                      << 0x20U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffeffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x20U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x20U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x20U)))))) 
+                      << 0x20U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x22U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffdffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13623,6 +14737,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x21U)))))) 
                     << 0x21U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffdffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x21U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x21U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x21U)))) 
+                                             >> 1U)))) 
+                      << 0x21U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffdffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x21U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x21U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x21U)))))) 
+                      << 0x21U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x23U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffffbffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13704,6 +14848,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x22U)))))) 
                     << 0x22U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffffbffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x22U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x22U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x22U)))) 
+                                             >> 1U)))) 
+                      << 0x22U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffffbffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x22U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x22U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x22U)))))) 
+                      << 0x22U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x24U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffff7ffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13785,6 +14959,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x23U)))))) 
                     << 0x23U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffff7ffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x23U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x23U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x23U)))) 
+                                             >> 1U)))) 
+                      << 0x23U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffff7ffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x23U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x23U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x23U)))))) 
+                      << 0x23U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x25U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffefffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13866,6 +15070,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x24U)))))) 
                     << 0x24U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffefffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x24U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x24U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x24U)))) 
+                                             >> 1U)))) 
+                      << 0x24U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffefffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x24U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x24U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x24U)))))) 
+                      << 0x24U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x26U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffdfffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -13947,6 +15181,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x25U)))))) 
                     << 0x25U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffdfffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x25U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x25U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x25U)))) 
+                                             >> 1U)))) 
+                      << 0x25U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffdfffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x25U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x25U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x25U)))))) 
+                      << 0x25U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x27U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffffbfffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14028,6 +15292,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x26U)))))) 
                     << 0x26U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffffbfffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x26U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x26U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x26U)))) 
+                                             >> 1U)))) 
+                      << 0x26U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffffbfffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x26U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x26U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x26U)))))) 
+                      << 0x26U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x28U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffff7fffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14109,6 +15403,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x27U)))))) 
                     << 0x27U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffff7fffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x27U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x27U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x27U)))) 
+                                             >> 1U)))) 
+                      << 0x27U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffff7fffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x27U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x27U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x27U)))))) 
+                      << 0x27U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x29U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffeffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14190,6 +15514,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x28U)))))) 
                     << 0x28U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffeffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x28U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x28U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x28U)))) 
+                                             >> 1U)))) 
+                      << 0x28U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffeffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x28U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x28U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x28U)))))) 
+                      << 0x28U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x2aU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffdffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14271,6 +15625,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x29U)))))) 
                     << 0x29U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffdffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x29U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x29U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x29U)))) 
+                                             >> 1U)))) 
+                      << 0x29U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffdffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x29U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x29U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x29U)))))) 
+                      << 0x29U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x2bU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffffbffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14352,6 +15736,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x2aU)))))) 
                     << 0x2aU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffffbffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x2aU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x2aU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x2aU)))) 
+                                             >> 1U)))) 
+                      << 0x2aU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffffbffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x2aU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x2aU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x2aU)))))) 
+                      << 0x2aU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x2cU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffff7ffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14433,6 +15847,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x2bU)))))) 
                     << 0x2bU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffff7ffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x2bU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x2bU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x2bU)))) 
+                                             >> 1U)))) 
+                      << 0x2bU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffff7ffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x2bU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x2bU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x2bU)))))) 
+                      << 0x2bU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x2dU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffefffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14514,6 +15958,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x2cU)))))) 
                     << 0x2cU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffefffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x2cU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x2cU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x2cU)))) 
+                                             >> 1U)))) 
+                      << 0x2cU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffefffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x2cU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x2cU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x2cU)))))) 
+                      << 0x2cU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x2eU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffdfffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14595,6 +16069,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x2dU)))))) 
                     << 0x2dU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffdfffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x2dU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x2dU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x2dU)))) 
+                                             >> 1U)))) 
+                      << 0x2dU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffdfffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x2dU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x2dU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x2dU)))))) 
+                      << 0x2dU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x2fU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffffbfffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14676,6 +16180,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x2eU)))))) 
                     << 0x2eU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffffbfffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x2eU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x2eU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x2eU)))) 
+                                             >> 1U)))) 
+                      << 0x2eU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffffbfffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x2eU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x2eU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x2eU)))))) 
+                      << 0x2eU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x30U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffff7fffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14757,6 +16291,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x2fU)))))) 
                     << 0x2fU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffff7fffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x2fU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x2fU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x2fU)))) 
+                                             >> 1U)))) 
+                      << 0x2fU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffff7fffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x2fU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x2fU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x2fU)))))) 
+                      << 0x2fU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x31U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffeffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14838,6 +16402,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x30U)))))) 
                     << 0x30U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffeffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x30U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x30U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x30U)))) 
+                                             >> 1U)))) 
+                      << 0x30U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffeffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x30U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x30U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x30U)))))) 
+                      << 0x30U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x32U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffdffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -14919,6 +16513,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x31U)))))) 
                     << 0x31U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffdffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x31U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x31U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x31U)))) 
+                                             >> 1U)))) 
+                      << 0x31U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffdffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x31U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x31U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x31U)))))) 
+                      << 0x31U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x33U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfffbffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15000,6 +16624,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x32U)))))) 
                     << 0x32U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfffbffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x32U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x32U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x32U)))) 
+                                             >> 1U)))) 
+                      << 0x32U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfffbffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x32U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x32U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x32U)))))) 
+                      << 0x32U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x34U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfff7ffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15081,6 +16735,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x33U)))))) 
                     << 0x33U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfff7ffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x33U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x33U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x33U)))) 
+                                             >> 1U)))) 
+                      << 0x33U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfff7ffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x33U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x33U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x33U)))))) 
+                      << 0x33U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x35U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffefffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15162,6 +16846,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x34U)))))) 
                     << 0x34U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffefffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x34U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x34U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x34U)))) 
+                                             >> 1U)))) 
+                      << 0x34U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffefffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x34U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x34U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x34U)))))) 
+                      << 0x34U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x36U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffdfffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15243,6 +16957,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x35U)))))) 
                     << 0x35U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffdfffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x35U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x35U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x35U)))) 
+                                             >> 1U)))) 
+                      << 0x35U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffdfffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x35U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x35U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x35U)))))) 
+                      << 0x35U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x37U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xffbfffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15324,6 +17068,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x36U)))))) 
                     << 0x36U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xffbfffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x36U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x36U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x36U)))) 
+                                             >> 1U)))) 
+                      << 0x36U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xffbfffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x36U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x36U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x36U)))))) 
+                      << 0x36U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x38U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xff7fffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15405,6 +17179,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x37U)))))) 
                     << 0x37U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xff7fffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x37U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x37U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x37U)))) 
+                                             >> 1U)))) 
+                      << 0x37U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xff7fffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x37U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x37U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x37U)))))) 
+                      << 0x37U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x39U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfeffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15486,6 +17290,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x38U)))))) 
                     << 0x38U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfeffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x38U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x38U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x38U)))) 
+                                             >> 1U)))) 
+                      << 0x38U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfeffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x38U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x38U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x38U)))))) 
+                      << 0x38U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x3aU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfdffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15567,6 +17401,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x39U)))))) 
                     << 0x39U));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfdffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x39U))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x39U)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x39U)))) 
+                                             >> 1U)))) 
+                      << 0x39U));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfdffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x39U)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x39U))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x39U)))))) 
+                      << 0x39U));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x3bU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xfbffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15648,6 +17512,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x3aU)))))) 
                     << 0x3aU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xfbffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x3aU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x3aU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x3aU)))) 
+                                             >> 1U)))) 
+                      << 0x3aU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xfbffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x3aU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x3aU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x3aU)))))) 
+                      << 0x3aU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x3cU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xf7ffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15729,6 +17623,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x3bU)))))) 
                     << 0x3bU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xf7ffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x3bU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x3bU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x3bU)))) 
+                                             >> 1U)))) 
+                      << 0x3bU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xf7ffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x3bU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x3bU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x3bU)))))) 
+                      << 0x3bU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x3dU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xefffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15810,6 +17734,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x3cU)))))) 
                     << 0x3cU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xefffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x3cU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x3cU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x3cU)))) 
+                                             >> 1U)))) 
+                      << 0x3cU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xefffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x3cU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x3cU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x3cU)))))) 
+                      << 0x3cU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x3eU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xdfffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15891,6 +17845,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x3dU)))))) 
                     << 0x3dU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xdfffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x3dU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x3dU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x3dU)))) 
+                                             >> 1U)))) 
+                      << 0x3dU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xdfffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x3dU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x3dU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x3dU)))))) 
+                      << 0x3dU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x3fU;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0xbfffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -15972,6 +17956,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x3eU)))))) 
                     << 0x3eU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0xbfffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x3eU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x3eU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x3eU)))) 
+                                             >> 1U)))) 
+                      << 0x3eU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0xbfffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x3eU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x3eU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x3eU)))))) 
+                      << 0x3eU));
             vlSelf->ALU__DOT__multiplier__DOT__unnamedblk2__DOT__j = 0x40U;
             vlSelf->ALU__DOT__multiplier__DOT__c5 = 
                 ((0x7fffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c5) 
@@ -16053,6 +18067,36 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs3 
                                                       >> 0x3fU)))))) 
                     << 0x3fU));
+            vlSelf->ALU__DOT__multiplier__DOT__c14 
+                = ((0x7fffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__c14) 
+                   | ((QData)((IData)((1U & ((((1U 
+                                                & (IData)(
+                                                          (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                           >> 0x3fU))) 
+                                               + (1U 
+                                                  & (IData)(
+                                                            (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                             [0x10U] 
+                                                             >> 0x3fU)))) 
+                                              + (1U 
+                                                 & (IData)(
+                                                           (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                            >> 0x3fU)))) 
+                                             >> 1U)))) 
+                      << 0x3fU));
+            vlSelf->ALU__DOT__multiplier__DOT__s14 
+                = ((0x7fffffffffffffffULL & vlSelf->ALU__DOT__multiplier__DOT__s14) 
+                   | ((QData)((IData)((1U & (((IData)(
+                                                      (vlSelf->ALU__DOT__multiplier__DOT__cs4 
+                                                       >> 0x3fU)) 
+                                              + (IData)(
+                                                        (vlSelf->ALU__DOT__multiplier__DOT__layer0
+                                                         [0x10U] 
+                                                         >> 0x3fU))) 
+                                             + (IData)(
+                                                       (vlSelf->ALU__DOT__multiplier__DOT__s0 
+                                                        >> 0x3fU)))))) 
+                      << 0x3fU));
         }
     } else if ((1U & (IData)(vlSelf->ALU__DOT__multiplier__DOT__state))) {
         vlSelf->ALU__DOT__multiplier__DOT__unnamedblk1__DOT__i = 1U;
@@ -28882,10 +30926,10 @@ VL_INLINE_OPT void VALU___024root___nba_sequent__TOP__0(VALU___024root* vlSelf) 
                                                     << 0x3fU));
     } else {
         vlSelf->ALU__DOT__multiplied_product = 0ULL;
-        vlSelf->__Vdly__multiply_done = 0U;
-        if (vlSelf->ALU__DOT__multiply_rst) {
+        vlSelf->multiply_done = 0U;
+        if (vlSelf->ALU__DOT__multdiv_rst) {
             vlSelf->__Vdly__ALU__DOT__multiplier__DOT__state = 1U;
-            vlSelf->ALU__DOT__multiply_running = 1U;
+            vlSelf->multiply_running = 1U;
         }
     }
 }

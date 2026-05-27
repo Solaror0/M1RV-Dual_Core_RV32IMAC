@@ -81,13 +81,19 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
     // Body
     vlSelf->divider__DOT__clk = vlSelf->clk;
     vlSelf->divider__DOT__rst = vlSelf->rst;
+    vlSelf->divider__DOT__unsign = vlSelf->unsign;
     vlSelf->divider__DOT__a = vlSelf->a;
     vlSelf->divider__DOT__d = vlSelf->d;
     vlSelf->divider__DOT__q = vlSelf->q;
     vlSelf->divider__DOT__rem = vlSelf->rem;
     vlSelf->divider__DOT__done = vlSelf->done;
     vlSelf->divider__DOT__running = vlSelf->running;
-    vlSelf->divider__DOT__pBig = (QData)((IData)(vlSelf->a));
+    vlSelf->divider__DOT__trueA = (((vlSelf->a >> 0x1fU) 
+                                    & (~ (IData)(vlSelf->unsign)))
+                                    ? ((IData)(1U) 
+                                       + (~ vlSelf->a))
+                                    : vlSelf->a);
+    vlSelf->divider__DOT__pBig = (QData)((IData)(vlSelf->divider__DOT__trueA));
     vlSelf->divider__DOT__clz = 0x20U;
     vlSelf->divider__DOT__unnamedblk1__DOT__i = 0x1fU;
     {
@@ -114,6 +120,8 @@ VL_ATTR_COLD void Vdivider___024root___stl_sequent__TOP__0(Vdivider___024root* v
                                                      << (IData)(vlSelf->divider__DOT__clz)) 
                                                     >> 0x20U));
     vlSelf->divider__DOT__regPA_temp[2U] = 0U;
+    vlSelf->divByZero = (0U == (IData)(vlSelf->divider__DOT__clz));
+    vlSelf->divider__DOT__divByZero = vlSelf->divByZero;
     vlSelf->divider__DOT__lut__DOT__d = (0xfU & (IData)(
                                                         (vlSelf->divider__DOT__dNorm 
                                                          >> 0x1cU)));
@@ -821,20 +829,24 @@ VL_ATTR_COLD void Vdivider___024root___ctor_var_reset(Vdivider___024root* vlSelf
     // Body
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
+    vlSelf->unsign = VL_RAND_RESET_I(1);
     vlSelf->a = VL_RAND_RESET_I(32);
     vlSelf->d = VL_RAND_RESET_I(32);
     vlSelf->q = VL_RAND_RESET_I(32);
     vlSelf->rem = VL_RAND_RESET_Q(35);
     vlSelf->done = VL_RAND_RESET_I(1);
     vlSelf->running = VL_RAND_RESET_I(1);
+    vlSelf->divByZero = VL_RAND_RESET_I(1);
     vlSelf->divider__DOT__clk = VL_RAND_RESET_I(1);
     vlSelf->divider__DOT__rst = VL_RAND_RESET_I(1);
+    vlSelf->divider__DOT__unsign = VL_RAND_RESET_I(1);
     vlSelf->divider__DOT__a = VL_RAND_RESET_I(32);
     vlSelf->divider__DOT__d = VL_RAND_RESET_I(32);
     vlSelf->divider__DOT__q = VL_RAND_RESET_I(32);
     vlSelf->divider__DOT__rem = VL_RAND_RESET_Q(35);
     vlSelf->divider__DOT__done = VL_RAND_RESET_I(1);
     vlSelf->divider__DOT__running = VL_RAND_RESET_I(1);
+    vlSelf->divider__DOT__divByZero = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(67, vlSelf->divider__DOT__regPA);
     VL_RAND_RESET_W(67, vlSelf->divider__DOT__regPA_temp);
     VL_RAND_RESET_W(67, vlSelf->divider__DOT__regPA_TS);
@@ -843,6 +855,7 @@ VL_ATTR_COLD void Vdivider___024root___ctor_var_reset(Vdivider___024root* vlSelf
     vlSelf->divider__DOT__clz = VL_RAND_RESET_I(6);
     vlSelf->divider__DOT__p = VL_RAND_RESET_Q(35);
     vlSelf->divider__DOT__pNext = VL_RAND_RESET_Q(35);
+    vlSelf->divider__DOT__trueA = VL_RAND_RESET_I(32);
     vlSelf->divider__DOT__qC = VL_RAND_RESET_I(3);
     vlSelf->divider__DOT__topBits = VL_RAND_RESET_I(6);
     vlSelf->divider__DOT__dC = VL_RAND_RESET_Q(35);

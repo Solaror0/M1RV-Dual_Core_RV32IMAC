@@ -10,6 +10,7 @@ Vmultiplier::Vmultiplier(VerilatedContext* _vcontextp__, const char* _vcname__)
     : VerilatedModel{*_vcontextp__}
     , vlSymsp{new Vmultiplier__Syms(contextp(), _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
+    , unsignedA{vlSymsp->TOP.unsignedA}
     , rst{vlSymsp->TOP.rst}
     , done{vlSymsp->TOP.done}
     , running{vlSymsp->TOP.running}
