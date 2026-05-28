@@ -17,7 +17,6 @@ assign{RegWriteD,ImmSrcD, AluSrcD, MemwriteD,ResultSrcD, BranchD, ALUOp, JumpD}
 
 
 always_comb begin 
-
     case(op)                    //RegWriteD,ImmSrcD, AluSrcE, MemwriteD,ResultSrcD, BranchD, ALUOp, JumpD
         7'b0000011: controls = 11'b1_00_1_0_01_0_00_0; // lw
         7'b0010011: controls = 11'b1_00_1_0_00_0_10_0; // I–type ALU

@@ -3,21 +3,33 @@ module datapath(
     input logic clk, rst, JumpD, BranchD,  RegWriteD, ALUSrcD, MemwriteD
     input logic [1:0] ResultSrcD, ImmSrcD
     input logic [31:0] instrF, ReadDataM,
-    output logic[31:0] ALUResultM, PC_OUT, WriteDataM
-    output logic Zero, MemWriteM
-    output logic [31:0] ResultW
+    output logic[31:0] ALUResultM, PC_OUT, WriteDataM,
+    output logic MemWriteM
 
 );
-
+logic [31:0] ResultW
 //for final checks:
-// check that every memory has the WE
-// do the hazard shit and connect it, ADD EN To PC, ADD THE EXTEND UNIT
+// check that every memory has the WE, 
+
+/* To Do:
+Add A3 to regfile
+Check stall and flushing logic/run through different scenarios, same with BTB
+Run through the control unit/Add it to the core and make sure all the wires work out
+Add Divide by Zero Logic involving flushes and stalls and in ALU itself
+
+*/
+
+/*done but not double checked*
+ ADD THE EXTEND UNIT
+ADD EN To PC,
+do the hazard shit and connect it,
+*/ 
 
 hazardunit hazard_unit (.RS1E(RS1E),.RS2E(RS2E),.RS1D(RS1D),.RS2D(RS2D),.RdE(RdE),.RdM(RdM),.RdW(RdW),.RegWriteW(RegWriteW),.RegWriteM(RegWriteM),
     .PCSrcE(PCSrcE),.MisPredictE(MisPredictE),.ResultSrcE(ResultSrcE),.FlushD(FlushD),.FlushE(FlushE),.StallF(StallF),.StallD(StallD),
-    .ForwardAE(ForwardAE),.ForwardBE(ForwardBE));
+    .ForwardAE(ForwardAE),.ForwardBE(ForwardBE),.multiply_running(multiply_running),.divide_running(divide_running));
 
-logic FlushD, FlushE, StallF, StallD, MisPredictE;
+logic FlushD, FlushE, StallF, StallD, MisPredictE, multiply_running, divide_running;
 
 //F Section
 logic ZeroE, PCSrcE;
@@ -25,14 +37,13 @@ logic [31:0] PC_NEXT, PCPlus4D, PCPlus4F, instrD, PCD;
 assign PCSrcE = (ZeroE & BranchE) | JumpE;
 pc PC(.rst(rst),.clk(clk),.PCSrcE(PCSrcE),.PC_OUT(PC_OUT),.branch_addr(PCTargetE).en(StallF));
 
-carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b(4),.Subtract(0),.cin(0),.s(PC_NEXT),.cout()); //no cout needed..will tihs bug?
+
+logic dummycout;
+carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b(4),.Subtract(0),.cin(0),.s(PC_NEXT),.cout(dummycout)); 
 
 btb BTB(.PC(PC_OUT),.PCE(PCE),.PCPlus4(PC_NEXT),.PCPlus4E(PCPlus4E),.PCTargetE(PCTargetE),.PCSrcE(PCSrcE),.PC_NEXT(PCPlus4F),.MisPredictE(MisPredictE));
-//MISPREDICT
 
-
-FD_REG FD_REG (.clk(clk),.en(StallD),.clr(FlushD),.instrF(instrF),.PCF(PC_OUT),.PCPlus4F(PCPlus4F),.PCD(PCD),.PCPlus4D(PCPlus4D),.instrD(instrD))
-//ADD EN AND CLR SECTIONS AKA HAZARDS
+FD_REG FD_REG (.clk(clk),.en(StallD),.clr(FlushD),.instrF(instrF),.PCF(PC_OUT),.PCPlus4F(PCPlus4F),.PCD(PCD),.PCPlus4D(PCPlus4D),.instrD(instrD));
 
 //D Section
 logic [4:0] rs1D, rs2D, RdD;
@@ -41,21 +52,15 @@ assign rs1D = instrF[19:15];
 assign rs2D = instrF[24:20];
 assign RdD = instrF[11:7];
 
-reg_file REG_FILE (.clk(clk),.WE(RegWriteE),.WD3(ResultW),.A1(rs1D),.A2(rs2D),.A3(),.RD1(RD1D),.RD2(RD2)) //A1 & 2 are for reading, A3 is for writing
-//RdW GOES INTO A3
-//Result W goes into WD3, resultW is controlled by ResultSrc
-//RegWriteE goes into WE
+reg_file REG_FILE (.clk(clk),.WE(RegWriteE),.WD3(ResultW),.A1(rs1D),.A2(rs2D),.A3(Rdw),.RD1(RD1D),.RD2(RD2)); //A1 & 2 are for reading, A3 is for writing
 
 extendunit extendunit(.ImmSrcD(ImmSrcD),.ImmExtD(ImmExtD),.instrD(instrD),.JumpD(JumpD));
-//add Extend Unit, ImmIn ImmSrcD and ImmExtD, also intakes Jump
 
 DE_REG DE_REG(.clk(clk),.RD1(RD1D),.RD2(RD2D),.PC_IN(PCD),.PC_PLUS(PCPlus4D),.ImmExt(ImmExtD),.RegWrite(RegWriteD),
                 .MemWrite(MemwriteD),.Jump(JumpD),.Branch(BranchD),.ALUSrc(ALUSrcD),.ALUControl(ALUControlD),.ResultSRC(ResultSrcD),
                 .ImmSrc(ImmSrcD),.RdD(RdD),.RD1E(RD1E),.RD2E(RD2E),.PC_E(PCE),.PC_PLUS_E(PCPlus4E),.ImmExtE(ImmExtE),.RegWriteE(RegWriteE),
                 .MemWriteE(MemWriteE),.JumpE(JumpE),.BranchE(BranchE),.ALUSrcE(AluSrcE),.ALUControlE(ALUControlE),.ResultSRC_E(ResultSrcE),
                 .ImmSrcE(ImmSrcE),.RdE(RdE).clr(FlushE));
-//ADD CLR SIGNAL in both module and here x
-
 
 logic [31:0] RD1E, RD2E, PCE, PCPlus4E, ImmExtE;
 logic RegWriteE, MemWriteE, JumpE, BranchE, ALUSrcE;
@@ -90,7 +95,7 @@ end
 logic useless_cout;
 carry_lookahead_adder PCTargetEGenerator (.a(PCE),.B(ImmExtE),.Subtract(0),.cin(0),.cout(useless_cout),.output(PCTargetE));
 
-ALU ALU(.a(SrcAE),.b(SrcBE),.ALUControl(ALUControlE),.cin(0),.ZeroE(ZeroFlag),.ALUResult(ALUResultE),.clk(clk),.multiply_running(multiply_running));
+ALU ALU(.a(SrcAE),.b(SrcBE),.ALUControl(ALUControlE),.cin(0),.ZeroE(ZeroFlag),.ALUResult(ALUResultE),.clk(clk),.multiply_running(multiply_running),.divide_running(divide_running));
 //flag and multiply_done not connected
 //figure out how the fuck do to do the clock shit
 //maybe like.. if the alucontrol says its multiply stall until multiply done?
