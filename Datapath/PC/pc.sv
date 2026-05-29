@@ -8,11 +8,11 @@ module pc(
 logic cout;
 
 
-always_comb begin
+always_ff @(posedge clk) begin
     if(en) begin
-        if (rst) PC_OUT =0;
-        else if (~PCSrcE) PC_OUT = PC_NEXT;
-        else if (PCSrcE) PC_OUT = branch_addr;
+        if (rst) begin PC_OUT =0; end
+        else if (~PCSrcE) begin beginPC_OUT = PC_NEXT; end
+        else if (PCSrcE) begin PC_OUT = branch_addr; end
     end else begin
         PC_OUT <= PC_OUT;
     end

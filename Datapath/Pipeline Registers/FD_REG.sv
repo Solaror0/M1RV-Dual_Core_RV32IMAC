@@ -18,7 +18,6 @@ always_ff @(posedge clk)begin
             PCPlus4D <= PCPlus4F;
             PCD <= PCF;
         end else  begin
-
             instrD<=instrD;
             PCPlus4D <= PCPlus4D;
             PCD<=PCD;
@@ -26,6 +25,5 @@ always_ff @(posedge clk)begin
 
     end
 end
-//ADD HAZARD CAPABILITY..
 
 endmodule

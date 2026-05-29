@@ -39,9 +39,8 @@ logic [31:0] PC_NEXT, PCPlus4D, PCPlus4F, instrD, PCD;
 assign PCSrcE = (ZeroE & BranchE) | JumpE;
 pc PC(.rst(rst),.clk(clk),.PCSrcE(PCSrcE),.PC_OUT(PC_OUT),.branch_addr(PCTargetE).en(StallF));
 
-
 logic dummycout;
-carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b(4),.Subtract(0),.cin(0),.s(PC_NEXT),.cout(dummycout)); 
+carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b(32'd4),.Subtract(0),.cin(0),.s(PC_NEXT),.cout(dummycout)); 
 
 btb BTB(.PC(PC_OUT),.PCE(PCE),.PCPlus4(PC_NEXT),.PCPlus4E(PCPlus4E),.PCTargetE(PCTargetE),.PCSrcE(PCSrcE),.PC_NEXT(PCPlus4F),.MisPredictE(MisPredictE));
 
