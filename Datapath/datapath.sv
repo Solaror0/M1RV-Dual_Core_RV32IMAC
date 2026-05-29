@@ -4,7 +4,7 @@ module datapath(
     input logic [1:0] ResultSrcD, ImmSrcD
     input logic [31:0] instrF, ReadDataM,
     output logic[31:0] ALUResultM, PC_OUT, WriteDataM,
-    output logic MemWriteM
+    output logic MemWriteM, divByZero
 
 );
 logic [31:0] ResultW
@@ -12,17 +12,19 @@ logic [31:0] ResultW
 // check that every memory has the WE, 
 
 /* To Do:
-Add A3 to regfile
-Check stall and flushing logic/run through different scenarios, same with BTB
-Run through the control unit/Add it to the core and make sure all the wires work out
-Add Divide by Zero Logic involving flushes and stalls and in ALU itself
 
+Check stall and flushing logic/run through different scenarios, same with BTB
+Make sure the rst signal actually does something..
+Follow every signal from start to finish
 */
 
 /*done but not double checked*
+Add A3 to regfile
  ADD THE EXTEND UNIT
 ADD EN To PC,
 do the hazard shit and connect it,
+Add Divide by Zero Logic involving flushes and stalls and in ALU itself
+Run through the control unit/Add it to the core and make sure all the wires work out
 */ 
 
 hazardunit hazard_unit (.RS1E(RS1E),.RS2E(RS2E),.RS1D(RS1D),.RS2D(RS2D),.RdE(RdE),.RdM(RdM),.RdW(RdW),.RegWriteW(RegWriteW),.RegWriteM(RegWriteM),
@@ -95,7 +97,8 @@ end
 logic useless_cout;
 carry_lookahead_adder PCTargetEGenerator (.a(PCE),.B(ImmExtE),.Subtract(0),.cin(0),.cout(useless_cout),.output(PCTargetE));
 
-ALU ALU(.a(SrcAE),.b(SrcBE),.ALUControl(ALUControlE),.cin(0),.ZeroE(ZeroFlag),.ALUResult(ALUResultE),.clk(clk),.multiply_running(multiply_running),.divide_running(divide_running));
+ALU ALU(.a(SrcAE),.b(SrcBE),.ALUControl(ALUControlE),.cin(0),.ZeroE(ZeroFlag),.ALUResult(ALUResultE),.clk(clk),
+        .multiply_running(multiply_running),.divide_running(divide_running),.divByZero(divByZero));
 //flag and multiply_done not connected
 //figure out how the fuck do to do the clock shit
 //maybe like.. if the alucontrol says its multiply stall until multiply done?

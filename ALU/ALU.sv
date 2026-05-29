@@ -53,10 +53,10 @@ always_comb begin
     5'b01101: begin unsignedA = 0; sBit = b[31]; ALUResult = multiplied_product[63:32]; end //MULT HIGH
     5'b01110: begin unsignedA = 0; sBit = 0; ALUResult = multiplied_product[63:32]; end //MULTHSU  
     5'b01111: begin unsignedA = 1; sBit = 0; ALUResult = multiplied_product[63:32]; end //MULTHU
-    5'b10000: ALUResult = quotient;//DIV
-    5'b10001: ALUResult = quotient;//DIVU
-    5'b10010: ALUResult = remainder[31:0];//REM
-    5'b10011: ALUResult = remainder[31:0];//REMU
+    5'b10000: ALUResult = divByZero ? 0 : quotient;//DIV
+    5'b10001: ALUResult = divByZero ? 0 : quotient;//DIVU
+    5'b10010: ALUResult = divByZero ? 0 : remainder[31:0];//REM
+    5'b10011: ALUResult = divByZero ? 0 : remainder[31:0];//REMU
     5'b10100: ALUResult = 0;
     5'b10101: ALUResult = 0;
     5'b10110: ALUResult = 0;

@@ -1,19 +1,17 @@
 module controlunit(
-    logic input funct7b5, funct7b1,
-    logic input [6:0] op,
-    logic input [2:0] funct3,
-    logic output RegWriteD, MemwriteD, JumpD, BranchD,  AlUSrcD,
-    logic output [1:0] ResultSrcD, ImmSrcD,
-    logic output [4:0] ALUControlD
-
+    input logic funct7b5, funct7b1,
+    input logic [6:0] op,
+    input logic [2:0] funct3,
+    output logic RegWriteD, MemwriteD, JumpD, BranchD,  AlUSrcD,
+    output logic [1:0] ResultSrcD, ImmSrcD,
+    output logic [4:0] ALUControlD
 );
 
 //ALUDec
 aludec aludec(.funct7b5(funct7b5),.funct7b1(funct7b1),.ALUOp(ALUOp),.funct3(funct3),.ALUControlD(ALUControlD));
 logic [1:0] ALUOp;
 logic [10:0] controls;
-assign{RegWriteD,ImmSrcD, AluSrcD, MemwriteD,ResultSrcD, BranchD, ALUOp, JumpD} 
-= controls;
+assign{RegWriteD,ImmSrcD, AluSrcD, MemwriteD,ResultSrcD, BranchD, ALUOp, JumpD}  = controls;
 
 
 always_comb begin 
