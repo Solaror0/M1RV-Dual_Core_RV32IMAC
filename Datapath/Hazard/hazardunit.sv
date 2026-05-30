@@ -1,7 +1,7 @@
 module hazardunit (
     input logic [31:0] RS1E, RS2E, RS1D, RS2D,
     input logic [4:0] RdE, RdM, RdW,
-    input logic RegWriteW, RegWriteM, PCSrcE, MisPredictE, multiply_running, divide_running,
+    input logic RegWriteW, RegWriteM, PCSrcE, MisPredictE, multiply_running, divide_running, rst,
     input logic [1:0] ResultSrcE,
 
     output logic FlushD, FlushE, StallF, StallD,
@@ -35,8 +35,8 @@ always_comb begin
     StallF = lwStall | (multiply_running | divide_running);
     StallD = lwStall | (multiply_running | divide_running);
 
-    FlushD = MisPredictE;
-    FlushE = lwStall | MisPredictE; 
+    FlushD = MisPredictE | rst;
+    FlushE = lwStall | MisPredictE | rst; 
 
 end
 
