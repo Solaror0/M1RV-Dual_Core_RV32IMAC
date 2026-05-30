@@ -4,10 +4,9 @@ module shell(
 );
 
 //core
-logic [31:0] instr, read_data,
-logic [31:0] PC, ALUResult, WriteData
-logic MemWriteM,
-logic divByZero
+logic [31:0] instr, read_data;
+logic [31:0] PC, ALUResult, WriteData;
+logic MemWriteM;
 
 core core(.clk(clk),.rst(rst),.instr(instr),.read_data(read_data),.PC_OUT(PC),.ALUResult(ALUResult),.WriteData(WriteData),
             .MemWriteM(MemWriteM),.divByZero(divByZero));

@@ -1,25 +1,26 @@
 module datapath(
     input logic [4:0] ALUControlD,
     input logic clk, rst, JumpD, BranchD,  RegWriteD, ALUSrcD, MemwriteD
-    input logic [1:0] ResultSrcD, ImmSrcD
+    input logic [1:0] ResultSrcD, ImmSrcD, uSrc,
     input logic [31:0] instrF, ReadDataM,
     output logic[31:0] ALUResultM, PC_OUT, WriteDataM,
     output logic MemWriteM, divByZero
 
 );
 logic [31:0] ResultW
-//for final checks:
-// check that every memory has the WE, 
 
 /* To Do:
-Follow every signal from start to finish
+
 special note on immextDsrc
 */
 
 /*done but not double checked*
+i have no clue if jalr and jal will work..
 */
 
 /* done done 
+// check that every memory has the WE, 
+Follow every signal from start to finish
 Make sure the rst signal actually does something..
 Add A3 to regfile
 ADD THE EXTEND UNIT
@@ -80,7 +81,16 @@ logic [31:0] WriteDataE, PCTargetE, ALUResultE;
 
 always_comb begin
     case (ForwardAE)
-        2'b00: SrcAE = RD1E;
+        2'b00: 
+        begin
+            case(uSrc):
+            2'b00: SrcAE = RD1E;
+            2'b01: SrcAE = PCE;
+            2'b10: SrcAE = 32'b0;
+            default: SrcAE = RD1E;
+            endcase
+            
+        end
         2'b01: SrcAE =  ResultW;
         2'b10: SrcAE = ALUResultM;
         default: SrcAE = RD1E;
