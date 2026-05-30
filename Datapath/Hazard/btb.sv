@@ -2,10 +2,17 @@
 //outputs PCPlus4F and/or the branch target as PC NEXT
 
 module BTB(
-    input logic [31:0] PC, PCE, PCPlus4, PCPlus4E, PCTargetE,
+    input logic [31:0] PC, PCE, PCPlus4, PCTargetE,
     input logic PCSrcE, clk, rst,
     output logic [31:0] PC_NEXT,
-    output logic MisPredictE
+    output logic MisPredictE,
+
+    input logic [1:0] BTB_StateE,
+    input logic BTB_HitE,
+    output logic [1:0] BTB_StateF,
+    output logic BTB_HitF
+
+
 );
 
 // (Index) 10 PC Digits [11:2]
@@ -20,28 +27,29 @@ logic [53:0] BTB_TABLE [1024];
 // (Rest of PC) 20 [31:12] + (State) 2 bits Information + (Target) [31:1] Branch Addr (31) + 1 valid bit
 // PC [53:34] State [33:32] Target [31:1] + Valid[0]
 
-logic [53:0] item; //for writing purposes
 always_comb begin
     
-    item = BTB_TABLE[PCE[11:2]];
+   
     index = PC[11:2];
     state = BTB_TABLE[index][33:32];
     target = BTB_TABLE[index][31:1];
     valid = BTB_TABLE[index][0];
+
+    BTB_StateF = state;
+    BTB_HitF = (valid & (BTB_TABLE[index][53:34] == PC[31:12]));
     //for reading
     //check the PC against the table
     // if state is 11 or 10 then branch, 00 or 01 then PC out is the same as PC, else its branching
 
-    if ((state == 2'b11 | state == 2'b10)&(BTB_TABLE[index][53:34] == PC[31:12])&(valid)) begin
+    
+    if ((state[1])&BTB_HitF) begin
         PC_NEXT = {target,1'b0};
     end else begin
         PC_NEXT = PCPlus4;
     end
-
-//for writing
-
-    if(item[0] & (PCE[31:12] == item[53:34]))begin
-        MisPredictE = (PCSrcE != item[33]);
+    
+    if(BTB_HitE)begin
+        MisPredictE = (PCSrcE != BTB_StateE[1]);
     end else begin
         MisPredictE = PCSrcE;
     end
@@ -56,8 +64,8 @@ always_ff @(posedge clk or negedge rst) begin
             end
         end else begin
             if (PCSrcE) begin
-                if (item[0] & (PCE[31:12] == item[53:34])) begin
-                    case(item[33:32])
+                if (BTB_HitE) begin
+                    case(BTB_StateE)
                     2'b00: BTB_TABLE[PCE[11:2]][33:32] <= 2'b01;
                     2'b01: BTB_TABLE[PCE[11:2]][33:32] <= 2'b10;
                     2'b10: BTB_TABLE[PCE[11:2]][33:32] <= 2'b11;
@@ -66,12 +74,12 @@ always_ff @(posedge clk or negedge rst) begin
                     endcase
 
                 end else begin
-                    BTB_TABLE[PCE[11:2]] <= {PCE[31:12],2'b10,PCTargetE[31:1],1};
+                    BTB_TABLE[PCE[11:2]] <= {PCE[31:12],2'b10,PCTargetE[31:1],1'b1};
                 end
             end
             else begin
-                if (item[0] & (PCE[31:12] == item[53:34])) begin
-                    case(item[33:32])
+                if (BTB_HitE) begin
+                    case(BTB_StateE)
                     2'b00: BTB_TABLE[PCE[11:2]][33:32] <= 2'b00;
                     2'b01: BTB_TABLE[PCE[11:2]][33:32] <= 2'b00;
                     2'b10: BTB_TABLE[PCE[11:2]][33:32] <= 2'b01;

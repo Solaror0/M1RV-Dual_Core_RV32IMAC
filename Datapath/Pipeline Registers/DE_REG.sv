@@ -1,16 +1,16 @@
 module DE_REG(
     input logic clk;
     input logic [31:0] RD1, RD2, PC_IN, PC_PLUS, ImmExt,
-    input logic RegWrite, MemWrite, Jump, Branch, ALUSrc, clr,
+    input logic RegWrite, MemWrite, Jump, Branch, ALUSrc, clr, BTB_HitD,
     input logic [4:0] ALUControl, rs1D, rs2D,
-    input logic [1:0] ResultSRC, ImmSrc
-    input logic [4:0] RdD
+    input logic [1:0] ResultSRC, ImmSrc, BTB_StateD,
+    input logic [4:0] RdD,
 
 
     output logic [31:0] RD1E, RD2E, PC_E, PC_PLUS_E, ImmExtE,
-    output logic RegWriteE, MemWriteE, JumpE, BranchE, ALUSrcE,
+    output logic RegWriteE, MemWriteE, JumpE, BranchE, ALUSrcE,  BTB_HitD,
     output logic [4:0] ALUControlE, rs1E, rs2E,
-    output logic [1:0] ResultSRC_E, ImmSrcE,
+    output logic [1:0] ResultSRC_E, ImmSrcE, BTB_StateE,
     output logic [4:0] RdE
 );
 
@@ -35,6 +35,8 @@ always_ff @(posedge clk) begin
     ALUControlE <=0;
     ALUSrcE <= 0; 
     ResultSRC_E <= 0;
+    BTB_HitE <= 0;
+    BTB_StateE <= 0;
     end
     else begin
     RegWriteE <= RegWrite; 
@@ -45,6 +47,8 @@ always_ff @(posedge clk) begin
     ALUControlE <= ALUControl; 
     ALUSrcE <= ALUSrc; 
     ResultSRC_E <= ResultSRC; 
+    BTB_HitE <= BTB_HitD;
+    BTB_StateE <= BTB_StateD;
     
     end
 end

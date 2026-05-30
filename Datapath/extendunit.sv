@@ -12,7 +12,7 @@ always_comb begin
     2'b01: ImmExtD = {{20{instrD[31]}}, instrD[31:25], instrD[11:7]};
     2'b10: ImmExtD = {{20{instrD[31]}}, instrD[7], instrD[30:25], instrD[11:8], 1'b0};
     2'b11: ImmExtD = JumpD ? {{11{instrD[31]}},instrD[31], instrD[19:12], instrD[20], instrD[30:21], 1'b0} : {instrD[31:12],12'b0};
-    default:
+    default: ImmExtD = 32'b0;
     endcase
 end
 

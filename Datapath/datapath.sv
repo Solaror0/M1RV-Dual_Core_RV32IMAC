@@ -46,9 +46,15 @@ pc PC(.rst(rst),.clk(clk),.PCSrcE(PCSrcE),.PC_OUT(PC_OUT),.branch_addr(PCTargetE
 logic dummycout;
 carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b(32'd4),.Subtract(0),.cin(0),.s(PC_NEXT),.cout(dummycout)); 
 
-btb BTB(.clk(clk),.rst(rst),.PC(PC_OUT),.PCE(PCE),.PCPlus4(PC_NEXT),.PCPlus4E(PCPlus4E),.PCTargetE(PCTargetE),.PCSrcE(PCSrcE),.PC_NEXT(PCPlus4F),.MisPredictE(MisPredictE));
 
-FD_REG FD_REG (.clk(clk),.en(~StallD),.clr(FlushD),.instrF(instrF),.PCF(PC_OUT),.PCPlus4F(PCPlus4F),.PCD(PCD),.PCPlus4D(PCPlus4D),.instrD(instrD));
+logic [1:0]  BTB_StateF, BTB_StateE,  BTB_StateD;
+logic BTB_HitE, BTB_HitF,  BTB_HitD;
+
+btb BTB(.clk(clk),.rst(rst),.PC(PC_OUT),.PCE(PCE),.PCPlus4(PC_NEXT),.PCTargetE(PCTargetE),.PCSrcE(PCSrcE),.PC_NEXT(PCPlus4F),
+        .MisPredictE(MisPredictE),.BTB_StateE(BTB_StateE),.BTB_HitE(BTB_HitE),.BTB_StateF(BTB_StateF),.BTB_HitF(BTB_HitF));
+
+FD_REG FD_REG (.clk(clk),.en(~StallD),.clr(FlushD),.instrF(instrF),.PCF(PC_OUT),.PCPlus4F(PCPlus4F),.PCD(PCD),.PCPlus4D(PCPlus4D),.instrD(instrD),
+              .BTB_StateF(BTB_StateF),.BTB_HitF(BTB_HitF),.BTB_StateD(BTB_StateD),.BTB_HitD(BTB_HitD));
 
 //D Section
 logic [4:0] rs1D, rs2D, RdD;
@@ -65,7 +71,8 @@ DE_REG DE_REG(.clk(clk),.RD1(RD1D),.RD2(RD2D),.PC_IN(PCD),.PC_PLUS(PCPlus4D),.Im
                 .MemWrite(MemwriteD),.Jump(JumpD),.Branch(BranchD),.ALUSrc(ALUSrcD),.ALUControl(ALUControlD),.ResultSRC(ResultSrcD),
                 .ImmSrc(ImmSrcD),.RdD(RdD),.RD1E(RD1E),.RD2E(RD2E),.PC_E(PCE),.PC_PLUS_E(PCPlus4E),.ImmExtE(ImmExtE),.RegWriteE(RegWriteE),
                 .MemWriteE(MemWriteE),.JumpE(JumpE),.BranchE(BranchE),.ALUSrcE(ALUSrcE),.ALUControlE(ALUControlE),.ResultSRC_E(ResultSrcE),
-                .ImmSrcE(ImmSrcE),.RdE(RdE),.clr(FlushE),.rs1D(rs1D),.rs2D(rs2D),.rs1E(rs1E),.rs2E(rs2E));
+                .ImmSrcE(ImmSrcE),.RdE(RdE),.clr(FlushE),.rs1D(rs1D),.rs2D(rs2D),.rs1E(rs1E),.rs2E(rs2E),
+                .BTB_StateD(BTB_StateD),.BTB_HitD(BTB_HitD),.BTB_StateE(BTB_StateE),.BTB_HitE(BTB_HitE));
 
 logic [31:0] RD1E, RD2E, PCE, PCPlus4E, ImmExtE;
 logic RegWriteE, MemWriteE, JumpE, BranchE, ALUSrcE;
