@@ -39,8 +39,6 @@ always_comb begin
     end
 
 //for writing
-   
-
 
     if(item[0] & (PCE[31:12] == item[53:34]))begin
         MisPredictE = (PCSrcE != item[33]);

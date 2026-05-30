@@ -11,14 +11,14 @@ module reg_file(
 
 logic [31:0] regs [31:0]; //0 to 31 registers of 32 bits each
 
-always_ff @(negedge clk)begin
+always_ff @(negedge clk)begin //might have to change this to posege
     if (WE & (A3 != 0)) begin //avoid writing to register 0
       regs[A3] <= WD3;
     end
 end
 
 always_comb begin
-    regs[0] = 0;
+    regs[0] = 32'b0;
     RD1 = regs[A1];
     RD2 = regs[A2];
 end

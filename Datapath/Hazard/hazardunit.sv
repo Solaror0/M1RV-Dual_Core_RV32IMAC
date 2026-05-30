@@ -11,31 +11,32 @@ module hazardunit (
 logic lwStall;
 
 always_comb begin
+    
     if (((Rs1E == RdM) & RegWriteM) & (Rs1E != 0))begin 
-        ForwardAE = 10;
+        ForwardAE = 2'b10;
     end
     else if (((Rs1E == RdW) & RegWriteW) & (Rs1E != 0)) begin
-       ForwardAE = 01;
+       ForwardAE = 2'b01;
     end
     else
-    begin ForwardAE = 00; end
+    begin ForwardAE = 2'b00; end
 
 
     if (((Rs2E == RdM) & RegWriteM) & (Rs2E != 0))begin 
-    ForwardBE = 10;
+    ForwardBE = 2'b10;
     end
     else if (((Rs2E == RdW) & RegWriteW) & (Rs2E != 0)) begin
-       ForwardBE = 01;
+       ForwardBE = 2'b01;
     end
     else
-    begin ForwardBE = 00; end
+    begin ForwardBE = 2'b00; end
 
     lwStall = ResultSrcE[0] & ((Rs1D == RdE) | (Rs2D == RdE));
     StallF = lwStall | (multiply_running | divide_running);
     StallD = lwStall | (multiply_running | divide_running);
 
     FlushD = MisPredictE;
-    FlushE = lwStall | MisPredictE; //change to include  MisPRedict not pcsrce
+    FlushE = lwStall | MisPredictE; 
 
 end
 

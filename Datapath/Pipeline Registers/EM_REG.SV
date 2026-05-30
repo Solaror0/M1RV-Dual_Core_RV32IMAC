@@ -9,12 +9,13 @@ module EM_REG(
    output logic[31:0] ALUResultM, WD_M, PC_PLUS_M,
    output logic [4:0] RdM,
    output logic RegWriteM, MemWriteM,
-   output logic [1:0] ResultSrcM,
+   output logic [1:0] ResultSrcM
 );
 
 
 always_ff (@posedge clk) begin
    ALUResultM <= ALUResult; WD_M <= WD; PC_PLUS_M <= PC_PLUS; 
    RdM <= Rd; RegWriteM <= RegWrite; MemWriteM <= MemWrite; ResultSrcM <= ResultSrc;
+end
 
 endmodule

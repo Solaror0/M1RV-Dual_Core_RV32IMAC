@@ -16,6 +16,7 @@ logic [31:0] ResultW
 Check stall and flushing logic/run through different scenarios, same with BTB
 Make sure the rst signal actually does something..
 Follow every signal from start to finish
+special note on immextDsrc
 */
 
 /*done but not double checked*
@@ -27,7 +28,7 @@ Add Divide by Zero Logic involving flushes and stalls and in ALU itself
 Run through the control unit/Add it to the core and make sure all the wires work out
 */ 
 
-hazardunit hazard_unit (.RS1E(RS1E),.RS2E(RS2E),.RS1D(RS1D),.RS2D(RS2D),.RdE(RdE),.RdM(RdM),.RdW(RdW),.RegWriteW(RegWriteW),.RegWriteM(RegWriteM),
+hazardunit hazard_unit (.RS1E(rs1E),.RS2E(rs2E),.RS1D(rs1D),.RS2D(rs2D),.RdE(RdE),.RdM(RdM),.RdW(RdW),.RegWriteW(RegWriteW),.RegWriteM(RegWriteM),
     .PCSrcE(PCSrcE),.MisPredictE(MisPredictE),.ResultSrcE(ResultSrcE),.FlushD(FlushD),.FlushE(FlushE),.StallF(StallF),.StallD(StallD),
     .ForwardAE(ForwardAE),.ForwardBE(ForwardBE),.multiply_running(multiply_running),.divide_running(divide_running));
 
@@ -42,7 +43,7 @@ pc PC(.rst(rst),.clk(clk),.PCSrcE(PCSrcE),.PC_OUT(PC_OUT),.branch_addr(PCTargetE
 logic dummycout;
 carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b(32'd4),.Subtract(0),.cin(0),.s(PC_NEXT),.cout(dummycout)); 
 
-btb BTB(.PC(PC_OUT),.PCE(PCE),.PCPlus4(PC_NEXT),.PCPlus4E(PCPlus4E),.PCTargetE(PCTargetE),.PCSrcE(PCSrcE),.PC_NEXT(PCPlus4F),.MisPredictE(MisPredictE));
+btb BTB(.clk(clk),.rst(rst),.PC(PC_OUT),.PCE(PCE),.PCPlus4(PC_NEXT),.PCPlus4E(PCPlus4E),.PCTargetE(PCTargetE),.PCSrcE(PCSrcE),.PC_NEXT(PCPlus4F),.MisPredictE(MisPredictE));
 
 FD_REG FD_REG (.clk(clk),.en(StallD),.clr(FlushD),.instrF(instrF),.PCF(PC_OUT),.PCPlus4F(PCPlus4F),.PCD(PCD),.PCPlus4D(PCPlus4D),.instrD(instrD));
 
@@ -53,7 +54,7 @@ assign rs1D = instrF[19:15];
 assign rs2D = instrF[24:20];
 assign RdD = instrF[11:7];
 
-reg_file REG_FILE (.clk(clk),.WE(RegWriteE),.WD3(ResultW),.A1(rs1D),.A2(rs2D),.A3(Rdw),.RD1(RD1D),.RD2(RD2)); //A1 & 2 are for reading, A3 is for writing
+reg_file REG_FILE (.clk(clk),.WE(RegWriteW),.WD3(ResultW),.A1(rs1D),.A2(rs2D),.A3(Rdw),.RD1(RD1D),.RD2(RD2D)); //A1 & 2 are for reading, A3 is for writing
 
 extendunit extendunit(.ImmSrcD(ImmSrcD),.ImmExtD(ImmExtD),.instrD(instrD),.JumpD(JumpD));
 
@@ -61,17 +62,17 @@ DE_REG DE_REG(.clk(clk),.RD1(RD1D),.RD2(RD2D),.PC_IN(PCD),.PC_PLUS(PCPlus4D),.Im
                 .MemWrite(MemwriteD),.Jump(JumpD),.Branch(BranchD),.ALUSrc(ALUSrcD),.ALUControl(ALUControlD),.ResultSRC(ResultSrcD),
                 .ImmSrc(ImmSrcD),.RdD(RdD),.RD1E(RD1E),.RD2E(RD2E),.PC_E(PCE),.PC_PLUS_E(PCPlus4E),.ImmExtE(ImmExtE),.RegWriteE(RegWriteE),
                 .MemWriteE(MemWriteE),.JumpE(JumpE),.BranchE(BranchE),.ALUSrcE(AluSrcE),.ALUControlE(ALUControlE),.ResultSRC_E(ResultSrcE),
-                .ImmSrcE(ImmSrcE),.RdE(RdE).clr(FlushE));
+                .ImmSrcE(ImmSrcE),.RdE(RdE).clr(FlushE),.rs1D(rs1D),.rs2D(rs2D),.rs1E(rs1E),.rs2E(rs2E));
 
 logic [31:0] RD1E, RD2E, PCE, PCPlus4E, ImmExtE;
 logic RegWriteE, MemWriteE, JumpE, BranchE, ALUSrcE;
 logic [4:0] ALUControlE;
 logic [1:0] ResultSrcE, ImmSrcE;
-logic [4:0] RdE;
+logic [4:0] RdE, rs1E, rs2E;
 
 //EXECUTE SECTION
 
-logic[1:0] ForwardAE, ForwardBE; //hazard signals
+logic [1:0] ForwardAE, ForwardBE; //hazard signals
 logic [31:0] SrcAE, SrcBE, SrcBE_0,SrcBE_1; //srcBE_0 and 1 are the options for SRCBE
 logic [31:0] WriteDataE, PCTargetE,ALUResultE;
 
@@ -87,6 +88,7 @@ always_comb begin
     2'b00: SrcBE_0 = RD2E;
     2'b01: SrcBE_0 =  ResultW;
     2'b10: SrcBE_0 = ALUResultM;
+    default: SrcBE_0 = RD2E;
     endcase
 
     SrcBE = AluSrcE ? SrcBE_0 : SrcBE_1;
@@ -94,7 +96,7 @@ always_comb begin
 end
 
 logic useless_cout;
-carry_lookahead_adder PCTargetEGenerator (.a(PCE),.B(ImmExtE),.Subtract(0),.cin(0),.cout(useless_cout),.output(PCTargetE));
+carry_lookahead_adder PCTargetEGenerator (.a(PCE),.b(ImmExtE),.Subtract(0),.cin(0),.cout(useless_cout),.output(PCTargetE));
 
 ALU ALU(.a(SrcAE),.b(SrcBE),.ALUControl(ALUControlE),.cin(0),.ZeroE(ZeroFlag),.ALUResult(ALUResultE),.clk(clk),
         .multiply_running(multiply_running),.divide_running(divide_running),.divByZero(divByZero));
