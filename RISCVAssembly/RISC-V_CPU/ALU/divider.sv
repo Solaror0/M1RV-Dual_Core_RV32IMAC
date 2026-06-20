@@ -1,0 +1,133 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
+module divider(
+    input logic clk, rst,hardrst, unsign,
+    input logic [31:0] inp_a, inp_d,
+    output logic [31:0] q,
+    output logic [34:0] rem,
+    output logic done, running,
+    output logic divByZero
+);
+
+logic [66:0] regPA,regPA_temp, regPA_TS;
+logic [63:0] pBig;
+logic [34:0] dNorm;
+logic [5:0] clz;
+logic [34:0] p, pNext;
+logic [31:0] trueA, a,d;
+always_comb begin
+    trueA = (a[31]& ~unsign) ? (~a+1) : a;
+    pBig = {32'b0, trueA}; //maybe change this to 35?? idk
+    clz = 6'b100000; // Default if all bits are 0
+    for (int i = 31; i >= 0; i--) begin
+        if (d[i]) begin
+            clz = 6'd31 - i[4:0]; //error chance
+            break; // The break tells the tool to prioritize higher bits
+        end
+    end
+    dNorm ={3'b0,d << clz};
+    regPA_temp = {3'b0,pBig << clz}; 
+    divByZero = (clz == 0);
+end
+
+logic [2:0] qC;
+logic [5:0] topBits;
+logic [34:0] dC, dLS, dM, dMLS;
+logic [9:0] signal;
+
+
+pd_lut lut(.q(qC),.p(topBits),.d(dNorm[31:28]));
+
+always_comb begin
+    dLS = {dNorm<<1};
+    dM = ~dNorm + 1;
+    dMLS = ~dLS + 1;
+    topBits = {regPA[66], regPA[63:59]};
+    signal = {dNorm[31:28],topBits};
+    
+    case(qC)
+        3'b110: dC = dMLS;
+        3'b111: dC = dM;
+        3'b000: dC = 35'b0;
+        3'b001: dC = dNorm;
+        3'b010: dC = dLS;
+        default: dC = dNorm;
+    endcase //might wanna change this back from bein ginverted
+    
+    regPA_TS = regPA <<2;
+    pNext = regPA_TS[66:32]-(dC);
+end
+
+logic [4:0] count;
+logic [31:0] Qm, Qp;
+logic [32:0] rem_temp;
+logic [31:0] aLow;
+
+always_comb begin
+    if(count ==0 & rst & ~running) begin
+    a = inp_a;
+    d = inp_d;
+    end else begin
+    a = a;
+    d = d;
+    end
+end
+
+
+always_ff @(posedge clk) begin
+    if(hardrst) begin running <= 0; done <=1; count<=0; end
+    
+if(count == 0 & ~running) 
+        begin 
+            done<=0;
+            if(rst) begin
+                running <=1;
+                rem <=0;
+                rem_temp <=0;
+                q<=0;
+                regPA<=regPA_temp;
+                p <= regPA[66:32];
+                Qp<=0;
+                Qm <=-1;
+//                a<= inp_a;
+//                d<=inp_d;
+            end
+        end
+        
+if(running) begin  
+        if(count == 5'b10000) begin  //might need to extend this by 1 cycle
+            running <=0; 
+            done<=1;
+            count <=0;
+            if(regPA[66]) begin
+                rem <= (regPA[66:32]+dNorm) >>(clz);
+                q <= (Qm);
+            end 
+            else 
+            begin //weird behaviours here, gotta fix, may have to do with the final qC picked, like the sign.
+                q <= (Qp);
+                rem <= (regPA[66:32]) >>(clz);
+            end
+
+        end
+        else begin
+            count <= count + 1;
+            p<=pNext;
+           // rem_temp<=p;
+            regPA <= {pNext[34:0],regPA_TS[31:0]};
+
+            case(qC)
+            3'b110: begin Qp<=({Qm[29:0],2'b10}); Qm <= ({Qm[29:0],2'b01}); end
+            3'b111: begin Qp<={Qm[29:0],2'b11}; Qm <= {Qm[29:0],2'b10}; end
+            3'b000:  begin  Qp<={Qp[29:0],2'b00}; Qm <= {Qm[29:0],2'b11}; end //possible error
+            3'b001:  begin Qp<={Qp[29:0],2'b01}; Qm <= {Qp[29:0],2'b00}; end
+            3'b010:  begin Qp<={Qp[29:0],2'b10}; Qm <= {Qp[29:0],2'b01}; end
+            default: begin  Qp<={Qp[29:0],2'b00}; Qm <= {Qm[29:0],2'b11}; end
+            endcase  
+           
+        end
+    end
+
+end
+
+endmodule

@@ -1,0 +1,30 @@
+
+program.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00001137          	lui	sp,0x1
+   4:	00800513          	li	a0,8
+   8:	00c00593          	li	a1,12
+
+0000000c <clear_bss_loop>:
+   c:	00b50863          	beq	a0,a1,1c <call_main>
+  10:	00052023          	sw	zero,0(a0)
+  14:	00450513          	addi	a0,a0,4
+  18:	ff5ff06f          	j	c <clear_bss_loop>
+
+0000001c <call_main>:
+  1c:	008000ef          	jal	24 <main>
+
+00000020 <trap>:
+  20:	0000006f          	j	20 <trap>
+
+00000024 <main>:
+  24:	00402783          	lw	a5,4(zero) # 4 <signed_a>
+  28:	00002703          	lw	a4,0(zero) # 0 <_start>
+  2c:	02e7a7b3          	mulhsu	a5,a5,a4
+  30:	00f02423          	sw	a5,8(zero) # 8 <e>
+  34:	00802503          	lw	a0,8(zero) # 8 <e>
+  38:	00008067          	ret
