@@ -1,6 +1,8 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module divider(
-    input logic clk, rst, unsign,
-    input logic [31:0] a, d,
+    input logic clk, rst,hardrst, unsign,
+    input logic [31:0] inp_a, inp_d,
     output logic [31:0] q,
     output logic [34:0] rem,
     output logic done, running,
@@ -12,7 +14,7 @@ logic [63:0] pBig;
 logic [34:0] dNorm;
 logic [5:0] clz;
 logic [34:0] p, pNext;
-logic [31:0] trueA;
+logic [31:0] trueA, a,d;
 always_comb begin
     trueA = (a[31]& ~unsign) ? (~a+1) : a;
     pBig = {32'b0, trueA}; //maybe change this to 35?? idk
@@ -60,22 +62,43 @@ logic [4:0] count;
 logic [31:0] Qm, Qp;
 logic [32:0] rem_temp;
 logic [31:0] aLow;
+
+always_comb begin
+    if(count ==0 & rst & ~running) begin
+    a = inp_a;
+    d = inp_d;
+    end else begin
+    a = a;
+    d = d;
+    end
+end
+
+
 always_ff @(posedge clk) begin
-if(rst & ~running) 
+    if(hardrst) begin running <= 0; done <=1; count<=0; end
+    
+if(count == 0 & ~running) 
         begin 
-            count <=0; running <=1; done<=0; 
-            q<=0; rem <=0; rem_temp <=0;
-            regPA <= regPA_temp;
-            
-            p <= regPA[66:32];
-            Qp<=0;
-            Qm <=-1;
+            done<=0;
+            if(rst) begin
+                running <=1;
+                rem <=0;
+                rem_temp <=0;
+                q<=0;
+                regPA<=regPA_temp;
+                p <= regPA[66:32];
+                Qp<=0;
+                Qm <=-1;
+//                a<= inp_a;
+//                d<=inp_d;
+            end
         end
         
-    if(running) begin  
+if(running) begin  
         if(count == 5'b10000) begin  //might need to extend this by 1 cycle
             running <=0; 
             done<=1;
+            count <=0;
             if(regPA[66]) begin
                 rem <= (regPA[66:32]+dNorm) >>(clz);
                 q <= (Qm);

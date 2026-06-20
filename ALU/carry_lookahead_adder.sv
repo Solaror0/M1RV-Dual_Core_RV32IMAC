@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module carry_lookahead_adder(
     input logic [31:0]a,b,
     input logic Subtract, // bit 30 of funct7

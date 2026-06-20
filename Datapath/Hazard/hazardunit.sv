@@ -1,14 +1,17 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module hazardunit (
-    input logic [31:0] RS1E, RS2E, RS1D, RS2D,
-    input logic [4:0] RdE, RdM, RdW,
-    input logic RegWriteW, RegWriteM, PCSrcE, MisPredictE, multiply_running, divide_running, rst,
+    input logic clk, calculation_stall,
+    input logic [4:0] Rs1D, Rs2D,
+    input logic [4:0] RdE, RdM, RdW, Rs1E, Rs2E,
+    input logic RegWriteW, RegWriteM, PCSrcE, MisPredictE, rst,
     input logic [1:0] ResultSrcE,
 
-    output logic FlushD, FlushE, StallF, StallD,
+    output logic FlushD, FlushE, StallF, StallD, StallE,
     output logic [1:0] ForwardAE, ForwardBE
 );
 
-logic lwStall;
+logic lwStall, MisPredictDelay;
 
 always_comb begin
     
@@ -32,12 +35,18 @@ always_comb begin
     begin ForwardBE = 2'b00; end
 
     lwStall = ResultSrcE[0] & ((Rs1D == RdE) | (Rs2D == RdE));
-    StallF = lwStall | (multiply_running | divide_running);
-    StallD = lwStall | (multiply_running | divide_running);
+    StallF = lwStall | (calculation_stall);
+    StallD = lwStall | (calculation_stall);
+    StallE = calculation_stall;
 
-    FlushD = MisPredictE | rst;
+    FlushD = MisPredictE | rst ;
     FlushE = lwStall | MisPredictE | rst; 
 
 end
+
+//always_ff @(posedge clk) begin
+//    MisPredictDelay <= MisPredictE;
+//end
+
 
 endmodule

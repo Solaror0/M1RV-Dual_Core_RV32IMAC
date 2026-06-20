@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module carry_lookahead_slice
     (
         input  a, b,

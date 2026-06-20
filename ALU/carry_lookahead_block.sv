@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module carry_lookahead_block(
 
     input logic [3:0]a,b,

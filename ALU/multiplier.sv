@@ -1,8 +1,10 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module multiplier(
-    input logic [31:0]a,
-    input logic [32:0] b, 
+    input logic [31:0] inp_a,
+    input logic [32:0] inp_b, 
     input logic unsignedA,
-    input logic rst, clk,
+    input logic rst, clk, hardrst,
     output logic [63:0] output_product,
 
 
@@ -11,6 +13,8 @@ module multiplier(
 );
 logic [63:0] layer0[0:16];
 logic [63:0] product;
+logic [31:0] a; 
+logic [32:0] b;
 
 boothencoder booth0 (.a(a),.unsignedA(unsignedA),.triplet({b[1:0],1'b0}),.shamt(0),.partial_product(layer0[0]));
 boothencoder booth1 (.a(a),.unsignedA(unsignedA),.triplet({b[3:1]}),.shamt(2),.partial_product(layer0[1]));
@@ -41,12 +45,22 @@ logic [63:0] cs0,cs1,cs2,cs3,cs4,cs5,cs6,cs7,cs8,cs9,cs10,cs11,cs12,cs13,cs14;
 logic [2:0] state;
 
 always_ff @(posedge clk) begin
+    
+    if(hardrst) begin running<=0; done<=1; state<=3'b000; end
+    
     case (state)
         3'b000:  //start layer, reset it all
             begin
                 output_product<=0;
                 done <=0;
-                if(rst) begin state <=3'b001; running <=1; end
+                a <= 32'b0;
+                b<= 32'b0;
+                if(rst) begin 
+                    state <=3'b001; 
+                    running <=1; 
+                    a <= inp_a;
+                    b <= inp_b;
+                end
             end
         3'b001:
             begin

@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module aludec(
     input logic funct7b5,funct7b1, op5,
     input logic [1:0] ALUOp,
@@ -8,7 +10,7 @@ module aludec(
 always_comb begin
     case(ALUOp)
     2'b00: ALUControlD = 5'b00000;
-    2'b01: ALUControlD = 5'b00010;
+    2'b01: ALUControlD = 5'b00001;
     2'b10: 
         begin
             case(funct3)

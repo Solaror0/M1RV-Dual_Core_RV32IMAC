@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module MW_REG(
     input logic clk,
     input logic [31:0] ALUResult, ReadData, PC_PLUS, 
@@ -12,8 +14,8 @@ module MW_REG(
     output logic[1:0] ResultSrcW
 );
 
-always_ff (@posedge clk)begin
-    ALUResultW <= ALUResult; 
+always_ff @(posedge clk)begin
+    AluResultW <= ALUResult; 
     ReadData_W <= ReadData; 
     PC_PLUS_W <= PC_PLUS; 
     RdW <= Rd;

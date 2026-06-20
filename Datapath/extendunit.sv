@@ -1,8 +1,10 @@
+`timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
+
 module extendunit(
 
     input logic [1:0] ImmSrcD,
     input logic JumpD,
-    input logic [31:0] instrD, //never use an instrDuction bit under 7, this is what is being extended btw
+    (* dont_touch = "true" *) input logic [31:0] instrD, //never use an instrDuction bit under 7, this is what is being extended btw
     output logic [31:0] ImmExtD
 );
 
