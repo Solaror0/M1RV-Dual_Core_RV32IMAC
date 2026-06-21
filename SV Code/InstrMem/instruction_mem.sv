@@ -9,7 +9,8 @@ module i_mem(
     
     input logic FlushD, StallD,
     (* mark_debug = "true" *) output logic [31:0] instrD,
-    (* mark_debug = "true" *) output logic reading_rst
+    (* mark_debug = "true" *) output logic reading_rst,
+    (* mark_debug = "true" *) output logic compressed
 );
 
 (* ram_style = "block" *) logic [31:0] instructions [0:1023]; //we can upgrade this easily i guess
@@ -57,18 +58,43 @@ always_ff @(posedge clk) begin
     end
 end
 
+logic countedbyTwo;
 
+
+always_comb begin //instrD filtering
+    
+    compressed = countedbyTwo ?  ~(fetch0[17:16] == 2'b11) : ~(fetch0[1:0] == 2'b11); //being sent out of the imem to the datapath
+
+    if(countedbyTwo) begin
+        if(~(fetch0[17:16] == 2'b11)) begin //checking if the upper boundary of fetch0 is a compressed
+            instrD = {16'b0,fetch0[31:16]}; 
+        end else begin
+            instrD = {fetch1[15:0],fetch0[31:16]};
+        end
+    end else begin
+        instrD = fetch0; //maybe add a compresed check but not rlly necessary
+    end
+
+end
+
+logic [31:0] fetch0, fetch1;
 always_ff @(posedge clk) begin
     if(FlushD | reading_data) begin 
-        instrD<=32'h00000013;
+        fetch0<=32'h00000013;
+        fetch1 <= 32'h00000013; //arguably not necessary but safety ig
     end
     else if (StallD) begin
-        instrD<=instrD;
+        fetch0<= fetch0;
+        fetch1 <= fetch1;
+        
     end
     else begin
-        instrD <= instructions[PC_IN[31:2]];
-    end
-    
+      
+        fetch0 <=instructions[PC_IN[31:2]];
+        fetch1 <= instructions[PC_IN[31:2]+1];
+        countedbyTwo <= (PC_IN[1]);
+
+    end   
 end
 
 

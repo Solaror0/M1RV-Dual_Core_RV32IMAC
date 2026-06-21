@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
 
 module core(
-    (* mark_debug = "true" *) input logic clk, rst,
+    (* mark_debug = "true" *) input logic clk, rst, compressed,
     input logic [31:0] instrD, read_data,
     output logic [31:0] PC_OUT, ALUResult, WriteData,
     output logic MemWriteM, FlushD, StallD,
@@ -19,8 +19,8 @@ logic  [4:0] ALUControlD;
 
 logic [31:0] instrDConfirmed; 
 
-controlunit cu (.op(instrD[6:0]),.funct3(instrD[14:12]),.funct7b5(instrD[30]),.funct7b1(instrD[25]),.RegWriteD(RegWriteD),.MemwriteD(MemWriteD),
-                         .JumpD(JumpD),.BranchD(BranchD),.ALUSrcD(ALUSrcD),.ResultSrcD(ResultSrcD),.ImmSrcD(ImmSrcD),.ALUControlD(ALUControlD),.uSrc(uSrc));
+controlunit cu (.compressed(compressed),.instrD(instrD),.RegWriteD(RegWriteD),.MemwriteD(MemWriteD),
+                .JumpD(JumpD),.BranchD(BranchD),.ALUSrcD(ALUSrcD),.ResultSrcD(ResultSrcD),.ImmSrcD(ImmSrcD),.ALUControlD(ALUControlD),.uSrc(uSrc));
 
 datapath dp(.ALUControlD(ALUControlD),.clk(clk),.rst(rst),.JumpD(JumpD),.BranchD(BranchD),.RegWriteD(RegWriteD),.ALUSrcD(ALUSrcD),.MemwriteD(MemWriteD),
             .ResultSrcD(ResultSrcD),.ImmSrcD(ImmSrcD),.instrD(instrD),.ReadDataW(read_data),.PC_OUT(PC_OUT),.ALUResultM(ALUResult),.MemWriteM(MemWriteM),
