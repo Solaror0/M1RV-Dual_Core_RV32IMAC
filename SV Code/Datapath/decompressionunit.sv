@@ -1,7 +1,7 @@
 module decompressionunit(
-    logic input [31:0] instrD,
-    logic input compressed,
-    logic output [31:0] processedInstrD
+    input logic [31:0] instrD,
+     input logic compressed,
+     output logic[31:0] processedInstrD
 );
 
 logic [4:0] rs2, rs1, rd;
@@ -33,8 +33,8 @@ always_comb begin
             rs1 = instrD[11:7];
             rd = instrD[11:7];
             op = 7'b0010011;
-            if(rd == 0) processedInstrD = 32'h00000013;
-            else processedInstrD = {{7{instrD[12]}},instrD[6:2],rs1,cfunct3,rd,op};
+            if  (rd == 0) begin processedInstrD = 32'h00000013; end
+            else begin processedInstrD = {{7{instrD[12]}},instrD[6:2],rs1,cfunct3,rd,op}; end
         end
            
         5'b000_10: begin
@@ -46,7 +46,7 @@ always_comb begin
             processedInstrD = {funct7,instrD[6:2],rs1,funct3,rd,op}; 
         end
 
-        5'b001_01: begin
+        5'b001_01: begin 
             rd = 5'b00001;
             op = 7'b1101111;
             processedInstrD = {
@@ -54,9 +54,7 @@ always_comb begin
                 instrD[8], instrD[10:9], instrD[6], instrD[7], instrD[2], instrD[11], instrD[5:3], 
                 instrD[12],                                                          
                 {8{instrD[12]}},                                                     
-                rd,                                                                  
-                op                                                                   
-            }; 
+                rd,op }; 
         end
 
         5'b010_00: begin
@@ -83,16 +81,11 @@ always_comb begin
 
         5'b011_01: begin
             rd = instrD[11:7];
-            if (rd == 5'd2) begin 
+            if (rd == 5'd2) begin
                 op = 7'b0010011; 
-                processedInstrD = {
-                    {3{instrD[12]}}, instrD[4:3], instrD[5], instrD[2], instrD[6], 4'b0000, 
-                    rd, 
-                    3'b000,   
-                    rd, 
-                    op        
-                };
-            end else begin 
+                processedInstrD = {{3{instrD[12]}}, instrD[4:3], instrD[5], instrD[2], instrD[6], 4'b0000,rd,3'b000, rd, op};
+            end
+            else begin 
                 op = 7'b0110111;
                 processedInstrD = {{15{instrD[12]}}, instrD[6:2], rd, op };
             end
@@ -161,8 +154,7 @@ always_comb begin
                 instrD[8], instrD[10:9], instrD[6], instrD[7], instrD[2], instrD[11], instrD[5:3], 
                 instrD[12],                                                          
                 {8{instrD[12]}},                                                     
-                rd,                                                                  
-                op                                                                   
+                rd, op                                                                   
             }; 
         end
 
@@ -181,8 +173,7 @@ always_comb begin
                 5'b00000, 
                 rs1,      
                 3'b000,   
-                instrD[11:10], instrD[4:3], instrD[12],
-                op        
+                instrD[11:10], instrD[4:3], instrD[12], op        
             };
         end
 
@@ -201,17 +192,14 @@ always_comb begin
                 5'b00000, 
                 rs1,      
                 3'b001,   
-                instrD[11:10], instrD[4:3], instrD[12],
-                op        
+                instrD[11:10], instrD[4:3], instrD[12],op        
             };
         end
 
         endcase
         
-    end else begin
-        processedInstrD = instrD;
-    end
-
+    end else processedInstrD = instrD;
+    
 end
 
 endmodule
