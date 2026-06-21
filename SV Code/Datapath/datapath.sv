@@ -2,7 +2,7 @@
 
 module datapath(
     (* mark_debug = "true" *) input logic [4:0] ALUControlD,
-    (* mark_debug = "true" *) input logic clk, rst, JumpD, BranchD,  RegWriteD, ALUSrcD, MemwriteD,
+    (* mark_debug = "true" *) input logic clk, rst, JumpD, BranchD,  RegWriteD, ALUSrcD, MemwriteD, compressed,
     input logic [1:0] ResultSrcD, ImmSrcD, uSrc,
     (* mark_debug = "true" *) input logic [31:0] instrD, ReadDataW,
     (* mark_debug = "true" *) output logic[31:0] ALUResultM, PC_OUT, WriteDataM,
@@ -25,7 +25,9 @@ hazardunit hazard_unit (.clk(clk),.Rs1E(rs1E),.Rs2E(rs2E),.Rs1D(rs1D),.Rs2D(rs2D
 pc PC(.rst(rst),.clk(clk),.PCSrcE(PCSrcE),.PC_OUT(PC_OUT),.branch_addr(PCTargetE),.en(~StallF),.PC_NEXT(PCPlus4F));
 
 logic dummycout;
-carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b(32'd4),.Subtract(1'b0),.cin(0),.s(PC_NEXT),.cout(dummycout)); 
+logic [2:0] pc_add;
+assign pc_add = compressed ? 2'b010 : 2'b100;
+carry_lookahead_adder pc_adder (.a(PC_OUT[31:0]),.b({29'b0,pc_add}),.Subtract(1'b0),.cin(0),.s(PC_NEXT),.cout(dummycout)); 
 
 
 logic [1:0]  BTB_StateF, BTB_StateE,  BTB_StateD;

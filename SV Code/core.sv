@@ -25,7 +25,7 @@ controlunit cu (.compressed(compressed),.instrD(instrD),.RegWriteD(RegWriteD),.M
 datapath dp(.ALUControlD(ALUControlD),.clk(clk),.rst(rst),.JumpD(JumpD),.BranchD(BranchD),.RegWriteD(RegWriteD),.ALUSrcD(ALUSrcD),.MemwriteD(MemWriteD),
             .ResultSrcD(ResultSrcD),.ImmSrcD(ImmSrcD),.instrD(instrD),.ReadDataW(read_data),.PC_OUT(PC_OUT),.ALUResultM(ALUResult),.MemWriteM(MemWriteM),
             .WriteDataM(WriteData),.divByZero(divByZero),.uSrc(uSrc),.instrDConfirmed(instrDConfirmed),
-            .FlushD(FlushD),.StallD(StallD));
+            .FlushD(FlushD),.StallD(StallD),.compressed(compressed));
 
 
 //datapath
