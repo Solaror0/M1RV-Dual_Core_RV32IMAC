@@ -6,7 +6,7 @@ A 2-Core RV32IMAC CPU project to learn SystemVerilog and the RISC-V ISA. Impleme
 The core specs are listed  below:
 - 5 Stage Pipeline
 - M, A, & C Extension Instructions
-- Supports code update using pySerial & UART
+- Custom UART Receiver, supports code update using pySerial
 - Branch Prediction (BTB)
 - Radix-4-SRT Division
 - Radix-4 Booth-Wallace Multiplicationz
