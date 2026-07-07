@@ -9,9 +9,9 @@ The core specs are listed  below:
 - Custom UART Receiver, supports code update using pySerial
 - Branch Prediction (BTB)
 - Radix-4-SRT Division
-- Radix-4 Booth-Wallace Multiplicationz
+- Radix-4 Booth-Wallace Multiplication (Multicycle)
 
-This code is available for anyone to observe and learn from. As a long term project where I improved drastically throughout, it may have some changes over-time in coding style.
+This code is available for anyone to observe and learn from. As a long term project where I improved drastically throughout, it may have some changes over-time in coding style & skill. 
 
 ## The Numbers
 LUTS: XXXX
@@ -35,4 +35,14 @@ The commands return the following:
 Upon synthesis, the memory modules will read from the hex data using readmemh. However once implemented, the code can be overwritten using the pySerial module.
 The process is simple: write new code, compile with workflow.txt, and run the python script. 
 
+## Brief Implementation Details
+Briefly going however how I implemented significant portions of the CPU:
+
+M: Implemented Radix-4 Booth Wallace Tree for Multiplication, and Radix-4-SRT (This was a challenge) for Division. Then involved integrating with the ALU + Pipeline timing/hazards.
+C: Modified instruction fetching to detect compressed instructions, accounted for different instruction alignments by pulling both PC & PC+4 instructions & applying combinational logic. After the compressed instruction is received it goes through a decompression unit which expands to a full 32-bit instruction, so the datapath except the PC doesn't care. Had to play around with the PC incrementation.
+A: For AMO instructions: designed a decoder that intakes a 32-bit AMO instruction and expands the RMW to base instructions (LW, MISC-ALU, SW). Similar to implementing AMO instructions using LR/SC except in hardware. Gets a little more complicated for MAX/MIN. Had to mess around a lot with hazards/timing & special cases (e.g RS1==RD).
+
+BTB: 128 entry cache with a 2 bit saturating counter, indexes using concatenated PC and assigns a valid bit if the cache entry is filled, stores state and rest of the PC. The BTB's "Mispredict" signal considers PCSrcE and takes over its role.
+
+UART Receiver:
 
