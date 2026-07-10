@@ -14,10 +14,15 @@ The core specs are listed  below:
 
 This code is available for anyone to observe and learn from. As a long term project where I improved drastically throughout, it may have some changes over-time in coding style & skill. 
 
-##Pipeline Diagram
+##Diagrams
 
+### Top Diagram
+<img width="641" height="266" alt="Top Diagram drawio" src="https://github.com/user-attachments/assets/6a2d3b0e-d215-4187-a775-f36599e7a2fd" />
+
+### Pipeline Diagram
 **Omitted Details**: Control Signals, Hazard signals, Many signals are represented by 1 arrow. 
 <img width="970" height="427" alt="PipelineDiagram drawio" src="https://github.com/user-attachments/assets/38a666d5-ceec-42fa-aa4b-dbfbfb405b95" />
+
 
 
 ## The Numbers
@@ -47,7 +52,7 @@ Briefly going however how I implemented significant portions of the CPU:
 
 M: Implemented Radix-4 Booth Wallace Tree for Multiplication, and Radix-4-SRT (This was a challenge) for Division. Then involved integrating with the ALU + Pipeline timing/hazards.
 C: Modified instruction fetching to detect compressed instructions, accounted for different instruction alignments by pulling both PC & PC+4 instructions & applying combinational logic. After the compressed instruction is received it goes through a decompression unit which expands to a full 32-bit instruction, so the datapath except the PC doesn't care. Had to play around with the PC incrementation.
-A: For AMO instructions: designed a decoder that intakes a 32-bit AMO instruction and expands the RMW to base instructions (LW, MISC-ALU, SW). Similar to implementing AMO instructions using LR/SC except in hardware. Gets a little more complicated for MAX/MIN. Had to mess around a lot with hazards/timing & special cases (e.g RS1==RD).
+A: For AMO instructions: designed a decoder that intakes a 32-bit AMO instruction and expands the RMW to base instructions (LW, MISC-ALU, SW). Similar to implementing AMO instructions using LR/SC except in hardware. Gets a little more complicated for MAX/MIN, and then more hectic for LR and SC. Had to mess around a lot with hazards/timing & special cases (e.g RS1==RD). I strongly believe that I could have done a better implementation and suspect it would have been easier if I implemented a memory controller. This implementation ultimately works, but is definitely inefficient and not as elegant as it can be.
 
 BTB: 128 entry cache with a 2 bit saturating counter, indexes using concatenated PC and assigns a valid bit if the cache entry is filled, stores state and rest of the PC. The BTB's "Mispredict" signal considers PCSrcE and takes over its role.
 
