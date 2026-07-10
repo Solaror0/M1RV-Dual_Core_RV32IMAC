@@ -1,8 +1,0 @@
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -T link.ld -nostdlib -Os start.S main.c -o program.elf
-riscv64-unknown-elf-objcopy -O binary -j .text program.elf imem.bin
-riscv64-unknown-elf-objcopy -O binary -j .data -j .sdata program.elf dmem.bin
-riscv64-unknown-elf-objcopy -O elf32-littleriscv -j .text program.elf imem.elf
-riscv64-unknown-elf-objcopy -O elf32-littleriscv -j .data -j .sdata program.elf dmem.elf
-elf2hex --bit-width 32 --input imem.elf --output imem.hex
-elf2hex --bit-width 32 --input dmem.elf --output dmem.hex
-riscv64-unknown-elf-objdump -d -S program.elf > disassembly.txt
