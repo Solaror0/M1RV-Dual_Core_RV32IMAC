@@ -14,7 +14,7 @@ The core specs are listed  below:
 
 This code is available for anyone to observe and learn from. As a long term project where I improved drastically throughout, it may have some changes over-time in coding style & skill. 
 
-##Diagrams
+## Diagrams
 
 ### Top Diagram
 <img width="641" height="266" alt="Top Diagram drawio" src="https://github.com/user-attachments/assets/6a2d3b0e-d215-4187-a775-f36599e7a2fd" />
