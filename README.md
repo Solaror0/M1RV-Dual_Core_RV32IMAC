@@ -1,4 +1,5 @@
 
+
 ## Introduction
 
 A 2-Core RV32IMAC CPU project to learn SystemVerilog and the RISC-V ISA. Implemented on a Nexys A7-100t FPGA using Vivado.
@@ -12,6 +13,12 @@ The core specs are listed  below:
 - Radix-4 Booth-Wallace Multiplication (Multicycle)
 
 This code is available for anyone to observe and learn from. As a long term project where I improved drastically throughout, it may have some changes over-time in coding style & skill. 
+
+##Pipeline Diagram
+
+**Omitted Details**: Control Signals, Hazard signals, Many signals are represented by 1 arrow. 
+<img width="970" height="427" alt="PipelineDiagram drawio" src="https://github.com/user-attachments/assets/38a666d5-ceec-42fa-aa4b-dbfbfb405b95" />
+
 
 ## The Numbers
 LUTS: XXXX
