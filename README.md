@@ -86,3 +86,12 @@ Briefly going however how I implemented significant portions of the CPU:
 * **C:** Modified instruction fetching to detect compressed instructions, accounted for different instruction alignments by pulling both PC & PC+4 instructions & applying combinational logic. After the compressed instruction is received it goes through a decompression unit which expands to a full 32-bit instruction, so the datapath except the PC doesn't care. Had to play around with the PC incrementation.
 * **A:** For AMO instructions: designed a decoder that intakes a 32-bit AMO instruction and expands the RMW to base instructions (LW, MISC-ALU, SW). Similar to implementing AMO instructions in software using LR/SC. Gets a little more complicated for MAX/MIN, and then more hectic for LR and SC. Had to mess around a lot with hazards/timing & special cases (e.g RS1==RD). I strongly believe that I could have done a better implementation and suspect it would have been easier if I implemented a memory controller. This implementation ultimately works, but is definitely inefficient and not as elegant as it can be.
 * **BTB:** 128 entry cache with a 2 bit saturating counter, indexes using concatenated PC and assigns a valid bit if the cache entry is filled, stores state and rest of the PC. The BTB's "Mispredict" signal considers PCSrcE and takes over its role.
+
+---
+
+## Future Plans & Improvements
+
+* Improving the A-Extension Implementation
+* Implementing zicsr Extension/Timer & Interrupt Support
+* Further testing of BTB
+* Stress testing of longer programs with sensitive timing
