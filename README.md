@@ -16,14 +16,14 @@
 
 ---
 
-## Diagrams
+## Diagrams (1 Core Diagram)
 
 ### Top Diagram
 <p align="center">
   <img width="641" height="266" alt="Top Diagram drawio" src="https://github.com/user-attachments/assets/6a2d3b0e-d215-4187-a775-f36599e7a2fd" />
 </p>
 
-### Pipeline Diagram (1 Core)
+### Pipeline Diagram
 **Omitted Details**: Control Signals, Hazard signals, Many signals are represented by 1 arrow. 
 <p align="center">
   <img width="970" height="427" alt="PipelineDiagram drawio" src="https://github.com/user-attachments/assets/38a666d5-ceec-42fa-aa4b-dbfbfb405b95" />
