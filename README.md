@@ -92,6 +92,7 @@ Briefly going however how I implemented significant portions of the CPU:
 ## Future Plans & Improvements
 
 * Improving the A-Extension Implementation
+* Upgrade the pipeline or improve combinational logic to allow faster clock speeds
 * Implementing zicsr Extension/Timer & Interrupt Support
 * Further testing of BTB
 * Stress testing of longer programs with sensitive timing
