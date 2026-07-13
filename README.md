@@ -76,6 +76,8 @@ The doorbell (3 bits) is activated by setting the LSB to 1. Bits 2:1 are used to
 
 This configuration allows the programmer some flexibility in how they use the cores to communicate with each other. Upon an interrupt the core simply stalls the pipeline & inserts the pipeline. After the interrupt the doorbell is immediately flipped however the data in the mailbox remains untouched. 
 
+Technically speaking, since the 10 and 11 configurations don't trigger any hardcoded events, the programmer can also just use them to indicate whatever they want.
+
 ---
 
 ## Brief Implementation Details
