@@ -61,10 +61,10 @@ The process is simple: write new code, compile with workflow.txt, and run the py
 Of the two cores, 1 is treated as the Master core. The other core goes to a specific PC address which should be set to immediately loop as a trap. Each core can speak to each other through a memory-mapped mailbox and doorbell system. Both cores can talk to the other, and the cores can also write to their own mailbox.
 
 The doorbell (3 bits) is activated by setting the LSB to 1. Bits 2:1 are used to tell the receiving core & program what kind of message it is receiving & what it should do. 
-00: JALR Instruction, Mailbox formatted as [12-bit immediate, rs1, rd].
-01: JAL Instruction, Mailbox formatted as [20-bit immediate, rd].
-10: The mailbox contains data. NOP instruction to pipeline.
-11: The mailbox contains an address.  NOP instruction to pipeline.
+00: JALR Instruction, Mailbox formatted as [12-bit immediate, rs1, rd]. \n
+01: JAL Instruction, Mailbox formatted as [20-bit immediate, rd]. \n
+10: The mailbox contains data. NOP instruction to pipeline. \n
+11: The mailbox contains an address.  NOP instruction to pipeline. \n
 
 This configuration allows the programmer some flexibility in how they use the cores to communicate with each other. Upon an interrupt the core simply stalls the pipeline & inserts the pipeline. After the interrupt the doorbell is immediately flipped however the data in the mailbox remains untouched. 
 
