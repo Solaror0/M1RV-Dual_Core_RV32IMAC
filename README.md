@@ -59,12 +59,12 @@ Note here that each core has its own instruction memory. (explained further in f
 | Hardware Metric | Specification / Status |
 | :--- | :--- |
 | **LUTS** | 8500 x (2 Cores) + 2000 (Memory related modules) |
-| **LUTRAM** | 0 |
+| **LUTRAM** | 212 |
 | **BRAM** | 5 tiles |
 | **Frequency** | Tested at 40 MHz.|
 | **Instruction Memory** | 4KB |
 | **Data Memory** | 4KB |
-| **BTB** | 128-Entry, 1700 LUTs |
+| **BTB** | 128-Entry, 212 LUTRAM |
 
 Currently working on cleaning up timing to get to 100mHz
 
