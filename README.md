@@ -66,6 +66,8 @@ Note here that each core has its own instruction memory. (explained further in f
 | **Data Memory** | 4KB |
 | **BTB** | 128-Entry, 1700 LUTs |
 
+Currently working on cleaning up timing & measuring CPI
+
 ---
 
 ## Running a Program
