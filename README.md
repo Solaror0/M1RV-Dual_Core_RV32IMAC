@@ -15,6 +15,19 @@
 > This code is available for anyone to observe and learn from. As a long term project where I improved drastically throughout, it may have some changes over-time in coding style & skill. 
 
 ---
+## Usage of AI
+
+AI was at times supremely useful throughout this project, and at other times not very useful. I  avoided using it for generating a module or outright creating things for me, as that would defeat the purpose of a learning project. I tried to use it where it would save me time but not impact my learning. Here are the following ways I used AI:
+* Information about specification data, e.g finding an opcode - later verified 
+* Learning about the different extensions and what make them up
+* Generating simple C code & Python code - but had to do the 2 core communication code by hand as I would of course be more familiar with my memory organization
+* Asking if something is possible on SystemVerilog  - e.g how/if for loops work, typedef details, etc.
+
+There were some things that AI was utterly useless at. For example, Radix-4-SRT division confounded both me and Gemini for the longest time. Oftentimes it would give me incorrect information from conflicting sources, and I quickly realized it was making stuff up. Radix-4-SRT was my main moment of weakness where out of desperation I asked Gemini to generate some code (possibly the combinational part + the LUT generation script), but to no avail. In the end that was for the better since it forced me to restart and actually figure it out. 
+
+In the cases where I suspected that I was being given wrong information or I needed to understand more beyond what AI knew, I simply looked at textbooks, papers, and the RISCV ISA.
+
+---
 
 ## Diagrams (1 Core Diagram)
 
