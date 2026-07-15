@@ -152,8 +152,7 @@ Briefly going however how I implemented significant portions of the CPU:
 ## Future Plans & Improvements
 
 * Improving the A-Extension Implementation
-* Implementing instruction fetch queue or some way to make the two instrucion memories into 1. Right now they are the same exact memories, but duplicated. The reason being that 1 core requires 2 ports - due to the way I implemented the C extension, it needs to see the current instruction and the PC+4 instruction. Therefore 1 imem module cannot support both cores and still be interpreted as TDP BRAM.<img width="324" height="271" alt="Memory Organization" src="https://github.com/user-attachments/assets/1b9c169d-41e0-4fc7-adcd-f673d360f3e8" />
-
+* Implementing instruction fetch queue or some way to make the two instrucion memories into 1. Right now they are the same exact memories, but duplicated. The reason being that 1 core requires 2 ports - due to the way I implemented the C extension, it needs to see the current instruction and the PC+4 instruction. Therefore 1 imem module cannot support both cores and still be interpreted as TDP BRAM.
 
 
 * Upgrade the pipeline or improve combinational logic to allow faster clock speeds
