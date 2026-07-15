@@ -1,21 +1,22 @@
 `timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
 
 module datapath(
-    (* mark_debug = "true" *) input logic [4:0] ALUControlD,
-    (* mark_debug = "true" *) input logic clk, rst, JumpD, BranchD,  RegWriteD, ALUSrcD, MemwriteD, compressed, amoActive, amoFlush, specialReg,
+    input logic [4:0] ALUControlD,
+    input logic clk, rst, JumpD, BranchD,  RegWriteD, ALUSrcD, MemwriteD, compressed, amoActive, amoFlush, specialReg,
     input logic [1:0] ResultSrcD, ImmSrcD, uSrc,
-    input logic lr, sc,
-    (* mark_debug = "true" *) input logic [31:0] instrD, ReadDataW,
-    (* mark_debug = "true" *) output logic[31:0] ALUResultM, PC_OUT, WriteDataM,
+    input logic lr, sc, core_interrupt, otherAmoPause, whichCore,
+    input logic [31:0] instrD, ReadDataW,
+    output logic[31:0] ALUResultM, PC_OUT, WriteDataM,
     output logic MemWriteM, divByZero, FlushD, StallD, lwStall, lrE, scM, ZeroE,
-    output logic [31:0] instrDConfirmed, ALUResultE
+    output logic [31:0] ALUResultE
 
 );
 (* mark_debug = "true" *) logic [31:0] ResultW;
 
 hazardunit hazard_unit (.clk(clk),.Rs1E(rs1E),.Rs2E(rs2E),.Rs1D(rs1D),.Rs2D(rs2D),.RdE(RdE),.RdM(RdM),.RdW(RdW),.RegWriteW(RegWriteW),.RegWriteM(RegWriteM),
     .PCSrcE(PCSrcE),.MisPredictE(MisPredictE),.ResultSrcE(ResultSrcE),.FlushD(FlushD),.FlushE(FlushE),.StallF(StallF),.StallD(StallD), .StallE(StallE),
-    .ForwardAE(ForwardAE),.ForwardBE(ForwardBE),.calculation_stall(calculation_stall),.rst(rst),.amoFlush(amoFlush),.amoActive(amoActive),.lwStall(lwStall));
+    .ForwardAE(ForwardAE),.ForwardBE(ForwardBE),.calculation_stall(calculation_stall),.rst(rst),.amoFlush(amoFlush),.amoActive(amoActive),.lwStall(lwStall),
+    .core_interrupt(core_interrupt),.otherAmoPause(otherAmoPause));
 
 (* mark_debug = "true" *) logic  FlushE, StallF, StallE, MisPredictE;
 
@@ -23,7 +24,9 @@ hazardunit hazard_unit (.clk(clk),.Rs1E(rs1E),.Rs2E(rs2E),.Rs1D(rs1D),.Rs2D(rs2D
 (* mark_debug = "true" *) logic PCSrcE;
 (* mark_debug = "true" *) logic [31:0] PC_Minus_2,PC_initial_OUT, PC_NEXT, PCPlus4D, PCPlus4F,  PCD;
 
-pc PC(.rst(rst),.clk(clk),.PCSrcE(PCSrcE),.PC_OUT(PC_initial_OUT),.branch_addr(PCTargetE),.en(~StallF),.PC_NEXT(PCPlus4F));
+pc PC(.rst(rst),.clk(clk),.PCSrcE(PCSrcE),.PC_OUT(PC_initial_OUT),
+      .branch_addr(PCTargetE),.en(~StallF),.PC_NEXT(PCPlus4F),.JumpE(JumpE),.BranchE(BranchE),
+      .aluPC_Target(ALUResultE),.whichCore(whichCore));
 
 logic dummycout;
 logic [2:0] pc_add;
@@ -40,11 +43,11 @@ BTB BTB(.clk(clk),.rst(rst),.PC(PC_OUT),.PCE(PCE),.PCPlus4(PC_NEXT),.PCTargetE(P
         .MisPredictE(MisPredictE),.BTB_StateE(BTB_StateE),.BTB_HitE(BTB_HitE),.BTB_StateF(BTB_StateF),.BTB_HitF(BTB_HitF));
 
 FD_REG FD_REG (.clk(clk),.en(~StallD),.clr(FlushD),.instrD(instrD),.PCF(PC_OUT),.PCPlus4F(PCPlus4F),.PCD(PCD),.PCPlus4D(PCPlus4D),
-              .BTB_StateF(BTB_StateF),.BTB_HitF(BTB_HitF),.BTB_StateD(BTB_StateD),.BTB_HitD(BTB_HitD),.instrDConfirmed(instrDConfirmed));
+              .BTB_StateF(BTB_StateF),.BTB_HitF(BTB_HitF),.BTB_StateD(BTB_StateD),.BTB_HitD(BTB_HitD));
 
 //D Section
 logic [4:0] rs1D, rs2D, RdD;
-(* mark_debug = "true" *) logic [31:0] RD1D, RD2D, ImmExtD, instrE;
+logic [31:0] RD1D, RD2D, ImmExtD, instrE;
 assign rs1D = instrD[19:15];
 assign rs2D = instrD[24:20];
 assign RdD = instrD[11:7];
@@ -70,8 +73,8 @@ logic [4:0] RdE, rs1E, rs2E;
 //EXECUTE SECTION
 
 logic [1:0] ForwardAE, ForwardBE; //hazard signals
- (* mark_debug = "true" *)  logic [31:0] SrcAE, SrcBE, SrcBE_0, SrcBE_1; //srcBE_0 and 1 are the options for SRCBE
-(* mark_debug = "true" *) logic [31:0] WriteDataE, PCTargetE;
+logic [31:0] SrcAE, SrcBE, SrcBE_0, SrcBE_1; //srcBE_0 and 1 are the options for SRCBE
+logic [31:0] WriteDataE, PCTargetE;
 
 always_comb begin
     case (ForwardAE)
@@ -136,7 +139,7 @@ EM_REG EM_REG (.clk(clk),.Rd(RdE),.ALUResult(ALUResultE),.WD(WriteDataE),.PC_PLU
 
 logic[31:0] PCPlus4M;
 logic [4:0] RdM;
-(* mark_debug = "true" *) logic RegWriteM, MemWriteM;
+logic RegWriteM, MemWriteM;
 logic [1:0] ResultSrcM;
 
 //MEMORY SECTION
@@ -145,10 +148,10 @@ logic [1:0] ResultSrcM;
 MW_REG MW_REG (.clk(clk),.ALUResult(ALUResultM),.ReadData(0),.Rd(RdM),.RegWrite(RegWriteM),.ResultSrc(ResultSrcM),.PC_PLUS(PCPlus4M),
                 .AluResultW(AluResultW),.ReadData_W(),.PC_PLUS_W(PCPlus4W),.RdW(RdW),.RegWriteW(RegWriteW),.ResultSrcW(ResultSrcW));
 
-(* mark_debug = "true" *)  logic [31:0] AluResultW, ReadDataW, PCPlus4W;
+ logic [31:0] AluResultW, ReadDataW, PCPlus4W;
 logic [4:0] RdW;
 (* mark_debug = "true" *) logic RegWriteW;
-(* mark_debug = "true" *)  logic[1:0] ResultSrcW;
+ logic[1:0] ResultSrcW;
 
 always_comb begin
    case (ResultSrcW)

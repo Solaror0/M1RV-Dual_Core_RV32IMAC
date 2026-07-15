@@ -1,19 +1,30 @@
 `timescale 1ns / 1ps // Defines the time unit (1ns) and precision (1ps)
 
 module pc(
-    input logic rst, en,
+    input logic rst, en, whichCore,
     input logic clk,
-    input logic PCSrcE,
-    input logic[31:0] branch_addr, PC_NEXT,
+    input logic PCSrcE, BranchE, JumpE,
+    input logic[31:0] branch_addr, PC_NEXT, aluPC_Target,
     output logic [31:0] PC_OUT
 );
 
 
 always_ff @(posedge clk) begin
     if(en) begin
-        if (rst) begin PC_OUT <= 0; end
+        if (rst) begin 
+            
+             PC_OUT <= whichCore ? 32'h20 : 0; 
+        
+        end
         else if (~PCSrcE) begin PC_OUT <= PC_NEXT; end
-        else if (PCSrcE) begin PC_OUT <= branch_addr; end
+        else if (PCSrcE) begin 
+        
+            if(BranchE & JumpE) begin 
+                PC_OUT <= aluPC_Target;
+            end else begin 
+                PC_OUT <= branch_addr; 
+            end
+        end
     end else begin
         PC_OUT <= PC_OUT;
     end

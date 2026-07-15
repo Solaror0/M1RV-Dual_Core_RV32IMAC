@@ -76,15 +76,5 @@ end
 
 
 
-//1011
-//1010
-
-
-//shift b i times >>
-//if b[0] = 1 then this variable = a
-//shift this variable i times <<
-//add to accumulator
-
-
 
 endmodule

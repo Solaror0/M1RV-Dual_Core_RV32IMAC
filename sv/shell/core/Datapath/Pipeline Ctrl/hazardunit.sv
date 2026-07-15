@@ -4,7 +4,7 @@ module hazardunit (
     input logic clk, calculation_stall, amoActive, amoFlush,
     input logic [4:0] Rs1D, Rs2D,
     input logic [4:0] RdE, RdM, RdW, Rs1E, Rs2E,
-    input logic RegWriteW, RegWriteM, PCSrcE, MisPredictE, rst,
+    input logic RegWriteW, RegWriteM, PCSrcE, MisPredictE, rst, core_interrupt, otherAmoPause,
     input logic [1:0] ResultSrcE,
 
     output logic FlushD, FlushE, StallF, StallD, StallE,
@@ -36,18 +36,14 @@ always_comb begin
     begin ForwardBE = 2'b00; end
 
     lwStall = ResultSrcE[0] & ((Rs1D == RdE) | (Rs2D == RdE));
-    StallF = lwStall | (calculation_stall) | amoActive;
-    StallD = lwStall | (calculation_stall) | amoActive;
-    StallE = calculation_stall;
+    StallF = lwStall | (calculation_stall) | amoActive | otherAmoPause;
+    StallD = lwStall | (calculation_stall) | amoActive | core_interrupt | otherAmoPause;
+    StallE = calculation_stall | otherAmoPause;
 
     FlushD = MisPredictE | rst | amoFlush ;
     FlushE = lwStall | MisPredictE | amoFlush | rst;  
 
 end
-
-//always_ff @(posedge clk) begin
-//    MisPredictDelay <= MisPredictE;
-//end
 
 
 endmodule

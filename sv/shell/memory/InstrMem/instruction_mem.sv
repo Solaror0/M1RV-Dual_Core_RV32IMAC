@@ -17,7 +17,7 @@ module i_mem(
 
 initial begin
     // Make sure program.hex is in the same directory as simulation 
-    $readmemh("C:/Users/junnu/Downloads/RV32M/for_imem/program.hex", instructions); 
+    $readmemh("FILE", instructions); 
 end
 
 (* mark_debug = "true" *) logic [10:0] index; //index of instruction memory, 0-1023.
@@ -33,6 +33,7 @@ always_ff @(posedge clk) begin
         index <=0;
         reading_data<=0;
         data_valid<=1; 
+        
         
     end
     else if(data_ready & data_valid) begin
@@ -79,7 +80,7 @@ end
 
 logic [31:0] fetch0, fetch1;
 always_ff @(posedge clk) begin
-    if(FlushD | reading_data) begin 
+    if(FlushD | reading_data | rst) begin 
         fetch0<=32'h00000013;
         fetch1 <= 32'h00000013; //arguably not necessary but safety ig
         countedbyTwo <=0;

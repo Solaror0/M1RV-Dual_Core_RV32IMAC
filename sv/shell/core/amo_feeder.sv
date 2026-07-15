@@ -66,7 +66,7 @@ always_comb begin
     
         decoded_instr[0] = {12'b0,rs1,funct3,rd,7'b0000011}; //lw
         if(funct5[4]) begin  //AMO MAX MIN 
-            lr = 0;
+            
             decoded_instr[1] = {7'b0,rs2,rd,alu_funct3,5'b0,7'b0110011}; //SLT instruction, dont care about where the result is stored hence x0 which won't enter
             decoded_instr[2] = 32'h00000013; //might not be necessary..?
             count_target = 3'd4;
@@ -78,7 +78,7 @@ always_comb begin
             endcase
         end
         else begin  //AMO ADD SUB etc
-            lr = 0;
+            
             count_target = 3'd3;
             if(funct5==5'b00001)
             begin
@@ -99,6 +99,8 @@ always_ff@(posedge clk)begin
         sub_instrD<=32'h00000013;
         active<=0;
         specialReg <=0;
+        sc<=0;
+        lr<=0;
     end
     else if(active) begin
         

@@ -35,14 +35,14 @@ end
 always_comb begin
     regs[0] = 32'b0;
     
-    if (WE & (A3 == A1)) begin
+    if (WE & (A3 == A1) & (A1!=0)) begin
     RD1 = WD3;
     end else begin
     RD1 = regs[A1];
     end
     
         
-    if (WE & (A3 == A2)) begin
+    if (WE & (A3 == A2) & (A2!=0)) begin
     RD2 = WD3;
     end else begin
     RD2 = regs[A2];

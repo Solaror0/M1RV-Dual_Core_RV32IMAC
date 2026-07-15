@@ -2,61 +2,56 @@
 
 module shell(
     (* mark_debug = "true" *) input logic clk, rst, uart_tx,
-    output logic divByZero,
-    output logic [15:0] LED, SWITCH
+    input logic [15:0] SWITCH,
+    output logic [1:0] divByZero,
+    output logic [15:0] LED
 );
 
 //core
-(* dont_touch = "true" *) logic [31:0]  read_data, instrDUnprocessed;
-(* mark_debug = "true" *) logic [31:0] PC, ALUResultM, ALUResultE, WriteData;
-(* mark_debug = "true" *) logic MemWriteM;
-logic FlushD, StallD;
+logic [1:0][31:0]  read_data, instrDUnprocessed;
+(* mark_debug = "true" *) logic [1:0][31:0] PC, ALUResultM, ALUResultE, WriteData;
+(* mark_debug = "true" *) logic [1:0] MemWriteM;
+logic [1:0] FlushD, StallD;
+logic [1:0] core_interrupted;
+logic [1:0] otherAmo;
+logic [2:0] doorbell0, doorbell1;
+logic [31:0] mailbox0, mailbox1; 
+logic [1:0] otherLRSC;
 
-
-core core(.clk(clk),.rst(rst | reading_rst | memory_reading),.instrD(instrDUnprocessed),.read_data(read_data),.PC_OUT(PC),.ALUResultM(ALUResultM),.WriteData(WriteData),
-            .MemWriteM(MemWriteM),.divByZero(divByZero),.FlushD(FlushD),.StallD(StallD),.compressed(compressed),
-            .ALUResultE(ALUResultE),.lrE(lrE),.scM(scM),.reserve_valid(reserve_valid));
-
+core core0(.clk(clk),.rst(rst | reading_rst | memory_reading),
+            .instrD(instrDUnprocessed[0]),.read_data(read_data[0]),.PC_OUT(PC[0]),
+            .ALUResultM(ALUResultM[0]),.WriteData(WriteData[0]),
+            .MemWriteM(MemWriteM[0]),.divByZero(divByZero[0]),.FlushD(FlushD[0]),.StallD(StallD[0]),
+            .compressed(compressed[0]),
+            .ALUResultE(ALUResultE[0]),.lrE(lrE[0]),.scM(scM[0]),.reserve_valid(reserve_valid[0]),
+            .mailbox0(mailbox0),.mailbox1(mailbox1),.doorbell0(doorbell0),.doorbell1(doorbell1),
+            .whichCore(0),.core_interrupted(core_interrupted[0]),
+            .amoActiveOut(otherAmo[1]),.lrscOut(otherLRSC[1]),
+            .otherAmo(otherAmo[0]),.otherLRSC(otherLRSC[0]));
+            
+  
+core core1(.clk(clk),.rst(rst | reading_rst | memory_reading),
+            .instrD(instrDUnprocessed[1]),.read_data(read_data[1]),.PC_OUT(PC[1]),
+            .ALUResultM(ALUResultM[1]),.WriteData(WriteData[1]),
+            .MemWriteM(MemWriteM[1]),.divByZero(divByZero[1]),.FlushD(FlushD[1]),.StallD(StallD[1]),
+            .compressed(compressed[1]),
+            .ALUResultE(ALUResultE[1]),.lrE(lrE[1]),.scM(scM[1]),.reserve_valid(reserve_valid[1]),
+            .mailbox0(mailbox0),.mailbox1(mailbox1),.doorbell0(doorbell0),.doorbell1(doorbell1),
+            .whichCore(1),.core_interrupted(core_interrupted[1]),
+            .amoActiveOut(otherAmo[0]),.lrscOut(otherLRSC[0]),
+            .otherAmo(otherAmo[1]),.otherLRSC(otherLRSC[1]));
+            
+  
 //memory
 memory_ic memory_ic (.clk(clk),.rst(rst),.lrE(lrE),.scM(scM),.WE(MemWriteM),.addr(ALUResultM),
                      .ALUResultE(ALUResultE),.reserve_valid(reserve_valid),
                      .uart_tx(uart_tx), .reading_rst(reading_rst), .memory_reading(memory_reading),
                      .PC(PC),.instrD(instrDUnprocessed),.FlushD(FlushD),.StallD(StallD), .compressed(compressed),
-                     .WD(WriteData),.read_data(read_data),.LED(LED),.SWITCH(SWITCH));
+                     .WD(WriteData),.read_data(read_data),.LED(LED),.SWITCH(SWITCH),
+                     .mailbox0(mailbox0),.mailbox1(mailbox1),.doorbell0(doorbell0),.doorbell1(doorbell1), 
+                     .doorbell_heard(core_interrupted));
 
-
-//(* dont_touch = "true" *) logic [31:0]  read_data_1, instrDUnprocessed_1;
-//(* mark_debug = "true" *) logic [31:0] PC_1, ALUResultM_1, ALUResultE_1, WriteData_1;
-//(* mark_debug = "true" *) logic MemWriteM_1;
-//logic FlushD_1, StallD_1;
-
-
-//core core_1(.clk(clk),.rst(rst | reading_rst | memory_reading),
-//            .instrD(instrDUnprocessed_1),.read_data(read_data_1),.PC_OUT(PC_1),
-//            .ALUResultM(ALUResultM_1),.WriteData(WriteData_1),
-//            .MemWriteM(MemWriteM_1),.FlushD(FlushD_1),.StallD(StallD_1),
-//            .compressed(compressed_1), .ALUResultE(ALUResultE_1),.lrE(lrE_1),
-//            .scM(scM_1),.reserve_valid(reserve_valid_1));
-
-
-
-
-//logic [31:0] uart_data;
 logic  reading_rst, memory_reading;
-logic compressed, lrE, scM,reserve_valid;
-//logic data_ready, error;
-
-//reservation_unit ru (.clk(clk),.rst(rst),.lrE(lrE),.scM(scM),.WE(MemWriteM),.ALUResultE(ALUResultE),.ALUResultM(ALUResultM),
-//                    .valid(reserve_valid));
-
-//uart_rx uart_rx(.raw_sig(uart_tx),.clk(clk),.rst(rst),.data_ready(data_ready),.error(error),.data(uart_data));
-
-//i_mem i_mem(.rst(rst),.data_ready(data_ready),.uart_data(uart_data),.clk(clk),.PC_IN(PC),
-//            .instrD(instrDUnprocessed),.FlushD(FlushD),.StallD(StallD),.reading_rst(reading_rst),
-//            .compressed(compressed));
-            
-//d_mem d_mem (.data_ready(data_ready),.reading_rst(memory_reading),.uart_data(uart_data),
-//             .clk(clk),.WE(MemWriteM),.addr(ALUResultM),.wd(WriteData),
-//             .rd(read_data),.rst(rst),.reserve_valid(reserve_valid),.scM(scM));
+logic [1:0] compressed, lrE, scM,reserve_valid;
 
 endmodule

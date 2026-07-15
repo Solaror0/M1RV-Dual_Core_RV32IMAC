@@ -2,9 +2,10 @@
 
 
 module reservation_unit(
-    input logic clk, rst, lrE, scM, WE, 
-    input logic [31:0] ALUResultE, ALUResultM,
-    output logic valid
+    input logic clk, rst,
+    input logic [1:0] lrE, scM, WE, 
+    input logic [1:0][31:0] ALUResultE, ALUResultM,
+    output logic [1:0] valid
  
     );
     
@@ -13,21 +14,36 @@ logic reservation_set [0:1023];
 
 always_comb  begin
 
-    if(scM) begin
-        valid = reservation_set[ALUResultM[10:0]];
+    if(scM[0]) begin
+        valid[0] = reservation_set[ALUResultM[0][10:0]];
     end
     
-    if(lrE) begin
-        reservation_set[ALUResultE[10:0]] = 1;
+    if(lrE[0]) begin
+        reservation_set[ALUResultE[0][10:0]] = 1;
     end
+    
+    
+    if(scM[1]) begin
+        valid[1] = reservation_set[ALUResultM[1][10:0]];
+    end
+    
+    if(lrE[1]) begin
+        reservation_set[ALUResultE[1][10:0]] = 1;
+    end
+    
     
 end
 
 always_ff @(posedge clk) begin
 
-    if(WE) begin
-        reservation_set[ALUResultM[10:0]] <=0;
+    if(WE[0]) begin
+        reservation_set[ALUResultM[0][10:0]] <=0;
     end
+    
+    if(WE[1]) begin
+        reservation_set[ALUResultM[1][10:0]] <=0;
+    end
+    
     
 end
 

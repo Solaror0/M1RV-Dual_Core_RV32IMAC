@@ -4,7 +4,7 @@ module extendunit(
 
     input logic [1:0] ImmSrcD,
     input logic JumpD,
-    (* dont_touch = "true" *) input logic [31:0] instrD, //never use an instrDuction bit under 7, this is what is being extended btw
+    (* dont_touch = "true" *) input logic [31:0] instrD, 
     output logic [31:0] ImmExtD
 );
 
