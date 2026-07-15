@@ -29,12 +29,22 @@ In the cases where I suspected that I was being given wrong information or I nee
 
 ---
 
-## Diagrams (1 Core Diagram)
+## Diagrams 
 
-### Top Diagram
+### Top Diagram (1 Core Diagram)
 <p align="center">
   <img width="641" height="266" alt="Top Diagram drawio" src="https://github.com/user-attachments/assets/6a2d3b0e-d215-4187-a775-f36599e7a2fd" />
 </p>
+
+### Dual Core Interaction
+Note here that each core has its own instruction memory. (explained further in future steps)
+<img width="471" height="361" alt="Dual Core Interaction Diagram drawio" src="https://github.com/user-attachments/assets/9e088364-a68a-4586-a3e6-5e9425f6d434" />
+^Kind of looks like a person! 
+
+### Memory Organization
+<img width="324" height="271" alt="Memory Organization" src="https://github.com/user-attachments/assets/927578f0-1687-49eb-a798-7624bc336ac1" />
+
+
 
 ### Pipeline Diagram
 **Omitted Details**: Control Signals, Hazard signals, Many signals are represented by 1 arrow. 
@@ -52,8 +62,8 @@ In the cases where I suspected that I was being given wrong information or I nee
 | **LUTRAM** | |
 | **BRAM** | |
 | **Frequency** | Tested at XX MHz. Nexys A7 goes up to XX MHz |
-| **Instruction Memory** | |
-| **Data Memory** | |
+| **Instruction Memory** | 4KB |
+| **Data Memory** | 4KB |
 | **BTB** | 128-Entry |
 
 ---
@@ -107,6 +117,10 @@ Briefly going however how I implemented significant portions of the CPU:
 ## Future Plans & Improvements
 
 * Improving the A-Extension Implementation
+* Implementing instruction fetch queue or some way to make the two instrucion memories into 1. Right now they are the same exact memories, but duplicated. The reason being that 1 core requires 2 ports - due to the way I implemented the C extension, it needs to see the current instruction and the PC+4 instruction. Therefore 1 imem module cannot support both cores and still be interpreted as TDP BRAM.<img width="324" height="271" alt="Memory Organization" src="https://github.com/user-attachments/assets/1b9c169d-41e0-4fc7-adcd-f673d360f3e8" />
+
+
+
 * Upgrade the pipeline or improve combinational logic to allow faster clock speeds
 * Implementing zicsr Extension/Timer & Interrupt Support
 * Further testing of BTB
