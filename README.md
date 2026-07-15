@@ -60,7 +60,7 @@ Note here that each core has its own instruction memory. (explained further in f
 | :--- | :--- |
 | **LUTS** | 8500 x (2 Cores) + 2000 (Memory related modules) |
 | **LUTRAM** | 0 |
-| **BRAM** | 5 |
+| **BRAM** | 5 tiles |
 | **Frequency** | Tested at 25 MHz. WNS 12.676 ns |
 | **Instruction Memory** | 4KB |
 | **Data Memory** | 4KB |
