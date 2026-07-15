@@ -64,7 +64,7 @@ Note here that each core has its own instruction memory. (explained further in f
 | **Frequency** | Tested at 25 MHz. WNS 12.676 ns |
 | **Instruction Memory** | 4KB |
 | **Data Memory** | 4KB |
-| **BTB** | 128-Entry |
+| **BTB** | 128-Entry, 1700 LUTs |
 
 ---
 
@@ -100,6 +100,41 @@ The doorbell (3 bits) is activated by setting the LSB to 1. Bits 2:1 are used to
 This configuration allows the programmer some flexibility in how they use the cores to communicate with each other. Upon an interrupt the core simply stalls the pipeline & inserts the pipeline. After the interrupt the doorbell is immediately flipped however the data in the mailbox remains untouched. 
 
 Technically speaking, since the 10 and 11 configurations don't trigger any hardcoded events, the programmer can also just use them to indicate whatever they want.
+
+Below is an example of a very simple C program where core 0 tells core 1 to complete a function.
+```C
+#include <stdint.h>
+int main(void) {
+  
+    volatile uint32_t *ptr = (volatile uint32_t *)1058;
+    volatile uint32_t *ptr2 = (volatile uint32_t *)1059;
+    
+
+    //JALR, J unconditionally to address 24 (hex) - location of core2Mult function
+    *ptr = 1152;
+    *ptr2 = 1;
+
+
+}
+
+//1056 = mailbox 0, 1057 = doorbell 0;
+//1058 = mailbox 1, 1059 = doorbell 1;
+
+volatile uint32_t a = 4;
+volatile uint32_t b = 8;
+
+int core2Mult() {
+
+  int core2return = a*b;
+  volatile uint32_t *ptr = (volatile uint32_t *)1056;
+  volatile uint32_t *ptr2 = (volatile uint32_t *)1057;
+
+  *ptr = core2return;
+  *ptr2 = 5;  //"data deposited"
+
+}
+
+```
 
 ---
 
