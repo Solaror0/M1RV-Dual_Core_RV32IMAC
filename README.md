@@ -58,10 +58,10 @@ Note here that each core has its own instruction memory. (explained further in f
 
 | Hardware Metric | Specification / Status |
 | :--- | :--- |
-| **LUTS** | XXXX |
-| **LUTRAM** | |
-| **BRAM** | |
-| **Frequency** | Tested at XX MHz. Nexys A7 goes up to XX MHz |
+| **LUTS** | 8500 x (2 Cores) + 2000 (Memory related modules) |
+| **LUTRAM** | 0 |
+| **BRAM** | 5 |
+| **Frequency** | Tested at 25 MHz. WNS 12.676 ns |
 | **Instruction Memory** | 4KB |
 | **Data Memory** | 4KB |
 | **BTB** | 128-Entry |
